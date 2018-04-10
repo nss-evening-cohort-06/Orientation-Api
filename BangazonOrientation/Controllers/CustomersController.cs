@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BangazonOrientation.Services;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
@@ -7,20 +8,18 @@ using System.Web.Http;
 
 namespace BangazonOrientation.Controllers
 {
+    [RoutePrefix("api/customers")]
     public class CustomersController : ApiController
     {
         [Route, HttpGet]
         public HttpResponseMessage GetList()
         {
-            var repository = new CustomerRepository();
+            var repository = new CustomersRepository();
             var result = repository.ListAllCustomers();
 
-            if (result)
-            {
-                return Request.CreateResponse(HttpStatusCode.Created);
-            }
+           
 
-            return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, "Oh Balls!");
+            return Request.CreateResponse(HttpStatusCode.OK, result);
         }
 
     }

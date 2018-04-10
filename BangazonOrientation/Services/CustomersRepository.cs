@@ -3,19 +3,21 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Data.SqlClient;
-
+using System.Configuration;
+using Dapper;
+using BangazonOrientation.Models;
 
 namespace BangazonOrientation.Services
 {
     public class CustomersRepository
     {
 
-        public List<CustomersDto> ListAllCustomers()
+        public IEnumerable<CustomersDto> ListAllCustomers()
         {
             using (var db = GetConnection())
             {
                 db.Open();
-                var getCustomerList = db.Execute(@"SELECT * FROM FirstName +' '+ LastName as FullName, PhoneNumber");
+                var getCustomerList = db.Query<CustomersDto>(@"SELECT  FirstName, LastName, PhoneNumber FROM Customer");
 
                 return getCustomerList;
             }
