@@ -14,5 +14,6 @@ namespace BangazonOrientation.Models
         public string State { get; set; }
         public int ZipCode { get; set; }
         public int PhoneNumber { get; set; }
+        public bool Status { get; set; }
     }
 }
