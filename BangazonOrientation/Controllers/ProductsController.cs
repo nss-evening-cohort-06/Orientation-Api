@@ -20,7 +20,7 @@ namespace BangazonOrientation.Controllers
 
             if (result)
                 return Request.CreateResponse(HttpStatusCode.Created);
-            return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, "Could not create recipe, try again later...");
+            return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, "Could not create product, try again later...");
         }
     }
 }
