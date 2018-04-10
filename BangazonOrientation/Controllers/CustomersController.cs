@@ -9,5 +9,19 @@ namespace BangazonOrientation.Controllers
 {
     public class CustomersController : ApiController
     {
+        [Route, HttpGet]
+        public HttpResponseMessage GetList()
+        {
+            var repository = new CustomerRepository();
+            var result = repository.ListAllCustomers();
+
+            if (result)
+            {
+                return Request.CreateResponse(HttpStatusCode.Created);
+            }
+
+            return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, "Oh Balls!");
+        }
+
     }
 }
