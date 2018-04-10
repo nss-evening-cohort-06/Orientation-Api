@@ -14,12 +14,17 @@ namespace BangazonOrientation.Controllers
     public class CustomersController : ApiController
     {
         [Route("{customerId}/status"), HttpPut]
-        public HttpResponseMessage UpdateCustomer (CustomersDto customer)
+        public HttpResponseMessage UpdateCustomer (int customerId, CustomersDto customer)
         {
-            var repository = new CustomerRepository();
-            var result = repository.Update(customer);
+            var repository = new CustomersRepository();
+            var StatusResult = repository.UpdateCustomerStatus(customer.Status, customerId);
 
-            return 
+            if (StatusResult)
+            {
+                return Request.CreateResponse(HttpStatusCode.Created);
+            }
+
+            return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, "Could not update");
         }
 
     }
