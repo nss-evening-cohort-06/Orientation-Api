@@ -6,6 +6,7 @@ using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 using OrientationAPI.Models;
+using OrientationAPI.Services;
 
 namespace OrientationAPI.Controllers
 {
@@ -16,7 +17,15 @@ namespace OrientationAPI.Controllers
         [Route, HttpPost]
         public HttpResponseMessage CreateOrder(OrderDto createOrder)
         {
+            var repository = new OrderRepository();
+            var result = repository.Create(createOrder.CustomerId);
 
+            if (result)
+            {
+                return Request.CreateResponse(HttpStatusCode.Created);
+            }
+
+            return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, "Could not create order");
         }
 
     }
