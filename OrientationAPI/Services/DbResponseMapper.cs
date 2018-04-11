@@ -8,6 +8,8 @@ namespace OrientationAPI.Services
     public enum DbResponseMapper
     {
         Created,
-        NotCreated
+        NotCreated,
+        Success,
+        NotFound
     }
 }

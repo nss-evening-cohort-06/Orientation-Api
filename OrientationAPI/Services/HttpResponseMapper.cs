@@ -17,6 +17,10 @@ namespace OrientationAPI.Services
                     return message.CreateResponse(HttpStatusCode.Created);
                 case DbResponseMapper.NotCreated:
                     return message.CreateErrorResponse(HttpStatusCode.InternalServerError, "The requested record could not be created, try again later");
+                case DbResponseMapper.Success:
+                    return message.CreateResponse(HttpStatusCode.OK);
+                case DbResponseMapper.NotFound:
+                    return message.CreateErrorResponse(HttpStatusCode.NotFound, "The requested record could not be found");
                 default:
                     return message.CreateErrorResponse(HttpStatusCode.InternalServerError, "Not sure how we got here");
             }
