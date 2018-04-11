@@ -29,6 +29,23 @@ namespace OrientationAPI.Services
 			}
 		}
 
+		public bool Update(Customer customer)
+		{
+			using (var db = new SqlConnection(ConfigurationManager.ConnectionStrings["BRBangazon"].ConnectionString))
+			{
+				db.Open();
+
+				var updateCustomer = db.Execute(@"UPDATE[dbo].[Customers]
+												SET [FirstName] = @FirstName,
+												    [LastName] = @LastName,
+											        [Phone] = @Phone
+												WHERE CustomerId = @CustomerId", customer);
+				return updateCustomer == 1;
+			}
+		}
+	}
+
+
         public bool Deactivate(int customerId)
         {
             using (var db = new SqlConnection(ConfigurationManager.ConnectionStrings["BRBangazon"].ConnectionString))
@@ -42,4 +59,5 @@ namespace OrientationAPI.Services
 
         }
     }
+
 }
