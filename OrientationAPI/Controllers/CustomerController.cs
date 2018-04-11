@@ -25,11 +25,12 @@ namespace OrientationAPI.Controllers
 			return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, "Customer could not be created, please try again later.");
 		}
 
-		[Route("{id}"), HttpPatch]
-		public HttpResponseMessage UpdateCustomer(CustomerDto customerId)
+		[Route("{customerId}"), HttpPatch]
+		public HttpResponseMessage UpdateCustomer(Customer customer, int customerId)
 		{
+			customer.CustomerId = customerId;
 			var repository = new CustomerRepository();
-			var result = repository.Update(customerId);
+			var result = repository.Update(customer);
 
 			if (result)
 			{
