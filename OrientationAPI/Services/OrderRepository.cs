@@ -36,9 +36,10 @@ namespace OrientationAPI.Services
             using (var db = GetDb())
             {
                 db.Open();
+
                 var result = db.Execute(@"UPDATE [dbo].[Orders]
                                            SET [IsClosed] = 1
-                                           WHERE [OrderId] = @orderId", orderId);
+                                           WHERE OrderId = @orderId", new {orderId});
 
                 return result == 1;
             }
