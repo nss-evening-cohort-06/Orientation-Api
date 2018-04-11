@@ -9,8 +9,10 @@ namespace BangazonOrientation.Services
 {
     public class CustomersRepository
     {
-        public bool Edit(CustomersDto customer)
+        public bool Edit(int id, CustomersDto customer)
         {
+            customer.Id = id;
+            customer.LastActiveDate = DateTime.Now;
             using (var db = GetConnection())
             {
                 var numberEdited = db.Execute(@"UPDATE [dbo].[Customer]

@@ -11,10 +11,10 @@ namespace BangazonOrientation.Controllers
     public class CustomersController : ApiController
     {
         [Route("{id}"), HttpPut]
-        public HttpResponseMessage Put(CustomersDto customer)
+        public HttpResponseMessage Put(int id, CustomersDto customer)
         {
             var repository = new CustomersRepository();
-            var result = repository.Edit(customer);
+            var result = repository.Edit(id, customer);
 
             return (result)
                 ? Request.CreateResponse(HttpStatusCode.OK)
