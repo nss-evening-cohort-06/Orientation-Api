@@ -25,22 +25,21 @@ namespace OrientationAPI.Controllers
 			return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, "Customer could not be created, please try again later.");
 		}
 
+<<<<<<< HEAD
         [HttpGet, Route("")]
         public HttpResponseMessage ListCustomers()
         {
             var repo = new CustomerRepository();
             var results = repo.GetAll();
             return Request.CreateListRecordsResponse(results);
-        }
-        
-        
+=======
         [HttpPatch, Route("{customerId}/deactivate")]
         public HttpResponseMessage DeactivateCustomer(int customerId)
         {
             var repo = new CustomerRepository();
             return repo.Deactivate(customerId) ? Request.MapHttpResponse(DbResponseMapper.Success) : Request.MapHttpResponse(DbResponseMapper.NotFound);
 
-        }
+>>>>>>> 926f113bbd6cba263d377caf6c85b5b7fe4b7ae7
         }
 		
     }

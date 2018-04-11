@@ -1,0 +1,20 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+
+namespace OrientationAPI.Services
+{
+    public enum DbResponseEnum
+    {
+        Created,
+        NotCreated,
+<<<<<<< HEAD:OrientationAPI/Services/DbResponseEnum.cs
+        RecordsReturned,
+        NoRecordsFound
+=======
+        Success,
+        NotFound
+>>>>>>> 926f113bbd6cba263d377caf6c85b5b7fe4b7ae7:OrientationAPI/Services/DbResponseMapper.cs
+    }
+}
