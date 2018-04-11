@@ -24,6 +24,13 @@ namespace OrientationAPI.Controllers
 			}
 			return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, "Customer could not be created, please try again later.");
 		}
+
+        [HttpGet, Route("")]
+        public void ListCustomers()
+        {
+            var repo = new CustomerRepository();
+            repo.GetAll();
+        }
 		
     }
 }
