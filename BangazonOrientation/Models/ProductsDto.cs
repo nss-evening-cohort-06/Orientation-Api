@@ -7,5 +7,7 @@
         public string Owner { get; set; }
         public string Count { get; set; }
         public string Description { get; set; }
+        public bool OutOfStock { get; set; }
+        public string ProductId { get; set; }
     }
 }
