@@ -9,7 +9,7 @@ namespace BangazonOrientation.Controllers
     [RoutePrefix("api/orders")]
     public class OrdersController : ApiController
     {
-    	[Route, HttpPost]
+        [Route, HttpPost]
         public HttpResponseMessage AddOrder(OrdersDto order)
         {
             var repo = new OrdersRepository();
@@ -18,6 +18,15 @@ namespace BangazonOrientation.Controllers
             if (result)
                 return Request.CreateResponse(HttpStatusCode.Created);
             return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, "Could not create order, try again later...");
+        }
+
+        [Route("{}"), HttpPut]
+        public HttpResponseMessage UpDateOrder(OrdersDto order)
+        {
+            var editPaymentStatus = new OrdersRepository();
+            var result = editPaymentStatus.Edit(order);
+
+            return Request.CreateResponse(HttpStatusCode.OK, result);
         }
     }
 }

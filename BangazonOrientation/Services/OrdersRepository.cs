@@ -29,5 +29,17 @@ namespace BangazonOrientation.Services
                 return records == 1;
             }
         }
+
+        public bool Edit(OrdersDto order)
+        {
+            using (var db = GetConnection())
+            {
+                db.Open();
+                var editPaidStatus = db.Execute(@"SELECT Purchased FROM Order");
+
+                return editPaidStatus;
+            }
+        }
+
     }
 }
