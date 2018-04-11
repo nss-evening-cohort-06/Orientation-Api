@@ -28,5 +28,16 @@ namespace BangazonOrientation.Controllers
 
             return Request.CreateResponse(HttpStatusCode.OK, result);
         }
+
+        [Route("{productId}/outofstock"), HttpPut]
+        public HttpResponseMessage UpdateProduct(int ProductId, ProductsDto product)
+        {
+            var repository = new ProductsRepository();
+            var result = repository.UpdateProductStatus(product.OutOfStock, ProductId);
+
+            if (result)
+                return Request.CreateResponse(HttpStatusCode.Created);
+            return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, "Could not update product");
+        }
     }
 }

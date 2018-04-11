@@ -46,5 +46,17 @@ namespace BangazonOrientation.Services
             }
         }
 
+        public bool UpdateProductStatus(bool OutOfStock, int ProductId)
+        {
+            using(var db = new SqlConnection(ConfigurationManager.ConnectionStrings["BangazonOrientation"].ConnectionString))
+            {
+                db.Open();
+                var NumberOfProductsUpdated = db.Execute(@"UPDATE [dbo].[Product]
+                                                            SET[OutOfStock] = @OutOfStock
+                                                            WHERE ProductId = @ProductId", new { ProductId, OutOfStock });
+                return NumberOfProductsUpdated == 1;
+            }
+        }
+
     }
 }
