@@ -28,7 +28,6 @@ namespace OrientationAPI.Services
 				return numberCreated == 1;
 			}
 		}
-
 		public bool Update(Customer customer)
 		{
 			using (var db = new SqlConnection(ConfigurationManager.ConnectionStrings["BRBangazon"].ConnectionString))
