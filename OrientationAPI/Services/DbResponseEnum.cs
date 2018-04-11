@@ -5,9 +5,11 @@ using System.Web;
 
 namespace OrientationAPI.Services
 {
-    public enum DbResponseMapper
+    public enum DbResponseEnum
     {
         Created,
-        NotCreated
+        NotCreated,
+        RecordsReturned,
+        NoRecordsFound
     }
 }

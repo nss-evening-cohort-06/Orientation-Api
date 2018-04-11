@@ -1,0 +1,200 @@
+[1mdiff --git a/OrientationAPI/Controllers/ProductController.cs b/OrientationAPI/Controllers/ProductController.cs[m
+[1mnew file mode 100644[m
+[1mindex 0000000..d7541f7[m
+[1m--- /dev/null[m
+[1m+++ b/OrientationAPI/Controllers/ProductController.cs[m
+[36m@@ -0,0 +1,29 @@[m
+[32m+[m[32m﻿using OrientationAPI.Models;[m
+[32m+[m[32musing OrientationAPI.Services;[m
+[32m+[m[32musing System;[m
+[32m+[m[32musing System.Collections.Generic;[m
+[32m+[m[32musing System.Linq;[m
+[32m+[m[32musing System.Net;[m
+[32m+[m[32musing System.Net.Http;[m
+[32m+[m[32musing System.Web.Http;[m
+[32m+[m
+[32m+[m[32mnamespace OrientationAPI.Controllers[m
+[32m+[m[32m{[m
+[32m+[m[32m    [RoutePrefix("api/products")][m
+[32m+[m[32m    public class ProductController : ApiController[m
+[32m+[m[32m    {[m
+[32m+[m[32m        [Route(""), HttpPost][m
+[32m+[m[32m        public HttpResponseMessage AddProduct(ProductDto product)[m
+[32m+[m[32m        {[m
+[32m+[m[32m            var repository = new ProductRepository();[m
+[32m+[m[32m            var result = repository.Create(product);[m
+[32m+[m
+[32m+[m[32m            if (result)[m
+[32m+[m[32m            {[m
+[32m+[m[32m                return Request.CreateResponse(HttpStatusCode.Created);[m
+[32m+[m[32m            }[m
+[32m+[m[32m            return Request.CreateErrorResponse(HttpStatusCode.InternalServerError,[m[41m [m
+[32m+[m[32m                                               "Product could not be created. Please try again later.");[m
+[32m+[m[32m        }[m
+[32m+[m[32m    }[m
+[32m+[m[32m}[m
+\ No newline at end of file[m
+[1mdiff --git a/OrientationAPI/Models/ProductDto.cs b/OrientationAPI/Models/ProductDto.cs[m
+[1mnew file mode 100644[m
+[1mindex 0000000..42f05ed[m
+[1m--- /dev/null[m
+[1m+++ b/OrientationAPI/Models/ProductDto.cs[m
+[36m@@ -0,0 +1,15 @@[m
+[32m+[m[32m﻿using System;[m
+[32m+[m[32musing System.Collections.Generic;[m
+[32m+[m[32musing System.Linq;[m
+[32m+[m[32musing System.Web;[m
+[32m+[m
+[32m+[m[32mnamespace OrientationAPI.Models[m
+[32m+[m[32m{[m
+[32m+[m[32m    public class ProductDto[m
+[32m+[m[32m    {[m
+[32m+[m[32m        public int SellerId { get; set; }[m
+[32m+[m[32m        public string ProductName { get; set; }[m
+[32m+[m[32m        public double ProductPrice { get; set; }[m
+[32m+[m[32m        public int Quantity { get; set; }[m
+[32m+[m[32m    }[m
+[32m+[m[32m}[m
+\ No newline at end of file[m
+[1mdiff --git a/OrientationAPI/OrientationAPI.csproj b/OrientationAPI/OrientationAPI.csproj[m
+[1mindex 94942f9..43d123f 100644[m
+[1m--- a/OrientationAPI/OrientationAPI.csproj[m
+[1m+++ b/OrientationAPI/OrientationAPI.csproj[m
+[36m@@ -107,17 +107,20 @@[m
+     <Compile Include="Controllers\LineItemsController.cs" />[m
+     <Compile Include="Controllers\OrdersController.cs" />[m
+     <Compile Include="Controllers\CustomerController.cs" />[m
+[32m+[m[32m    <Compile Include="Controllers\ProductController.cs" />[m
+     <Compile Include="Global.asax.cs">[m
+       <DependentUpon>Global.asax</DependentUpon>[m
+     </Compile>[m
+     <Compile Include="Models\LineItemDto.cs" />[m
+     <Compile Include="Models\OrderDto.cs" />[m
+     <Compile Include="Models\CustomerDto.cs" />[m
+[32m+[m[32m    <Compile Include="Models\ProductDto.cs" />[m
+     <Compile Include="Properties\AssemblyInfo.cs" />[m
+     <Compile Include="Services\DbResponseMapper.cs" />[m
+     <Compile Include="Services\OrderRepository.cs" />[m
+     <Compile Include="Services\CustomerRepository.cs" />[m
+     <Compile Include="Services\HttpResponseMapper.cs" />[m
+[32m+[m[32m    <Compile Include="Services\ProductRepository.cs" />[m
+     <Compile Include="Services\LineItemRepository.cs" />[m
+   </ItemGroup>[m
+   <ItemGroup>[m
+[36m@@ -164,6 +167,7 @@[m
+     <PropertyGroup>[m
+       <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>[m
+     </PropertyGroup>[m
+[32m+[m[32m    <Error Condition="!Exists('..\packages\Microsoft.Net.Compilers.2.4.0\build\Microsoft.Net.Compilers.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Net.Compilers.2.4.0\build\Microsoft.Net.Compilers.props'))" />[m
+     <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.8\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.8\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />[m
+     <Error Condition="!Exists('..\packages\Microsoft.Net.Compilers.2.7.0\build\Microsoft.Net.Compilers.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Net.Compilers.2.7.0\build\Microsoft.Net.Compilers.props'))" />[m
+   </Target>[m
+[1mdiff --git a/OrientationAPI/OrientationAPI.csproj.orig b/OrientationAPI/OrientationAPI.csproj.orig[m
+[1mindex c984671..7001c19 100644[m
+[1m--- a/OrientationAPI/OrientationAPI.csproj.orig[m
+[1m+++ b/OrientationAPI/OrientationAPI.csproj.orig[m
+[36m@@ -85,33 +85,43 @@[m
+     <Reference Include="System.EnterpriseServices" />[m
+   </ItemGroup>[m
+   <ItemGroup>[m
+[32m+[m[32m    <Reference Include="Newtonsoft.Json">[m
+[32m+[m[32m      <HintPath>..\packages\Newtonsoft.Json.6.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>[m
+[32m+[m[32m    </Reference>[m
+[32m+[m[32m    <Reference Include="System.Net.Http.Formatting">[m
+[32m+[m[32m      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.3\lib\net45\System.Net.Http.Formatting.dll</HintPath>[m
+[32m+[m[32m    </Reference>[m
+[32m+[m[32m    <Reference Include="System.Web.Http">[m
+[32m+[m[32m      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.5.2.3\lib\net45\System.Web.Http.dll</HintPath>[m
+[32m+[m[32m    </Reference>[m
+[32m+[m[32m    <Reference Include="System.Web.Http.WebHost">[m
+[32m+[m[32m      <HintPath>..\packages\Microsoft.AspNet.WebApi.WebHost.5.2.3\lib\net45\System.Web.Http.WebHost.dll</HintPath>[m
+[32m+[m[32m    </Reference>[m
+[32m+[m[32m  </ItemGroup>[m
+[32m+[m[32m  <ItemGroup>[m
+     <Content Include="Global.asax" />[m
+     <Content Include="Web.config" />[m
+   </ItemGroup>[m
+   <ItemGroup>[m
+     <Compile Include="App_Start\WebApiConfig.cs" />[m
+[31m-<<<<<<< HEAD[m
+     <Compile Include="Controllers\LineItemsController.cs" />[m
+     <Compile Include="Controllers\OrdersController.cs" />[m
+[32m+[m[32m    <Compile Include="Controllers\CustomerController.cs" />[m
+[32m+[m[32m    <Compile Include="Controllers\ProductController.cs" />[m
+     <Compile Include="Global.asax.cs">[m
+       <DependentUpon>Global.asax</DependentUpon>[m
+     </Compile>[m
+     <Compile Include="Models\LineItemDto.cs" />[m
+     <Compile Include="Models\OrderDto.cs" />[m
+[32m+[m[32m    <Compile Include="Models\CustomerDto.cs" />[m
+[32m+[m[32m    <Compile Include="Models\ProductDto.cs" />[m
+     <Compile Include="Properties\AssemblyInfo.cs" />[m
+     <Compile Include="Services\DbResponseMapper.cs" />[m
+[31m-    <Compile Include="Services\HttpResponseMapper.cs" />[m
+[31m-    <Compile Include="Services\LineItemRepository.cs" />[m
+     <Compile Include="Services\OrderRepository.cs" />[m
+[31m-=======[m
+[31m-    <Compile Include="Controllers\CustomerController.cs" />[m
+[31m-    <Compile Include="Global.asax.cs">[m
+[31m-      <DependentUpon>Global.asax</DependentUpon>[m
+[31m-    </Compile>[m
+[31m-    <Compile Include="Models\CustomerDto.cs" />[m
+[31m-    <Compile Include="Properties\AssemblyInfo.cs" />[m
+     <Compile Include="Services\CustomerRepository.cs" />[m
+[31m->>>>>>> master[m
+[32m+[m[32m    <Compile Include="Services\ProductRepository.cs" />[m
+[32m+[m[32m    <Compile Include="Services\HttpResponseMapper.cs" />[m
+[32m+[m[32m    <Compile Include="Services\LineItemRepository.cs" />[m
+   </ItemGroup>[m
+   <ItemGroup>[m
+     <None Include="packages.config" />[m
+[36m@@ -124,6 +134,9 @@[m
+   </ItemGroup>[m
+   <ItemGroup>[m
+     <Folder Include="App_Data\" />[m
+[32m+[m[32m    <Folder Include="Controllers\" />[m
+[32m+[m[32m    <Folder Include="Models\" />[m
+[32m+[m[32m    <Folder Include="Services\" />[m
+   </ItemGroup>[m
+   <PropertyGroup>[m
+     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>[m
+[1mdiff --git a/OrientationAPI/Services/ProductRepository.cs b/OrientationAPI/Services/ProductRepository.cs[m
+[1mnew file mode 100644[m
+[1mindex 0000000..3bc6a31[m
+[1m--- /dev/null[m
+[1m+++ b/OrientationAPI/Services/ProductRepository.cs[m
+[36m@@ -0,0 +1,33 @@[m
+[32m+[m[32m﻿using Dapper;[m
+[32m+[m[32musing OrientationAPI.Models;[m
+[32m+[m[32musing System;[m
+[32m+[m[32musing System.Collections.Generic;[m
+[32m+[m[32musing System.Configuration;[m
+[32m+[m[32musing System.Data.SqlClient;[m
+[32m+[m[32musing System.Linq;[m
+[32m+[m[32musing System.Web;[m
+[32m+[m
+[32m+[m[32mnamespace OrientationAPI.Services[m
+[32m+[m[32m{[m
+[32m+[m[32m    public class ProductRepository[m
+[32m+[m[32m    {[m
+[32m+[m[32m        public bool Create(ProductDto product)[m
+[32m+[m[32m        {[m
+[32m+[m[32m            using (var db = new SqlConnection(ConfigurationManager.ConnectionStrings["BRBangazon"].ConnectionString))[m
+[32m+[m[32m            {[m
+[32m+[m[32m                var numberCreated = db.Execute(@"INSERT INTO [dbo].[Products][m
+[32m+[m[32m                                                   ([ProductName][m
+[32m+[m[32m                                                   ,[ProductPrice][m
+[32m+[m[32m                                                   ,[SellerId][m
+[32m+[m[32m                                                   ,[Quantity])[m
+[32m+[m[32m                                             VALUES[m
+[32m+[m[32m                                                   (@ProductName[m
+[32m+[m[32m                                                   ,@ProductPrice[m
+[32m+[m[32m                                                   ,@SellerId[m
+[32m+[m[32m                                                   ,@Quantity)", product);[m
+[32m+[m
+[32m+[m[32m                return numberCreated == 1;[m
+[32m+[m[32m            }[m
+[32m+[m[32m        }[m
+[32m+[m[32m    }[m
+[32m+[m[32m}[m
+\ No newline at end of file[m

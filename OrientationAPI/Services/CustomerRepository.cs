@@ -39,8 +39,4 @@ namespace OrientationAPI.Services
             }
         }
     }
-
-    public class Customer
-    {
-    }
 }

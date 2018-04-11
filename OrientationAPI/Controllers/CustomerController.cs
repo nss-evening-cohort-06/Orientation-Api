@@ -26,10 +26,11 @@ namespace OrientationAPI.Controllers
 		}
 
         [HttpGet, Route("")]
-        public void ListCustomers()
+        public HttpResponseMessage ListCustomers()
         {
             var repo = new CustomerRepository();
-            repo.GetAll();
+            var results = repo.GetAll();
+            return Request.CreateListRecordsResponse(results);
         }
 		
     }
