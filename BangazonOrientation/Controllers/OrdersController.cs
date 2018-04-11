@@ -9,10 +9,10 @@ using BangazonOrientation.Services;
 
 namespace BangazonOrientation.Controllers
 {
-	[RoutePrefix("api/orders")]
+    [RoutePrefix("api/orders")]
     public class OrdersController : ApiController
     {
-    	[Route, HttpPost]
+        [Route, HttpPost]
         public HttpResponseMessage AddOrder(OrdersDto order)
         {
             var repo = new OrdersRepository();
@@ -22,5 +22,21 @@ namespace BangazonOrientation.Controllers
                 return Request.CreateResponse(HttpStatusCode.Created);
             return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, "Could not create order, try again later...");
         }
+
+        [Route("{OrderID}/{CustomerID}"), HttpPut]
+        public HttpResponseMessage PlaceOrder(int OrderID, int CustomerID)
+        {
+            var repository = new OrdersRepository();
+            var StatusResult = repository.UpdatePurchasedStatus(OrderID, CustomerID);
+
+            if (StatusResult)
+            {
+                return Request.CreateResponse(HttpStatusCode.Created);
+            }
+
+            return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, "Could not update.  CustomerID and/or OrderID not found.");
+        }
+
+
     }
 }
