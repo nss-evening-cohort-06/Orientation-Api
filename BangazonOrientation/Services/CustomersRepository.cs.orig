@@ -5,13 +5,28 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Security.Cryptography.X509Certificates;
 using System.Web;
+<<<<<<< HEAD
+=======
 using BangazonOrientation.Models;
+>>>>>>> master
 using Dapper;
 
 namespace BangazonOrientation.Services
 {
     public class CustomersRepository
     {
+<<<<<<< HEAD
+        public bool UpdateCustomerStatus(bool Status, int CustomerId)
+        {
+            using (var db = new SqlConnection(ConfigurationManager.ConnectionStrings["BangazonOrientation"].ConnectionString))
+            {
+                db.Open();
+                var NumberOfCustomersUpdated = db.Execute(@"UPDATE [dbo].[Customer]
+                                                            SET[Status] = @Status
+                                                            WHERE CustomerId = @CustomerId", new { CustomerId, Status });
+
+                return NumberOfCustomersUpdated == 1;
+=======
         private static SqlConnection GetConnection()
         {
             return new SqlConnection(ConfigurationManager.ConnectionStrings["BangazonOrientation"].ConnectionString);
@@ -42,19 +57,7 @@ namespace BangazonOrientation.Services
                                                        ,@ZipCode
                                                        ,@PhoneNumber)", customer);
                 return records == 1;
-            }
-        }
-        
-        public bool UpdateCustomerStatus(bool Status, int CustomerId)
-        {
-            using (var db = new SqlConnection(ConfigurationManager.ConnectionStrings["BangazonOrientation"].ConnectionString))
-            {
-                db.Open();
-                var NumberOfCustomersUpdated = db.Execute(@"UPDATE [dbo].[Customer]
-                                                            SET[Status] = @Status
-                                                            WHERE CustomerId = @CustomerId", new { CustomerId, Status });
-
-                return NumberOfCustomersUpdated == 1;
+>>>>>>> master
             }
         }
     }
