@@ -34,11 +34,11 @@ namespace OrientationAPI.Services
             using (var db = new SqlConnection(ConfigurationManager.ConnectionStrings["BRBangazon"].ConnectionString))
             {
                 db.Open();
-                var sql = "Select * From dbo.Customer";
+                var sql = "Select * From dbo.Customers";
                 return db.Query<Customer>(sql);
             }
         }
-        public bool Deactivate(int customerId)
+        public int Deactivate(int customerId)
         {
             using (var db = new SqlConnection(ConfigurationManager.ConnectionStrings["BRBangazon"].ConnectionString))
             {
@@ -46,7 +46,7 @@ namespace OrientationAPI.Services
                 var sql = @"UPDATE [dbo].[Customers]
                                                  SET isActive = 0
                                                  WHERE CustomerId = @CustomerId";
-                return db.Execute(sql, new { customerId }) == 1;
+                return db.Execute(sql, new { customerId });
             }
 
         }

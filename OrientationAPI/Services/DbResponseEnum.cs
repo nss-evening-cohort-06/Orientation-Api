@@ -10,6 +10,8 @@ namespace OrientationAPI.Services
         Created,
         NotCreated,
         RecordsReturned,
-        NoRecordsFound
+        NoRecordsFound,
+        Updated,
+        NotFound
     }
 }
