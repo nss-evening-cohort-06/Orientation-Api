@@ -119,12 +119,9 @@
     <Compile Include="Services\DbResponseMapper.cs" />
     <Compile Include="Services\OrderRepository.cs" />
     <Compile Include="Services\CustomerRepository.cs" />
-<<<<<<< HEAD
     <Compile Include="Services\ProductRepository.cs" />
-=======
     <Compile Include="Services\HttpResponseMapper.cs" />
     <Compile Include="Services\LineItemRepository.cs" />
->>>>>>> master
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
