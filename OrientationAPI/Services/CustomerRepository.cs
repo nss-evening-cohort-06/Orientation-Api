@@ -28,5 +28,20 @@ namespace OrientationAPI.Services
 				return numberCreated == 1;
 			}
 		}
+
+		public bool Update(CustomerDto customer)
+		{
+			using (var db = new SqlConnection(ConfigurationManager.ConnectionStrings["BRBangazon"].ConnectionString))
+			{
+				db.Open();
+
+				var updateCustomer = db.Execute(@"UPDATE[dbo].[Customers]
+												SET[FirstName] =  @FirstName,
+												   [LastName] =  @LastName,
+											       [Phone] = @Phone
+												WHERE customerId = @customerId", new { customer });
+				return updateCustomer == 1;
+			}
+		}
 	}
 }
