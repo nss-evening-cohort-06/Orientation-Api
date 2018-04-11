@@ -28,6 +28,7 @@ namespace OrientationAPI.Services
 				return numberCreated == 1;
 			}
 		}
+
 		public bool Update(Customer customer)
 		{
 			using (var db = new SqlConnection(ConfigurationManager.ConnectionStrings["BRBangazon"].ConnectionString))
@@ -43,4 +44,20 @@ namespace OrientationAPI.Services
 			}
 		}
 	}
+
+
+        public bool Deactivate(int customerId)
+        {
+            using (var db = new SqlConnection(ConfigurationManager.ConnectionStrings["BRBangazon"].ConnectionString))
+            {
+                db.Open();
+                var sql = @"UPDATE [dbo].[Customers]
+                                                 SET isActive = 0
+                                                 WHERE CustomerId = @CustomerId";
+                return db.Execute(sql, new { customerId }) == 1;
+            }
+
+        }
+    }
+
 }

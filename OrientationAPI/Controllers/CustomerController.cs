@@ -25,6 +25,7 @@ namespace OrientationAPI.Controllers
 			return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, "Customer could not be created, please try again later.");
 		}
 
+
 		[Route("{customerId}"), HttpPatch]
 		public HttpResponseMessage UpdateCustomer(Customer customer, int customerId)
 		{
@@ -40,5 +41,14 @@ namespace OrientationAPI.Controllers
 
 		}
 
+
+        [HttpPatch, Route("{customerId}/deactivate")]
+        public HttpResponseMessage DeactivateCustomer(int customerId)
+        {
+            var repo = new CustomerRepository();
+            return repo.Deactivate(customerId) ? Request.MapHttpResponse(DbResponseMapper.Success) : Request.MapHttpResponse(DbResponseMapper.NotFound);
+
+        }
+		
     }
 }
