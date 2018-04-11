@@ -20,7 +20,8 @@ namespace BangazonOrientation.Services
                                       ,[City] = @City
                                       ,[State] = @State
                                       ,[ZipCode] = @ZipCode
-                                      ,[PhoneNumber] = @PhoneNumber", customer );
+                                      ,[PhoneNumber] = @PhoneNumber
+                                        WHERE [CustomerID] = @Id", customer);
                 return numberEdited == 1;
             }
         }
