@@ -2,8 +2,9 @@
 {
     public class OrdersDto
     {
-        public int Id { get; set; }
-        public int PaymentId { get; set; }
-        public int CustomerId { get; set; }
+        public int OrderID { get; set; }
+        public int PaymentID { get; set; }
+        public int CustomerID { get; set; }
+        public int Purchased { get; set; }
     }
 }
