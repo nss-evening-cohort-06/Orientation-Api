@@ -13,6 +13,15 @@ namespace BangazonOrientation.Controllers
     [RoutePrefix("api/customers")]
     public class CustomersController : ApiController
     {
+        [Route, HttpGet]
+        public HttpResponseMessage GetList()
+        {
+            var repository = new CustomersRepository();
+            var result = repository.ListAllCustomers();
+
+            return Request.CreateResponse(HttpStatusCode.OK, result);
+        }
+    
         [Route("{customerId}/status"), HttpPut]
         public HttpResponseMessage UpdateCustomer(int customerId, CustomersDto customer)
         {
