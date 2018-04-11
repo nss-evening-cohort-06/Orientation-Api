@@ -1,4 +1,5 @@
-﻿using System.Configuration;
+﻿using System.Collections.Generic;
+using System.Configuration;
 using System.Data.SqlClient;
 using BangazonOrientation.Models;
 using Dapper;
@@ -33,5 +34,17 @@ namespace BangazonOrientation.Services
                 return lines == 1;
             }
         }
+
+        public IEnumerable<ProductsDto> ListAllProducts()
+        {
+            using (var db = GetConnection())
+            {
+                db.Open();
+                var getProductList = db.Query<ProductsDto>(@"SELECT  Name, Price FROM Product");
+
+                return getProductList;
+            }
+        }
+
     }
 }
