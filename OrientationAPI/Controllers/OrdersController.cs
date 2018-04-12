@@ -39,5 +39,11 @@ namespace OrientationAPI.Controllers
 
         }
 
+        [HttpPatch, Route("{orderId}/pay")]
+        public HttpResponseMessage Pay(int orderId)
+        {
+            var result = OrderPayment.PayForOrder(orderId);
+            return Request.CreateUpdateRecordResponse(result); 
+        }
     }
 }

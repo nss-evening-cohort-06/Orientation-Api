@@ -44,5 +44,28 @@ namespace OrientationAPI.Services
                 return result == 1;
             }
         }
+
+        public int PayForOrder(int orderId)
+        {
+            using (var db = GetDb())
+            {
+                db.Open();
+                var sql = @"UPDATE [dbo].[Orders]
+                            SET PaymentDate = GetDate()
+                            WHERE OrderId = @orderId";
+                return db.Execute(sql, new { orderId }); 
+            }
+        }
+
+        public Order SelectOrder(int orderId)
+        {
+            using (var db = GetDb())
+            {
+                db.Open();
+                var sql = @"Select * FROM [dbo].[Orders]
+                            WHERE OrderId = @orderId";
+                return db.QueryFirst<Order>(sql, new { orderId });
+            }
+        }
     }
 }

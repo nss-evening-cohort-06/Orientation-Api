@@ -10,8 +10,8 @@ namespace OrientationAPI.Services
         Created,
         NotCreated,
         RecordsReturned,
-        NoRecordsFound,
         Updated,
-        NotFound
+        NotFound,
+        ValidationError
     }
 }
