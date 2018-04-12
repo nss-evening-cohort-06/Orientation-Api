@@ -12,7 +12,8 @@ namespace OrientationAPI.Controllers
         public HttpResponseMessage AddLineItem(LineItemDto lineItem)
         {
             var repo = new LineItemRepository();
-            return repo.Create(lineItem) ? Request.MapHttpResponse(DbResponseMapper.Created) : Request.MapHttpResponse(DbResponseMapper.NotCreated);   
+            var dbResult = repo.Create(lineItem);
+            return Request.CreateAddRecordResponse(dbResult);
         }
     }
 }

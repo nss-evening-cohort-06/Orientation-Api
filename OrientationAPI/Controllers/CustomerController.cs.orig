@@ -50,9 +50,21 @@ namespace OrientationAPI.Controllers
 		public HttpResponseMessage DeactivateCustomer(int customerId)
 		{
 			var repo = new CustomerRepository();
+			return repo.Deactivate(customerId) ? Request.MapHttpResponse(DbResponseMapper.Success) : Request.MapHttpResponse(DbResponseMapper.NotFound);
+
+<<<<<<< HEAD
+        [HttpPatch, Route("{customerId}/deactivate")]
+        public HttpResponseMessage DeactivateCustomer(int customerId)
+        {
+            var repo = new CustomerRepository();
             var dbResults = repo.Deactivate(customerId);
             return Request.CreateUpdateRecordResponse(dbResults);
+        }
+		
+    }
+=======
 		}
 
 	}
+>>>>>>> master
 }

@@ -15,7 +15,7 @@ namespace OrientationAPI.Services
         {
             return new SqlConnection(ConfigurationManager.ConnectionStrings["BRBangazon"].ConnectionString);
         }
-        public bool Create(LineItemDto lineItem)
+        public int Create(LineItemDto lineItem)
         {
             using (var db = getDb())
             {
@@ -24,7 +24,7 @@ namespace OrientationAPI.Services
                             (orderId, productId)
                             VALUES 
                             (@orderId, @productId)";
-                return db.Execute(sql, lineItem) == 1;
+                return db.Execute(sql, lineItem);
             }
         }
     }
