@@ -30,16 +30,36 @@ namespace OrientationAPI.Controllers
         public HttpResponseMessage ListCustomers()
         {
             var repo = new CustomerRepository();
-            var results = repo.GetAll();
-            return Request.CreateListRecordsResponse(results);
+            var dbResults = repo.GetAll();
+            return Request.CreateListRecordsResponse(dbResults);
+        }
+        
+        
 =======
+
+		[Route("{customerId}"), HttpPatch]
+		public HttpResponseMessage UpdateCustomer(Customer customer, int customerId)
+		{
+			customer.CustomerId = customerId;
+			var repository = new CustomerRepository();
+			var result = repository.Update(customer);
+
+			if (result)
+			{
+				return Request.CreateResponse(HttpStatusCode.OK);
+			}
+			return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, "Could not update customer information, please try again later.");
+
+		}
+
+
+>>>>>>> master
         [HttpPatch, Route("{customerId}/deactivate")]
         public HttpResponseMessage DeactivateCustomer(int customerId)
         {
             var repo = new CustomerRepository();
-            return repo.Deactivate(customerId) ? Request.MapHttpResponse(DbResponseMapper.Success) : Request.MapHttpResponse(DbResponseMapper.NotFound);
-
->>>>>>> 926f113bbd6cba263d377caf6c85b5b7fe4b7ae7
+            var dbResults = repo.Deactivate(customerId);
+            return Request.CreateUpdateRecordResponse(dbResults);
         }
 		
     }

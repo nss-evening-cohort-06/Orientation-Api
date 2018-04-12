@@ -30,5 +30,19 @@ namespace OrientationAPI.Services
                 return orderCreated == 1;
             } 
         }
+
+        public bool CloseOrder(int orderId)
+        {
+            using (var db = GetDb())
+            {
+                db.Open();
+
+                var result = db.Execute(@"UPDATE [dbo].[Orders]
+                                           SET [IsClosed] = 1
+                                           WHERE OrderId = @orderId", new {orderId});
+
+                return result == 1;
+            }
+        }
     }
 }

@@ -28,5 +28,16 @@ namespace OrientationAPI.Controllers
             return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, "Could not create order");
         }
 
+        [Route("{orderId}/close"), HttpPatch]
+        public HttpResponseMessage CloseOrder(int  orderId)
+        {
+            var repository = new OrderRepository();
+
+            var result = repository.CloseOrder(orderId);
+
+            return Request.CreateResponse(HttpStatusCode.Created);
+
+        }
+
     }
 }

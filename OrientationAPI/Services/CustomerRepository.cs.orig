@@ -31,25 +31,46 @@ namespace OrientationAPI.Services
 
 <<<<<<< HEAD
         public IEnumerable<Customer> GetAll()
-=======
-        public bool Deactivate(int customerId)
->>>>>>> 926f113bbd6cba263d377caf6c85b5b7fe4b7ae7
         {
             using (var db = new SqlConnection(ConfigurationManager.ConnectionStrings["BRBangazon"].ConnectionString))
             {
                 db.Open();
-<<<<<<< HEAD
-                var sql = "Select * From dbo.Customer";
+                var sql = "Select * From dbo.Customers";
                 return db.Query<Customer>(sql);
             }
+        }
+        public int Deactivate(int customerId)
 =======
+		public bool Update(Customer customer)
+		{
+			using (var db = new SqlConnection(ConfigurationManager.ConnectionStrings["BRBangazon"].ConnectionString))
+			{
+				db.Open();
+
+				var updateCustomer = db.Execute(@"UPDATE[dbo].[Customers]
+												SET [FirstName] = @FirstName,
+												    [LastName] = @LastName,
+											        [Phone] = @Phone
+												WHERE CustomerId = @CustomerId", customer);
+				return updateCustomer == 1;
+			}
+		}
+	}
+
+
+        public bool Deactivate(int customerId)
+>>>>>>> master
+        {
+            using (var db = new SqlConnection(ConfigurationManager.ConnectionStrings["BRBangazon"].ConnectionString))
+            {
+                db.Open();
                 var sql = @"UPDATE [dbo].[Customers]
                                                  SET isActive = 0
                                                  WHERE CustomerId = @CustomerId";
-                return db.Execute(sql, new { customerId }) == 1;
+                return db.Execute(sql, new { customerId });
             }
 
->>>>>>> 926f113bbd6cba263d377caf6c85b5b7fe4b7ae7
         }
     }
+
 }
