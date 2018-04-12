@@ -19,11 +19,11 @@ namespace OrientationAPI.Controllers
 			return repository.Create(product) ? Request.MapHttpResponse(DbResponseMapper.Created) : Request.MapHttpResponse(DbResponseMapper.NotCreated);            
         }
 
-		[Route("{productId}"), HttpPost]
+		[Route("{productId}/removeProduct"), HttpPatch]
 		public HttpResponseMessage RemoveProduct(Product product, int productId)
 		{
 			product.ProductId = productId;
-			var respository = new ProductRepository();
+			var repository = new ProductRepository();
 			return repository.RemoveProduct(product) ? Request.MapHttpResponse(DbResponseMapper.Success) : Request.MapHttpResponse(DbResponseMapper.NotFound);
 		}
 	}

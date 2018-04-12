@@ -93,16 +93,14 @@
     <Compile Include="Controllers\LineItemsController.cs" />
     <Compile Include="Controllers\OrdersController.cs" />
     <Compile Include="Controllers\CustomerController.cs" />
+    <Compile Include="Controllers\Product.cs" />
     <Compile Include="Controllers\ProductController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-
     <Compile Include="Models\Customer.cs" />
-
     <Compile Include="Models\LineItemDto.cs" />
     <Compile Include="Models\Order.cs" />
-
     <Compile Include="Models\OrderDto.cs" />
     <Compile Include="Models\CustomerDto.cs" />
     <Compile Include="Models\ProductDto.cs" />

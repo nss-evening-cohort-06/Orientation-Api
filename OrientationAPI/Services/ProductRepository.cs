@@ -1,4 +1,5 @@
 ﻿using Dapper;
+using OrientationAPI.Controllers;
 using OrientationAPI.Models;
 using System;
 using System.Collections.Generic;
@@ -29,5 +30,20 @@ namespace OrientationAPI.Services
                 return numberCreated == 1;
             }
         }
+
+		public bool RemoveProduct(Product product)
+		{
+			using (var db = new SqlConnection(ConfigurationManager.ConnectionStrings["BRBangazon"].ConnectionString))
+			{
+				var productRemoved = db.Execute(@"UPDATE [dbo].[Products]
+                                                  SET [ProductName] = @ProductName,
+                                                      [ProductPrice] = @ProductPrice,
+													  [SellerId] = @SellerId,
+                                                      [Quantity] = 0
+												 WHERE ProductId = @ProductId", product);
+                                         
+				return productRemoved == 1;
+			}
+		}
     }
 }

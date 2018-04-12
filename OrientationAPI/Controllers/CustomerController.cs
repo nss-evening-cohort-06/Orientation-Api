@@ -19,7 +19,7 @@ namespace OrientationAPI.Controllers
 			return repository.Create(customer) ? Request.MapHttpResponse(DbResponseMapper.Success) : Request.MapHttpResponse(DbResponseMapper.NotCreated);
 		}
 
-		[Route("{customerId}"), HttpPatch]
+		[Route("{customerId}/update"), HttpPatch]
 		public HttpResponseMessage UpdateCustomer(Customer customer, int customerId)
 		{
 			customer.CustomerId = customerId;
