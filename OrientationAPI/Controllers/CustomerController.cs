@@ -11,7 +11,7 @@ namespace OrientationAPI.Controllers
 {
 	[RoutePrefix("api/customers")]
 	public class CustomerController : ApiController
-    {
+	{
 		[Route(""), HttpPost]
 		public HttpResponseMessage AddCustomer(CustomerDto customer)
 		{
@@ -46,14 +46,13 @@ namespace OrientationAPI.Controllers
 
 		}
 
-
-        [HttpPatch, Route("{customerId}/deactivate")]
-        public HttpResponseMessage DeactivateCustomer(int customerId)
-        {
-            var repo = new CustomerRepository();
+		[HttpPatch, Route("{customerId}/deactivate")]
+		public HttpResponseMessage DeactivateCustomer(int customerId)
+		{
+			var repo = new CustomerRepository();
             var dbResults = repo.Deactivate(customerId);
             return Request.CreateUpdateRecordResponse(dbResults);
-        }
-		
-    }
+		}
+
+	}
 }

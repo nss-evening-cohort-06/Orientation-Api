@@ -11,7 +11,7 @@ namespace OrientationAPI.Controllers
 {
 	[RoutePrefix("api/customers")]
 	public class CustomerController : ApiController
-    {
+	{
 		[Route(""), HttpPost]
 		public HttpResponseMessage AddCustomer(CustomerDto customer)
 		{
@@ -24,20 +24,14 @@ namespace OrientationAPI.Controllers
 			}
 			return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, "Customer could not be created, please try again later.");
 		}
-
-<<<<<<< HEAD
-        [HttpGet, Route("")]
+	        [HttpGet, Route("")]
         public HttpResponseMessage ListCustomers()
         {
             var repo = new CustomerRepository();
             var dbResults = repo.GetAll();
             return Request.CreateListRecordsResponse(dbResults);
         }
-        
-        
-=======
-
-		[Route("{customerId}"), HttpPatch]
+        		[Route("{customerId}"), HttpPatch]
 		public HttpResponseMessage UpdateCustomer(Customer customer, int customerId)
 		{
 			customer.CustomerId = customerId;
@@ -52,8 +46,13 @@ namespace OrientationAPI.Controllers
 
 		}
 
+		[HttpPatch, Route("{customerId}/deactivate")]
+		public HttpResponseMessage DeactivateCustomer(int customerId)
+		{
+			var repo = new CustomerRepository();
+			return repo.Deactivate(customerId) ? Request.MapHttpResponse(DbResponseMapper.Success) : Request.MapHttpResponse(DbResponseMapper.NotFound);
 
->>>>>>> master
+<<<<<<< HEAD
         [HttpPatch, Route("{customerId}/deactivate")]
         public HttpResponseMessage DeactivateCustomer(int customerId)
         {
@@ -63,4 +62,9 @@ namespace OrientationAPI.Controllers
         }
 		
     }
+=======
+		}
+
+	}
+>>>>>>> master
 }
