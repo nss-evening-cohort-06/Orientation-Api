@@ -11,10 +11,16 @@ namespace OrientationAPI.Services
 {
     public class ProductRepository
     {
+        private static SqlConnection GetDb()
+        {
+            return new SqlConnection(ConfigurationManager.ConnectionStrings["BRBangazon"].ConnectionString);
+        }
+
         public bool Create(ProductDto product)
         {
-            using (var db = new SqlConnection(ConfigurationManager.ConnectionStrings["BRBangazon"].ConnectionString))
+            using (var db = GetDb())
             {
+                db.Open();
                 var numberCreated = db.Execute(@"INSERT INTO [dbo].[Products]
                                                    ([ProductName]
                                                    ,[ProductPrice]
@@ -29,5 +35,18 @@ namespace OrientationAPI.Services
                 return numberCreated == 1;
             }
         }
+
+        public ProductDto SelectProduct(int productId)
+        {
+            using (var db = GetDb())
+            {
+                db.Open();
+                var result = @"SELECT * FROM [dbo].[Products]
+                               WHERE ProductId = @productId";
+
+                return db.QueryFirst<ProductDto>(result, new {productId});
+            }
+        }
+        
     }
 }
