@@ -16,14 +16,16 @@ namespace OrientationAPI.Controllers
         public HttpResponseMessage AddProduct(ProductDto product)
         {
             var repository = new ProductRepository();
-            var result = repository.Create(product);
-
-            if (result)
-            {
-                return Request.CreateResponse(HttpStatusCode.Created);
-            }
-            return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, 
-                                               "Product could not be created. Please try again later.");
+			return repository.Create(product) ? Request.MapHttpResponse(DbResponseMapper.Created) : Request.MapHttpResponse(DbResponseMapper.NotCreated);            
         }
-    }
+
+		[Route("{productId}"), HttpPost]
+		public HttpResponseMessage RemoveProduct(Product product, int productId)
+		{
+			product.ProductId = productId;
+			var respository = new ProductRepository();
+			return repository.RemoveProduct(product) ? Request.MapHttpResponse(DbResponseMapper.Success) : Request.MapHttpResponse(DbResponseMapper.NotFound);
+		}
+	}
+
 }

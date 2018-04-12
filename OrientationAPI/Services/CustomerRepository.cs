@@ -43,9 +43,8 @@ namespace OrientationAPI.Services
 				return updateCustomer == 1;
 			}
 		}
-	}
-
-
+	
+		
         public bool Deactivate(int customerId)
         {
             using (var db = new SqlConnection(ConfigurationManager.ConnectionStrings["BRBangazon"].ConnectionString))

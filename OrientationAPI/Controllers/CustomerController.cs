@@ -11,44 +11,28 @@ namespace OrientationAPI.Controllers
 {
 	[RoutePrefix("api/customers")]
 	public class CustomerController : ApiController
-    {
+	{
 		[Route(""), HttpPost]
 		public HttpResponseMessage AddCustomer(CustomerDto customer)
 		{
 			var repository = new CustomerRepository();
-			var result = repository.Create(customer);
-
-			if (result)
-			{
-				return Request.CreateResponse(HttpStatusCode.Created);
-			}
-			return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, "Customer could not be created, please try again later.");
+			return repository.Create(customer) ? Request.MapHttpResponse(DbResponseMapper.Success) : Request.MapHttpResponse(DbResponseMapper.NotCreated);
 		}
-
 
 		[Route("{customerId}"), HttpPatch]
 		public HttpResponseMessage UpdateCustomer(Customer customer, int customerId)
 		{
 			customer.CustomerId = customerId;
 			var repository = new CustomerRepository();
-			var result = repository.Update(customer);
-
-			if (result)
-			{
-				return Request.CreateResponse(HttpStatusCode.OK);
-			}
-			return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, "Could not update customer information, please try again later.");
-
+			return repository.Update(customer) ? Request.MapHttpResponse(DbResponseMapper.Success) : Request.MapHttpResponse(DbResponseMapper.NotCreated);
 		}
 
+		[HttpPatch, Route("{customerId}/deactivate")]
+		public HttpResponseMessage DeactivateCustomer(int customerId)
+		{
+			var repo = new CustomerRepository();
+			return repo.Deactivate(customerId) ? Request.MapHttpResponse(DbResponseMapper.Success) : Request.MapHttpResponse(DbResponseMapper.NotFound);
+		}
 
-        [HttpPatch, Route("{customerId}/deactivate")]
-        public HttpResponseMessage DeactivateCustomer(int customerId)
-        {
-            var repo = new CustomerRepository();
-            return repo.Deactivate(customerId) ? Request.MapHttpResponse(DbResponseMapper.Success) : Request.MapHttpResponse(DbResponseMapper.NotFound);
-
-        }
-		
-    }
+	}
 }
