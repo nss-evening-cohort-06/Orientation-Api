@@ -20,6 +20,7 @@ namespace OrientationAPI.Controllers
 			return Request.CreateAddRecordResponse(dbResults);        
         }
 
+<<<<<<< HEAD
 		[Route("{productId}/removeProduct"), HttpPatch]
 		public HttpResponseMessage RemoveProduct(Product product, int productId)
 		{
@@ -28,7 +29,8 @@ namespace OrientationAPI.Controllers
 			var dbResults = repository.RemoveProduct(product);
 			return Request.CreateUpdateRecordResponse(dbResults);
 		}
-
+	}
+=======
         [HttpGet, Route("")]
         public HttpResponseMessage ListProduct()
         {
@@ -42,5 +44,6 @@ namespace OrientationAPI.Controllers
             return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, "Product could not be found. Please try again later");
             
         }
-	}
+    }
+>>>>>>> master
 }
