@@ -20,11 +20,11 @@ namespace BangazonOrientation.Controllers
             return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, "Could not create order, try again later...");
         }
 
-        [Route("{OrderID}/paid"), HttpPut]
-        public HttpResponseMessage UpDateOrder(OrdersDto order)
+        [Route("{orderID}/paid"), HttpPut]
+        public HttpResponseMessage UpDateOrder(int orderID)
         {
             var editPaymentStatus = new OrdersRepository();
-            var result = editPaymentStatus.Edit(order);
+            var result = editPaymentStatus.Purchase(orderID);
 
             return Request.CreateResponse(HttpStatusCode.OK, result);
         }

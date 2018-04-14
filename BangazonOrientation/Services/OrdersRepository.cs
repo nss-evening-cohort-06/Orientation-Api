@@ -30,14 +30,14 @@ namespace BangazonOrientation.Services
             }
         }
 
-        public bool Edit(OrdersDto order)
+        public bool Purchase(int orderID)
         {
             using (var db = GetConnection())
             {
                 db.Open();
-                var editPaidStatus = db.Execute(@"SELECT Purchased FROM Order");
+                var editPaidStatus = db.Execute(@"UPDATE Order SET Paid = 1 Where OrderID = @OrderID", new { orderID });
 
-                return editPaidStatus;
+                return editPaidStatus == 1;
             }
         }
     }
