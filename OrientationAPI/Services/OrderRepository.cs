@@ -62,9 +62,21 @@ namespace OrientationAPI.Services
             using (var db = GetDb())
             {
                 db.Open();
-                var sql = @"Select * FROM [dbo].[Orders]
+                var sql = @"SELECT * FROM [dbo].[Orders]
                             WHERE OrderId = @orderId";
                 return db.QueryFirst<Order>(sql, new { orderId });
+            }
+        }
+
+        public IEnumerable<Order> SelectOutstandingOrders(int timeThresholdInDays)
+        {
+            using (var db = GetDb())
+            {
+                db.Open();
+                var sql = @"SELECT * FROM [dbo].[Orders]
+                            WHERE IsClosed = 1
+                            AND DATEDIFF(DAY, CreatedDate, getDate()) > @timeThresholdInDays";
+                return db.Query<Order>(sql, new { timeThresholdInDays });
             }
         }
     }
