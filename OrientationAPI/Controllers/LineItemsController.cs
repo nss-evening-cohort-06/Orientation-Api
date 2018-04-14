@@ -12,7 +12,7 @@ namespace OrientationAPI.Controllers
         [HttpPost, Route("")]
         public HttpResponseMessage AddLineItem(LineItemDto lineItem)
         {
-            var counter = new ProductQuantityChecker();
+            var counter = new ProductQuantity();
             var productAvailable = counter.ProductIsAvailable(lineItem.ProductId);
             if (!productAvailable)
             {
@@ -21,6 +21,7 @@ namespace OrientationAPI.Controllers
 
             var repo = new LineItemRepository();
             var dbResult = repo.Create(lineItem);
+
             return Request.CreateAddRecordResponse(dbResult);
         }
     }

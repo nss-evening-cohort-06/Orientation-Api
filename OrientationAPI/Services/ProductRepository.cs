@@ -47,6 +47,18 @@ namespace OrientationAPI.Services
                 return db.QueryFirst<ProductDto>(result, new {productId});
             }
         }
+
+        public bool Subtract1FromQuantity(int productId)
+        {
+            using (var db = GetDb())
+            {
+                db.Open();
+                var result = db.Execute(@"UPDATE [dbo].[Products]
+                                          SET [Quantity] = Quantity -1
+                                          WHERE ProductId = @productid", new {productId});
+                return result == 1;
+            }
+        }
         
     }
 }
