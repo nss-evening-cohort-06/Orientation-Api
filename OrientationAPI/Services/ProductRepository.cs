@@ -29,5 +29,17 @@ namespace OrientationAPI.Services
                 return numberCreated == 1;
             }
         }
+
+        public IEnumerable<Product> GetAll()
+        {
+            using (var db = new SqlConnection(ConfigurationManager.ConnectionStrings["BRBangazon"].ConnectionString))
+            {
+                db.Open();
+
+                var getAllProducts = db.Query<Product>(@"select * from dbo.Products");
+
+                return getAllProducts; 
+            }
+        }
     }
 }
