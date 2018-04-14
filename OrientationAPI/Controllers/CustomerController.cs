@@ -18,8 +18,14 @@ namespace OrientationAPI.Controllers
 			var repository = new CustomerRepository();
 			return repository.Create(customer) ? Request.MapHttpResponse(DbResponseMapper.Success) : Request.MapHttpResponse(DbResponseMapper.NotCreated);
 		}
-
-		[Route("{customerId}/update"), HttpPatch]
+	        [HttpGet, Route("")]
+        public HttpResponseMessage ListCustomers()
+        {
+            var repo = new CustomerRepository();
+            var dbResults = repo.GetAll();
+            return Request.CreateListRecordsResponse(dbResults);
+        }
+        		[Route("{customerId}"), HttpPatch]
 		public HttpResponseMessage UpdateCustomer(Customer customer, int customerId)
 		{
 			customer.CustomerId = customerId;
@@ -31,7 +37,8 @@ namespace OrientationAPI.Controllers
 		public HttpResponseMessage DeactivateCustomer(int customerId)
 		{
 			var repo = new CustomerRepository();
-			return repo.Deactivate(customerId) ? Request.MapHttpResponse(DbResponseMapper.Success) : Request.MapHttpResponse(DbResponseMapper.NotFound);
+            var dbResults = repo.Deactivate(customerId);
+            return Request.CreateUpdateRecordResponse(dbResults);
 		}
 
 	}
