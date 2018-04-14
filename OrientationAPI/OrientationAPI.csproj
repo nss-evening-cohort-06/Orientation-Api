@@ -110,6 +110,8 @@
     <Compile Include="Services\HttpResponseService.cs" />
     <Compile Include="Services\OrderPayment.cs" />
     <Compile Include="Services\OrderPlacement.cs" />
+    <Compile Include="Services\OrderStatusChecker.cs" />
+    <Compile Include="Services\ProductQuantity.cs" />
     <Compile Include="Services\ProductRepository.cs" />
     <Compile Include="Services\LineItemRepository.cs" />
     <Compile Include="Services\OrderRepository.cs" />

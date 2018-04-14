@@ -29,8 +29,23 @@ namespace OrientationAPI.Services
             }
               
         }
-
+        //Customer List
         private static HttpResponseMessage MapHttpResponse(this HttpRequestMessage message, DbResponseEnum dbResponse, IEnumerable<Customer> customers)
+        {
+            switch (dbResponse)
+            {
+                case DbResponseEnum.RecordsReturned:
+                    return message.CreateResponse(HttpStatusCode.OK, customers);
+                case DbResponseEnum.NotFound:
+                    return message.CreateErrorResponse(HttpStatusCode.NotFound, "No records found");
+                default:
+                    return message.CreateErrorResponse(HttpStatusCode.InternalServerError, "Not sure how we got here");
+            }
+
+        }
+
+        //Order List
+        private static HttpResponseMessage MapHttpResponse(this HttpRequestMessage message, DbResponseEnum dbResponse, IEnumerable<Order> customers)
         {
             switch (dbResponse)
             {
@@ -58,7 +73,14 @@ namespace OrientationAPI.Services
             return message.MapHttpResponse(DbResponseEnum.ValidationError);             
         }
 
+        //Customer List
         public static HttpResponseMessage CreateListRecordsResponse(this HttpRequestMessage message, IEnumerable<Customer> dbResult)
+        {
+            return dbResult.Count() >= 1 ? message.MapHttpResponse(DbResponseEnum.RecordsReturned, dbResult) : message.MapHttpResponse(DbResponseEnum.NotFound);
+        }
+
+        //Order List
+        public static HttpResponseMessage CreateListRecordsResponse(this HttpRequestMessage message, IEnumerable<Order> dbResult)
         {
             return dbResult.Count() >= 1 ? message.MapHttpResponse(DbResponseEnum.RecordsReturned, dbResult) : message.MapHttpResponse(DbResponseEnum.NotFound);
         }
