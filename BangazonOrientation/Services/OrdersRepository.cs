@@ -40,6 +40,5 @@ namespace BangazonOrientation.Services
                 return editPaidStatus;
             }
         }
-
     }
 }
