@@ -45,5 +45,13 @@ namespace OrientationAPI.Controllers
             var result = OrderPayment.PayForOrder(orderId);
             return Request.CreateUpdateRecordResponse(result); 
         }
+
+        [HttpGet, Route("outstanding")]
+        public HttpResponseMessage GetOutstanding()
+        {
+            var repo = new OrderRepository();
+            var orders = repo.SelectOutstandingOrders(30);
+            return Request.CreateListRecordsResponse(orders);
+        }
     }
 }
