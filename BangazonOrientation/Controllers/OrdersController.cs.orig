@@ -20,6 +20,7 @@ namespace BangazonOrientation.Controllers
             return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, "Could not create order, try again later...");
         }
 
+<<<<<<< HEAD
         [Route("{orderID}/paid"), HttpPut]
         public HttpResponseMessage UpDateOrder(int orderID)
         {
@@ -28,7 +29,7 @@ namespace BangazonOrientation.Controllers
 
             return Request.CreateResponse(HttpStatusCode.OK, result);
         }
-
+=======
         [Route("{OrderID}/{CustomerID}"), HttpPut]
         public HttpResponseMessage PlaceOrder(int OrderID, int CustomerID)
         {
@@ -44,5 +45,6 @@ namespace BangazonOrientation.Controllers
         }
 
 
+>>>>>>> master
     }
 }
