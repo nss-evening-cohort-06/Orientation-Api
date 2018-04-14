@@ -36,18 +36,7 @@ namespace OrientationAPI.Services
             }
         }
 
-         public ProductDto SelectProduct(int productId)
-        {
-            using (var db = GetDb())
-            {
-                db.Open();
-                var result = @"SELECT * FROM [dbo].[Products]
-                               WHERE ProductId = @productId";
-
-                return db.QueryFirst<ProductDto>(result, new {productId});
-            }
-        }
-        
+<<<<<<< HEAD
         public IEnumerable<Product> GetAll()
         {
             using (var db = new SqlConnection(ConfigurationManager.ConnectionStrings["BRBangazon"].ConnectionString))
@@ -57,6 +46,18 @@ namespace OrientationAPI.Services
                 var getAllProducts = db.Query<Product>(@"select * from dbo.Products");
 
                 return getAllProducts; 
+            }
+        }
+=======
+        public ProductDto SelectProduct(int productId)
+        {
+            using (var db = GetDb())
+            {
+                db.Open();
+                var result = @"SELECT * FROM [dbo].[Products]
+                               WHERE ProductId = @productId";
+
+                return db.QueryFirst<ProductDto>(result, new {productId});
             }
         }
 
@@ -72,5 +73,6 @@ namespace OrientationAPI.Services
             }
         }
         
+>>>>>>> master
     }
 }
