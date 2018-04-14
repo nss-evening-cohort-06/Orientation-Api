@@ -16,7 +16,8 @@ namespace OrientationAPI.Controllers
         public HttpResponseMessage AddProduct(ProductDto product)
         {
             var repository = new ProductRepository();
-			return repository.Create(product) ? Request.MapHttpResponse(DbResponseMapper.Created) : Request.MapHttpResponse(DbResponseMapper.NotCreated);            
+			var dbResults = repository.Create(product);
+			return Request.CreateAddRecordResponse(dbResults);        
         }
 
 		[Route("{productId}/removeProduct"), HttpPatch]
@@ -24,8 +25,8 @@ namespace OrientationAPI.Controllers
 		{
 			product.ProductId = productId;
 			var repository = new ProductRepository();
-			return repository.RemoveProduct(product) ? Request.MapHttpResponse(DbResponseMapper.Success) : Request.MapHttpResponse(DbResponseMapper.NotFound);
+			var dbResults = repository.RemoveProduct(product);
+			return Request.CreateUpdateRecordResponse(dbResults);
 		}
 	}
-
 }
