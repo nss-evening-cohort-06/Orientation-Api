@@ -17,12 +17,12 @@ namespace OrientationAPI.Services
             return new SqlConnection(ConfigurationManager.ConnectionStrings["BRBangazon"].ConnectionString);
         }
 
-        public bool Create(ProductDto product)
+        public int Create(ProductDto product)
         {
             using (var db = GetDb())
             {
                 db.Open();
-                var numberCreated = db.Execute(@"INSERT INTO [dbo].[Products]
+                return db.Execute(@"INSERT INTO [dbo].[Products]
                                                    ([ProductName]
                                                    ,[ProductPrice]
                                                    ,[SellerId]
@@ -32,38 +32,27 @@ namespace OrientationAPI.Services
                                                    ,@ProductPrice
                                                    ,@SellerId
                                                    ,@Quantity)", product);
-
-                return numberCreated == 1;
             }
         }
 
 <<<<<<< HEAD
-		public bool RemoveProduct(Product product)
+		public int RemoveProduct(Product product)
 		{
 			using (var db = new SqlConnection(ConfigurationManager.ConnectionStrings["BRBangazon"].ConnectionString))
 			{
-				var productRemoved = db.Execute(@"UPDATE [dbo].[Products]
+				return db.Execute(@"UPDATE [dbo].[Products]
                                                   SET [ProductName] = @ProductName,
                                                       [ProductPrice] = @ProductPrice,
 													  [SellerId] = @SellerId,
                                                       [Quantity] = 0
-												 WHERE ProductId = @ProductId", product);
-                                         
-				return productRemoved == 1;
-				}
-public IEnumerable<Product> GetAll()
-        {
-            using (var db = new SqlConnection(ConfigurationManager.ConnectionStrings["BRBangazon"].ConnectionString))
-            {
-                db.Open();
+												 WHERE ProductId = @ProductId", product);                 
+			}
+		}
 
-                var getAllProducts = db.Query<Product>(@"select * from dbo.Products");
-
-                return getAllProducts; 
-            }
-        }
-=======
         public ProductDto SelectProduct(int productId)
+=======
+         public ProductDto SelectProduct(int productId)
+>>>>>>> master
         {
             using (var db = GetDb())
             {
@@ -72,6 +61,18 @@ public IEnumerable<Product> GetAll()
                                WHERE ProductId = @productId";
 
                 return db.QueryFirst<ProductDto>(result, new {productId});
+            }
+        }
+        
+        public IEnumerable<Product> GetAll()
+        {
+            using (var db = new SqlConnection(ConfigurationManager.ConnectionStrings["BRBangazon"].ConnectionString))
+            {
+                db.Open();
+
+                var getAllProducts = db.Query<Product>(@"select * from dbo.Products");
+
+                return getAllProducts; 
             }
         }
 
@@ -87,6 +88,5 @@ public IEnumerable<Product> GetAll()
             }
         }
         
->>>>>>> master
     }
 }

@@ -86,13 +86,16 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Global.asax" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\LineItemsController.cs" />
     <Compile Include="Controllers\OrdersController.cs" />
     <Compile Include="Controllers\CustomerController.cs" />
+    <Compile Include="Controllers\Product.cs" />
     <Compile Include="Controllers\ProductController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -105,14 +108,15 @@
     <Compile Include="Models\ProductDto.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\DbResponseEnum.cs" />
-    <Compile Include="Services\OrderRepository.cs" />
-    <Compile Include="Services\CustomerRepository.cs" />
     <Compile Include="Services\HttpResponseService.cs" />
-    <Compile Include="Services\DbResponseMapper.cs" />
-    <Compile Include="Services\HttpResponseMapper.cs" />
+<<<<<<< HEAD
+=======
+    <Compile Include="Services\OrderPayment.cs" />
+>>>>>>> master
     <Compile Include="Services\ProductRepository.cs" />
     <Compile Include="Services\LineItemRepository.cs" />
     <Compile Include="Services\OrderRepository.cs" />
+    <Compile Include="Services\CustomerRepository.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
