@@ -10,19 +10,19 @@ using System.Web;
 
 namespace OrientationAPI.Services
 {
-    public class ProductRepository
-    {
-        private static SqlConnection GetDb()
-        {
-            return new SqlConnection(ConfigurationManager.ConnectionStrings["BRBangazon"].ConnectionString);
-        }
+	public class ProductRepository
+	{
+		private static SqlConnection GetDb()
+		{
+			return new SqlConnection(ConfigurationManager.ConnectionStrings["BRBangazon"].ConnectionString);
+		}
 
-        public int Create(ProductDto product)
-        {
-            using (var db = GetDb())
-            {
-                db.Open();
-                return db.Execute(@"INSERT INTO [dbo].[Products]
+		public int Create(ProductDto product)
+		{
+			using (var db = GetDb())
+			{
+				db.Open();
+				return db.Execute(@"INSERT INTO [dbo].[Products]
                                                    ([ProductName]
                                                    ,[ProductPrice]
                                                    ,[SellerId]
@@ -32,10 +32,9 @@ namespace OrientationAPI.Services
                                                    ,@ProductPrice
                                                    ,@SellerId
                                                    ,@Quantity)", product);
-            }
-        }
+			}
+		}
 
-<<<<<<< HEAD
 		public int RemoveProduct(Product product)
 		{
 			using (var db = new SqlConnection(ConfigurationManager.ConnectionStrings["BRBangazon"].ConnectionString))
@@ -45,48 +44,73 @@ namespace OrientationAPI.Services
                                                       [ProductPrice] = @ProductPrice,
 													  [SellerId] = @SellerId,
                                                       [Quantity] = 0
-												 WHERE ProductId = @ProductId", product);                 
+												 WHERE ProductId = @ProductId", product);
 			}
 		}
 
-        public ProductDto SelectProduct(int productId)
-=======
-         public ProductDto SelectProduct(int productId)
->>>>>>> master
-        {
-            using (var db = GetDb())
-            {
-                db.Open();
-                var result = @"SELECT * FROM [dbo].[Products]
+		public ProductDto SelectProduct(int productId)
+		{
+			using (var db = GetDb())
+			{
+				db.Open();
+				var result = @"SELECT * FROM [dbo].[Products]
                                WHERE ProductId = @productId";
 
-                return db.QueryFirst<ProductDto>(result, new {productId});
-            }
-        }
-        
-        public IEnumerable<Product> GetAll()
-        {
-            using (var db = new SqlConnection(ConfigurationManager.ConnectionStrings["BRBangazon"].ConnectionString))
-            {
-                db.Open();
+				return db.QueryFirst<ProductDto>(result, new { productId });
+			}
+		}
 
-                var getAllProducts = db.Query<Product>(@"select * from dbo.Products");
+		public IEnumerable<Product> GetAll()
+		{
+			using (var db = new SqlConnection(ConfigurationManager.ConnectionStrings["BRBangazon"].ConnectionString))
+			{
+				db.Open();
 
-                return getAllProducts; 
-            }
-        }
+				var getAllProducts = db.Query<Product>(@"select * from dbo.Products");
 
-        public bool Subtract1FromQuantity(int productId)
-        {
-            using (var db = GetDb())
-            {
-                db.Open();
-                var result = db.Execute(@"UPDATE [dbo].[Products]
+				return getAllProducts;
+			}
+		}
+
+		public bool Subtract1FromQuantity(int productId)
+		{
+			using (var db = GetDb())
+			{
+				db.Open();
+				var result = db.Execute(@"UPDATE [dbo].[Products]
                                           SET [Quantity] = Quantity -1
+<<<<<<< HEAD
                                           WHERE ProductId = @productid", new {productId});
                 return result == 1;
             }
         }
         
+
+        public int GetQuantityInStock(int productId)
+        {
+            using (var db = new SqlConnection(ConfigurationManager.ConnectionStrings["BRBangazon"].ConnectionString))
+            {
+                var sql = "SELECT Quantity FROM [dbo].[Products] WHERE ProductId = @ProductId";
+                return db.QueryFirst<int>(sql, new { productId });
+            }
+        }
+
+        
+
+        public int DecrementQuanity(int productId)
+        {
+            using (var db = new SqlConnection(ConfigurationManager.ConnectionStrings["BRBangazon"].ConnectionString))
+            {
+                var sql = "UPDATE [dbo].[Products] SET Quantity = Quantity - 1 WHERE ProductId = @productId";
+                return db.Execute(sql, new { productId });
+
+            }
+        }
+=======
+                                          WHERE ProductId = @productid", new { productId });
+				return result == 1;
+			}
+		}
+>>>>>>> master
     }
 }

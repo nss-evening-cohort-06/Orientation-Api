@@ -39,27 +39,23 @@ namespace OrientationAPI.Services
 
 <<<<<<< HEAD
 		public bool RemoveProduct(Product product)
-		{
-			using (var db = new SqlConnection(ConfigurationManager.ConnectionStrings["BRBangazon"].ConnectionString))
-			{
-				var productRemoved = db.Execute(@"UPDATE [dbo].[Products]
-                                                  SET [ProductName] = @ProductName,
-                                                      [ProductPrice] = @ProductPrice,
-													  [SellerId] = @SellerId,
-                                                      [Quantity] = 0
-												 WHERE ProductId = @ProductId", product);
-                                         
-				return productRemoved == 1;
-				}
-public IEnumerable<Product> GetAll()
         {
             using (var db = new SqlConnection(ConfigurationManager.ConnectionStrings["BRBangazon"].ConnectionString))
             {
-                db.Open();
+                var sql = "SELECT Quantity FROM [dbo].[Products] WHERE ProductId = @ProductId";
+                return db.QueryFirst<int>(sql, new { productId });
+            }
+        }
 
-                var getAllProducts = db.Query<Product>(@"select * from dbo.Products");
+        
 
-                return getAllProducts; 
+        public int DecrementQuanity(int productId)
+        {
+            using (var db = new SqlConnection(ConfigurationManager.ConnectionStrings["BRBangazon"].ConnectionString))
+            {
+                var sql = "UPDATE [dbo].[Products] SET Quantity = Quantity - 1 WHERE ProductId = @productId";
+                return db.Execute(sql, new { productId });
+
             }
         }
 =======

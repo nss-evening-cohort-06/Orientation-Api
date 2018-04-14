@@ -110,8 +110,17 @@
     <Compile Include="Services\DbResponseEnum.cs" />
     <Compile Include="Services\HttpResponseService.cs" />
 <<<<<<< HEAD
+    <Compile Include="Services\OrderPayment.cs" />
+<<<<<<< HEAD
+    <Compile Include="Services\OrderPlacement.cs" />
+=======
+    <Compile Include="Services\OrderStatusChecker.cs" />
+    <Compile Include="Services\ProductQuantity.cs" />
+=======
+<<<<<<< HEAD
 =======
     <Compile Include="Services\OrderPayment.cs" />
+>>>>>>> master
 >>>>>>> master
     <Compile Include="Services\ProductRepository.cs" />
     <Compile Include="Services\LineItemRepository.cs" />

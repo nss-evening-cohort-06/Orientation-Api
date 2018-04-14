@@ -68,18 +68,7 @@ namespace OrientationAPI.Services
             }
         }
 
-        public IEnumerable<Order> SelectOutstandingOrders(int timeThresholdInDays)
-        {
-            using (var db = GetDb())
-            {
-                db.Open();
-                var sql = @"SELECT * FROM [dbo].[Orders]
-                            WHERE IsClosed = 1
-                            AND DATEDIFF(DAY, CreatedDate, getDate()) > @timeThresholdInDays";
-                return db.Query<Order>(sql, new { timeThresholdInDays });
-            }
-        }
-
+<<<<<<< HEAD
 
 
 
@@ -96,13 +85,23 @@ namespace OrientationAPI.Services
 
 
         public int GetIsClosedStatus(int OrderId)
+=======
+        public IEnumerable<Order> SelectOutstandingOrders(int timeThresholdInDays)
+>>>>>>> master
         {
             using (var db = GetDb())
             {
                 db.Open();
+<<<<<<< HEAD
                 var sql = @"Select isClosed FROM [dbo].[Orders]
                             WHERE OrderId = @orderId";
                 return db.QueryFirst<int>(sql, new { OrderId });
+=======
+                var sql = @"SELECT * FROM [dbo].[Orders]
+                            WHERE IsClosed = 1
+                            AND DATEDIFF(DAY, CreatedDate, getDate()) > @timeThresholdInDays";
+                return db.Query<Order>(sql, new { timeThresholdInDays });
+>>>>>>> master
             }
         }
     }
