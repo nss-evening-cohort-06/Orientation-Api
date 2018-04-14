@@ -109,7 +109,10 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\DbResponseEnum.cs" />
     <Compile Include="Services\HttpResponseService.cs" />
+<<<<<<< HEAD
+=======
     <Compile Include="Services\OrderPayment.cs" />
+>>>>>>> master
     <Compile Include="Services\ProductRepository.cs" />
     <Compile Include="Services\LineItemRepository.cs" />
     <Compile Include="Services\OrderRepository.cs" />

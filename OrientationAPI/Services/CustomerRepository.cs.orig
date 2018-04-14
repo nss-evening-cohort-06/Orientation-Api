@@ -48,17 +48,21 @@ namespace OrientationAPI.Services
 											        [Phone] = @Phone
 												WHERE CustomerId = @CustomerId", customer);
 <<<<<<< HEAD
-                return updateCustomer == 1;
-            }
-        }
+<<<<<<< HEAD
+				return updateCustomer == 1;
+			}
+		}
+	
 		
-        public int Deactivate(int customerId)
-		{
-			using (var db = new SqlConnection(ConfigurationManager.ConnectionStrings["BRBangazon"].ConnectionString))
-			{
-				db.Open();
-				var sql = @"UPDATE [dbo].[Customers]
+        public bool Deactivate(int customerId)
+        {
+            using (var db = new SqlConnection(ConfigurationManager.ConnectionStrings["BRBangazon"].ConnectionString))
+            {
+                db.Open();
+                var sql = @"UPDATE [dbo].[Customers]
 =======
+=======
+>>>>>>> master
                 return updateCustomer == 1;
             }
         }
@@ -69,6 +73,9 @@ namespace OrientationAPI.Services
 			{
 				db.Open();
 				var sql = @"UPDATE [dbo].[Customers]
+<<<<<<< HEAD
+>>>>>>> master
+=======
 >>>>>>> master
                                                  SET isActive = 0
                                                  WHERE CustomerId = @CustomerId";

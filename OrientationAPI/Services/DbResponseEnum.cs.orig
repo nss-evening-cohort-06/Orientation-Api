@@ -10,8 +10,14 @@ namespace OrientationAPI.Services
         Created,
         NotCreated,
         RecordsReturned,
+<<<<<<< HEAD:OrientationAPI/Services/DbResponseEnum.cs
+        NoRecordsFound,
+        Updated,
+        NotFound
+=======
         Updated,
         NotFound,
         ValidationError
+>>>>>>> master:OrientationAPI/Services/DbResponseEnum.cs
     }
 }
