@@ -67,5 +67,31 @@ namespace OrientationAPI.Services
                 return db.QueryFirst<Order>(sql, new { orderId });
             }
         }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        public int GetIsClosedStatus(int OrderId)
+        {
+            using (var db = GetDb())
+            {
+                db.Open();
+                var sql = @"Select isClosed FROM [dbo].[Orders]
+                            WHERE OrderId = @orderId";
+                return db.QueryFirst<int>(sql, new { OrderId });
+            }
+        }
     }
 }

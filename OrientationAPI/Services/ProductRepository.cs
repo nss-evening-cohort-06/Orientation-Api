@@ -29,5 +29,51 @@ namespace OrientationAPI.Services
                 return numberCreated == 1;
             }
         }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        public int GetQuantityInStock(int productId)
+        {
+            using (var db = new SqlConnection(ConfigurationManager.ConnectionStrings["BRBangazon"].ConnectionString))
+            {
+                var sql = "SELECT Quantity FROM [dbo].[Products] WHERE ProductId = @ProductId";
+                return db.QueryFirst<int>(sql, new { productId });
+            }
+        }
+
+        
+
+        public int DecrementQuanity(int productId)
+        {
+            using (var db = new SqlConnection(ConfigurationManager.ConnectionStrings["BRBangazon"].ConnectionString))
+            {
+                var sql = "UPDATE [dbo].[Products] SET Quantity = Quantity - 1 WHERE ProductId = @productId";
+                return db.Execute(sql, new { productId });
+
+            }
+        }
     }
 }

@@ -11,8 +11,7 @@ namespace OrientationAPI.Controllers
         [HttpPost, Route("")]
         public HttpResponseMessage AddLineItem(LineItemDto lineItem)
         {
-            var repo = new LineItemRepository();
-            var dbResult = repo.Create(lineItem);
+            var dbResult = OrderPlacement.AddLineItem(lineItem); 
             return Request.CreateAddRecordResponse(dbResult);
         }
     }
