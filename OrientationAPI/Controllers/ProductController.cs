@@ -25,5 +25,19 @@ namespace OrientationAPI.Controllers
             return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, 
                                                "Product could not be created. Please try again later.");
         }
+
+        [HttpGet, Route("")]
+        public HttpResponseMessage ListProduct()
+        {
+            var repository = new ProductRepository();
+            var result = repository.GetAll();
+
+            if (result.ToString().Length > 0)
+            {
+                return Request.CreateResponse(HttpStatusCode.OK, result);
+            }
+            return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, "Product could not be found. Please try again later");
+            
+        }
     }
 }
