@@ -95,6 +95,7 @@
     <Compile Include="Controllers\LineItemsController.cs" />
     <Compile Include="Controllers\OrdersController.cs" />
     <Compile Include="Controllers\CustomerController.cs" />
+    <Compile Include="Controllers\Product.cs" />
     <Compile Include="Controllers\ProductController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -112,6 +113,10 @@
 <<<<<<< HEAD
     <Compile Include="Services\OrderPlacement.cs" />
 =======
+<<<<<<< HEAD
+=======
+    <Compile Include="Services\OrderPayment.cs" />
+>>>>>>> master
     <Compile Include="Services\OrderStatusChecker.cs" />
     <Compile Include="Services\ProductQuantity.cs" />
 >>>>>>> master

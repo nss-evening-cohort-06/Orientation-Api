@@ -1,4 +1,5 @@
 ﻿using Dapper;
+using OrientationAPI.Controllers;
 using OrientationAPI.Models;
 using System;
 using System.Collections.Generic;
@@ -37,32 +38,7 @@ namespace OrientationAPI.Services
         }
 
 <<<<<<< HEAD
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        public int GetQuantityInStock(int productId)
+		public bool RemoveProduct(Product product)
         {
             using (var db = new SqlConnection(ConfigurationManager.ConnectionStrings["BRBangazon"].ConnectionString))
             {

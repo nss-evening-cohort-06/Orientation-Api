@@ -79,10 +79,12 @@ namespace OrientationAPI.Services
 				db.Open();
 				var result = db.Execute(@"UPDATE [dbo].[Products]
                                           SET [Quantity] = Quantity -1
-                                          WHERE ProductId = @productid", new { productId });
-				return result == 1;
-			}
-		}
+<<<<<<< HEAD
+                                          WHERE ProductId = @productid", new {productId});
+                return result == 1;
+            }
+        }
+        
 
         public int GetQuantityInStock(int productId)
         {
@@ -104,5 +106,11 @@ namespace OrientationAPI.Services
 
             }
         }
+=======
+                                          WHERE ProductId = @productid", new { productId });
+				return result == 1;
+			}
+		}
+>>>>>>> master
     }
 }
