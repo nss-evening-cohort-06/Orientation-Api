@@ -1,5 +1,6 @@
 ﻿using System.Configuration;
 using System.Data.SqlClient;
+using System.Collections.Generic;
 using BangazonOrientation.Models;
 using Dapper;
 
@@ -52,6 +53,20 @@ namespace BangazonOrientation.Services
                                                             AND CustomerID = @CustomerID", new { OrderID, CustomerID });
 
                 return orderUpdated == 1;
+            }
+        }
+
+        public IEnumerable<OrdersDto> ListAllUnPaidOrders()
+        {
+            using (var db = GetConnection())
+            {
+                db.Open();
+                var getUnPaidOrderList = db.Query<OrdersDto>(@"SELECT  OrderID, CustomerID 
+                                                               FROM [dbo].[Order] 
+                                                               WHERE Paid = 0
+                                                               AND Purchased = 0");
+
+                return getUnPaidOrderList;
             }
         }
     }
