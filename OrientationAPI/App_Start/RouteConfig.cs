@@ -9,8 +9,8 @@ namespace OrientationAPI.App_Start
 {
     public class RouteConfig
     {
-            public static void RegisterRoutes(RouteCollection routes)
-            {
+        public static void RegisterRoutes(RouteCollection routes)
+        {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
             routes.MapRoute(
@@ -18,6 +18,6 @@ namespace OrientationAPI.App_Start
                     url: "{controller}/{action}/{id}",
                     defaults: new { action = "Index", controller = "Home", id = UrlParameter.Optional }
                 );
-            }
         }
     }
+}

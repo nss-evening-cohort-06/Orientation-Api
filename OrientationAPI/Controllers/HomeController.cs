@@ -9,7 +9,7 @@ namespace OrientationAPI.Controllers
 {
     public class HomeController : Controller
     {
-        // GET: Home
+
         public ActionResult Index()
         {
             return View();
@@ -42,6 +42,5 @@ namespace OrientationAPI.Controllers
 
             return View();
         }
-
     }
 }
