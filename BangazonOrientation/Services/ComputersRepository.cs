@@ -53,8 +53,21 @@ namespace BangazonOrientation.Services
                                                        ,@purchaseDate)", computer);
                 return result == 1;
             }
-            
+        }
 
+        public bool Put(ComputersDto computer)
+        {
+            using (var db = GetConnection())
+            {
+                db.Open();
+                var result = db.Execute(@"UPDATE [dbo].[Computer]
+                                                   SET [Manufacturer] = @Manufacturer
+                                                      ,[Make] = @Make
+                                                      ,[PurchaseDate] = @PurchaseDate
+                                                 WHERE id = @id", computer);
+
+                return result == 1;
+            }
         }
     }
 }

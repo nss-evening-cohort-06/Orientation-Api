@@ -30,7 +30,7 @@ namespace BangazonOrientation.Controllers
             var result = repo.GetById(id);
 
             return result == null
-                ? Request.CreateErrorResponse(HttpStatusCode.NoContent, "A computer with that id does not extis")
+                ? Request.CreateErrorResponse(HttpStatusCode.NotFound, "A computer with that id does not extis")
                 : Request.CreateResponse(HttpStatusCode.OK, result);
         }
 
@@ -45,11 +45,17 @@ namespace BangazonOrientation.Controllers
                 : Request.CreateErrorResponse(HttpStatusCode.BadRequest, "Unable to Process your request");
         }
 
-        //[Route("{id}"), HttpPut]
-        //public HttpResponseMessage Put(ComputersDto computer)
-        //{
+        [Route("{id}"), HttpPut]
+        public HttpResponseMessage Put(ComputersDto computer, int id)
+        {
+            var repo = new ComputersRepository();
+            computer.ComputerID = id;
+            var result = repo.Put(computer);
 
-        //}
+            return result
+                ? Request.CreateResponse(HttpStatusCode.OK)
+                : Request.CreateErrorResponse(HttpStatusCode.BadRequest, "Unable to Process your request");
+        }
 
         //[Route("{id}"), HttpDelete]
         //public HttpResponseMessage Delete(int id)
