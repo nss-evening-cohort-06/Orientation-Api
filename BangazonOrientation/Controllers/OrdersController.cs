@@ -43,6 +43,15 @@ namespace BangazonOrientation.Controllers
             return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, "Could not update.  CustomerID and/or OrderID not found.");
         }
 
+        [Route("notpaid"), HttpGet]
+        public HttpResponseMessage GetList()
+        {
+            var repository = new OrdersRepository();
+            var result = repository.ListAllUnPaidOrders();
+
+            return Request.CreateResponse(HttpStatusCode.OK, result);
+        }
+
 
     }
 }
