@@ -64,7 +64,18 @@ namespace BangazonOrientation.Services
                                                    SET [Manufacturer] = @Manufacturer
                                                       ,[Make] = @Make
                                                       ,[PurchaseDate] = @PurchaseDate
-                                                 WHERE id = @id", computer);
+                                                 WHERE ComputerID = @computerID", computer);
+
+                return result == 1;
+            }
+        }
+
+        public bool Delete(int id)
+        {
+            using (var db = GetConnection())
+            {
+                db.Open();
+                var result = db.Execute(@"delete from computer where computerID = @id", new { id });
 
                 return result == 1;
             }

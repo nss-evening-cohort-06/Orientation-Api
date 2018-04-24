@@ -57,10 +57,15 @@ namespace BangazonOrientation.Controllers
                 : Request.CreateErrorResponse(HttpStatusCode.BadRequest, "Unable to Process your request");
         }
 
-        //[Route("{id}"), HttpDelete]
-        //public HttpResponseMessage Delete(int id)
-        //{
+        [Route("{id}"), HttpDelete]
+        public HttpResponseMessage Delete(int id)
+        {
+            var repo = new ComputersRepository();
+            var result = repo.Delete(id);
 
-        //}
+            return result
+                ? Request.CreateResponse(HttpStatusCode.OK)
+                : Request.CreateErrorResponse(HttpStatusCode.BadRequest, "No computer exists with that id");
+        }
     }
 }
