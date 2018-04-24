@@ -14,7 +14,7 @@ namespace BangazonOrientation.Services
             return new SqlConnection(ConfigurationManager.ConnectionStrings["BangazonOrientation"].ConnectionString);
         }
 
-
+        
         public IEnumerable<EmployeesDto> ListAllEmployees()
         {
             using (var db = GetConnection())
@@ -25,6 +25,7 @@ namespace BangazonOrientation.Services
                 return getEmployeeList;
             }
         }
+        
 
 
     }
