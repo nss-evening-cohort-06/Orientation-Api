@@ -5,5 +5,9 @@ app.config(["$routeProvider", function ($routeProvider) {
         {
             templateUrl: "/app/partials/index.html",
             controller: "HomeController"
+        })
+        .when('/Home/Employees', { 
+            templateUrl: '/app/partials/employees.html',
+            controller: 'EmployeesController'
         });
 }]);
