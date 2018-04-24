@@ -37,5 +37,24 @@ namespace BangazonOrientation.Services
                 return result;
             }
         }
+
+        public bool Post(ComputersDto computer)
+        {
+            using (var db = GetConnection())
+            {
+                db.Open();
+                var result = db.Execute(@"INSERT INTO [dbo].[Computer]
+                                                       ([Manufacturer]
+                                                       ,[Make]
+                                                       ,[PurchaseDate])
+                                                 VALUES
+                                                       (@manufacturer
+                                                       ,@make
+                                                       ,@purchaseDate)", computer);
+                return result == 1;
+            }
+            
+
+        }
     }
 }

@@ -34,11 +34,16 @@ namespace BangazonOrientation.Controllers
                 : Request.CreateResponse(HttpStatusCode.OK, result);
         }
 
-        //[Route(""), HttpPost]
-        //public HttpResponseMessage Get(ComputersDto computer)
-        //{
+        [Route(""), HttpPost]
+        public HttpResponseMessage Get(ComputersDto computer)
+        {
+            var repo = new ComputersRepository();
+            var result = repo.Post(computer);
 
-        //}
+            return result
+                ? Request.CreateResponse(HttpStatusCode.Created)
+                : Request.CreateErrorResponse(HttpStatusCode.BadRequest, "Unable to Process your request");
+        }
 
         //[Route("{id}"), HttpPut]
         //public HttpResponseMessage Put(ComputersDto computer)
