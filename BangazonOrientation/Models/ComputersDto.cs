@@ -7,7 +7,7 @@ namespace BangazonOrientation.Models
 {
     public class ComputersDto
     {
-        public int Id { get; set; }
+        public int ComputerID { get; set; }
         public string Manufacturer { get; set; }
         public string Make { get; set; }
         public DateTime PurchaseDate { get; set; }

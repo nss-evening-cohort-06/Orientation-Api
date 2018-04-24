@@ -23,11 +23,16 @@ namespace BangazonOrientation.Controllers
                 : Request.CreateResponse(HttpStatusCode.OK, results);
         }
 
-        //[Route("{id}"), HttpGet]
-        //public HttpResponseMessage Get(int id)
-        //{
+        [Route("{id}"), HttpGet]
+        public HttpResponseMessage Get(int id)
+        {
+            var repo = new ComputersRepository();
+            var result = repo.GetById(id);
 
-        //}
+            return result == null
+                ? Request.CreateErrorResponse(HttpStatusCode.NoContent, "A computer with that id does not extis")
+                : Request.CreateResponse(HttpStatusCode.OK, result);
+        }
 
         //[Route(""), HttpPost]
         //public HttpResponseMessage Get(ComputersDto computer)

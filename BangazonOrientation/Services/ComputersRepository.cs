@@ -21,9 +21,20 @@ namespace BangazonOrientation.Services
             using (var db = GetConnection())
             {
                 db.Open();
-                var results = db.Query<ComputersDto>(@"select * from computers");
+                var results = db.Query<ComputersDto>(@"select * from computer");
 
                 return results.ToList();
+            }
+        }
+
+        public ComputersDto GetById(int id)
+        {
+            using (var db = GetConnection())
+            {
+                db.Open();
+                var result = db.QueryFirstOrDefault<ComputersDto>(@"select * from computer where computerID = @id", new {id});
+
+                return result;
             }
         }
     }
