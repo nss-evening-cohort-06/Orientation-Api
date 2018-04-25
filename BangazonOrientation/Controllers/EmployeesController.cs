@@ -21,5 +21,15 @@ namespace BangazonOrientation.Controllers
             return Request.CreateResponse(HttpStatusCode.OK, result);
         }
 
+        [Route, HttpPost]
+        public HttpResponseMessage AddEmployee(EmployeesDto employee)
+        {
+            var repository = new EmployeesRepository();
+            var result = repository.Create(employee);
+
+            if (result)
+                return Request.CreateResponse(HttpStatusCode.Created);
+            return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, "no!");
+        }
     }
 }
