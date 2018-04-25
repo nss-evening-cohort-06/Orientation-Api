@@ -44,8 +44,7 @@ namespace OrientationAPI.Services
 			}
 		}
 
-		//ask about posting to two tables
-		public int Update(Employees employee)
+		public int UpdateEmployee(Employees employee)
 		{
 			using (var db = new SqlConnection(ConfigurationManager.ConnectionStrings["BRBangazon"].ConnectionString))
 			{
@@ -55,6 +54,32 @@ namespace OrientationAPI.Services
 												SET [FirstName] = @FirstName,
 												    [LastName] = @LastName,
 											        [DepartmentId] = @DepartmentId
+												WHERE EmployeeId = @EmployeeId", employee);
+
+			}
+		}
+
+		public int UpdateComputer(Employees employee)
+		{
+			using (var db = new SqlConnection(ConfigurationManager.ConnectionStrings["BRBangazon"].ConnectionString))
+			{
+				db.Open();
+
+				return db.Execute(@"UPDATE[dbo].[Employee_Computers]
+												SET [ComputerId] = @ComputerId
+												WHERE EmployeeId = @EmployeeId", employee);
+
+			}
+		}
+
+		public int UpdateTrainingProgram(Employees employee)
+		{
+			using (var db = new SqlConnection(ConfigurationManager.ConnectionStrings["BRBangazon"].ConnectionString))
+			{
+				db.Open();
+
+				return db.Execute(@"UPDATE[dbo].[Employee_Training]
+												SET [TrainingProgramId] = @TrainingProgramId
 												WHERE EmployeeId = @EmployeeId", employee);
 
 			}
