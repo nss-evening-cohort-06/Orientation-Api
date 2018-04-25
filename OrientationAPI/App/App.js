@@ -3,7 +3,8 @@
 app.config(["$routeProvider", function ($routeProvider) {
     $routeProvider.when("/",
         {
-            templateUrl: "/app/partials/index.html",
+            templateUrl: "/app/partials/home.html",
             controller: "HomeController"
-        });
+        })
+        .otherwise('/');
 }]);
