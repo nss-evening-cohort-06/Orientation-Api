@@ -107,7 +107,7 @@
     <Compile Include="Models\CustomerDto.cs" />
     <Compile Include="Models\Product.cs" />
     <Compile Include="Models\ProductDto.cs" />
-    <Compile Include="Models\TrainingDto.cs" />
+    <Compile Include="Models\TrainingProgram.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\DbResponseEnum.cs" />
     <Compile Include="Services\HttpResponseService.cs" />

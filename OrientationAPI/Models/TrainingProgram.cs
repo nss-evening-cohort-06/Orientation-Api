@@ -5,7 +5,7 @@ using System.Web;
 
 namespace OrientationAPI.Models
 {
-    public class TrainingDto
+    public class TrainingProgram
     {
         public string Name { get; set; }
         public string Description { get; set; }

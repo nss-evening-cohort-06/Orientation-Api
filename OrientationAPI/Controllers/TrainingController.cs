@@ -13,7 +13,7 @@ namespace OrientationAPI.Controllers
     public class TrainingController : ApiController
     {
         [Route, HttpPost]
-        public HttpResponseMessage Create(TrainingDto dto)
+        public HttpResponseMessage Create(TrainingProgram dto)
         {
             var repo = new TrainingRepository();
             var dbResults = repo.Create(dto);

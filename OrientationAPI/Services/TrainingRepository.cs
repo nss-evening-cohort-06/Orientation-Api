@@ -15,12 +15,12 @@ namespace OrientationAPI.Services
         {
             return new SqlConnection(ConfigurationManager.ConnectionStrings["BRBangazon"].ConnectionString);
         }
-        public int Create(TrainingDto dto)
+        public int Create(TrainingProgram dto)
         {
             using (var db = getDb())
             {
                 db.Open();
-                var sql = @"INSERT INTO dbo.TrainingProgram
+                var sql = @"INSERT INTO dbo.TrainingPrograms
                             (name, description, startDate, endDate, maxAttendees)
                             VALUES 
                             (@name, @description, @startDate, @endDate, @maxAttendees)";
@@ -28,23 +28,14 @@ namespace OrientationAPI.Services
             }
         }
 
-        internal object GetAll()
+        public List<TrainingProgram> GetAll()
         {
-            throw new NotImplementedException();
-        }
-
-        public List<TrainingList> GetAllActive()
-        {
-            using (var db = new SqlConnection(ConfigurationManager.ConnectionStrings["BRBangazon"].ConnectionString))
+            using (var db = getDb())
             {
                 db.Open();
-                var sql = "Select * From dbo.TrainingProgram";
-                return db.Query<TrainingList>(sql).ToList();
+                var sql = "Select * From dbo.TrainingPrograms";
+                return db.Query<TrainingProgram>(sql).ToList();
             }
         }
-    }
-
-    public class TrainingList
-    {
     }
 }
