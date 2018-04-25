@@ -212,9 +212,11 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="app\app.js" />
-    <Content Include="app\Controllers\ComputerController.js" />
+    <Content Include="app\Controllers\ComputersController.js" />
+    <Content Include="app\Controllers\ComputersDetailController.js" />
     <Content Include="app\Controllers\HomeController.js" />
     <Content Include="app\partials\computers.html" />
+    <Content Include="app\partials\computers_detail.html" />
     <Content Include="app\partials\index.html" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
