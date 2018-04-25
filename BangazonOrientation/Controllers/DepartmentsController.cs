@@ -9,9 +9,13 @@ namespace BangazonOrientation.Controllers
     [RoutePrefix("api/departments")]
     public class DepartmentsController : ApiController
     {
-        public ActionResult Index()
+        [Route, HttpGet]
+        public HttpResponseMessage GetDepartmentList()
         {
-            return View();
+            var repository = new DepartmentsRepository();
+            var result = repository.ListAllDepartments();
+
+            return Request.CreateResponse(HttpStatusCode.OK, result);
         }
     }
 }
