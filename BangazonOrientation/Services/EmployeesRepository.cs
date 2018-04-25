@@ -37,12 +37,12 @@ namespace BangazonOrientation.Services
                                                        ([FirstName]
                                                        ,[LastName]
                                                        ,[StartDate]
-                                                       ,[Department])
+                                                       ,[DepartmentID])
                                                     VALUES
                                                         (@FirstName,
                                                          @LastName,
                                                          @StartDate,
-                                                         @Department)", employee);
+                                                         @DepartmentID)", employee);
 
                 return addEmployee == 1;
             }
