@@ -25,5 +25,22 @@ namespace BangazonOrientation.Services
             return new SqlConnection(ConfigurationManager.ConnectionStrings["BangazonOrientation"].ConnectionString);
         }
 
+        public bool Create(DepartmentsDto department)
+        {
+           using (var db = GetConnection())
+            {
+                db.Open();
+                var records = db.Execute(@"INSERT INTO [dbo].[Department]
+                                                     ([DepartmentID]
+                                                     ,[Name]
+                                                     ,[Budget])
+                                                VALUES
+                                                     (@DepartmentID
+                                                     ,@Name
+                                                     ,@Budget)", department);
+                return records == 1;
+            }
+        }
+
     }
 }
