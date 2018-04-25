@@ -193,8 +193,11 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\CustomersController.cs" />
+<<<<<<< HEAD
     <Compile Include="Controllers\DepartmentsController.cs" />
+=======
     <Compile Include="Controllers\EmployeesController.cs" />
+>>>>>>> master
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\OrdersController.cs" />
     <Compile Include="Controllers\ProductsController.cs" />
@@ -202,14 +205,21 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\CustomersDto.cs" />
+<<<<<<< HEAD
     <Compile Include="Models\DepartmentsDto.cs" />
+    <Compile Include="Models\OrdersDto.cs" />
+    <Compile Include="Models\ProductsDto.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\CustomersRepository.cs" />
+    <Compile Include="Services\DepartmentsRepository.cs" />
+=======
     <Compile Include="Models\EmployeesDto.cs" />
     <Compile Include="Models\OrdersDto.cs" />
     <Compile Include="Models\ProductsDto.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\EmployeesRepository.cs" />
     <Compile Include="Services\CustomersRepository.cs" />
-    <Compile Include="Services\DepartmentsRepository.cs" />
+>>>>>>> master
     <Compile Include="Services\OrdersRepository.cs" />
     <Compile Include="Services\ProductsRepository.cs" />
   </ItemGroup>
@@ -279,9 +289,12 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+<<<<<<< HEAD
     <Folder Include="Views\Departments\" />
     <Folder Include="Views\Home\" />
     <Folder Include="Views\Shared\" />
+=======
+>>>>>>> master
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
