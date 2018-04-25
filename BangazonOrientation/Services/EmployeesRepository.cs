@@ -26,6 +26,27 @@ namespace BangazonOrientation.Services
             }
         }
         
+        public bool Create(EmployeesDto employee)
+        {
+            using (var db = GetConnection())
+            {
+
+
+                db.Open();
+                var addEmployee = db.Execute(@"INSERT INTO [dbo].[Employee]
+                                                       ([FirstName]
+                                                       ,[LastName]
+                                                       ,[StartDate]
+                                                       ,[Department])
+                                                    VALUES
+                                                        (@FirstName,
+                                                         @LastName,
+                                                         @StartDate,
+                                                         @Department)", employee);
+
+                return addEmployee == 1;
+            }
+        }
 
 
     }
