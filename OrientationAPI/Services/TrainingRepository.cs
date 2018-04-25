@@ -28,12 +28,12 @@ namespace OrientationAPI.Services
             }
         }
 
-        public List<TrainingProgram> GetAll()
+        public List<TrainingProgram> GetAllUpcoming()
         {
             using (var db = getDb())
             {
                 db.Open();
-                var sql = "Select * From dbo.TrainingPrograms";
+                var sql = "Select * From dbo.TrainingPrograms WHERE StartDate > GetDate()";
                 return db.Query<TrainingProgram>(sql).ToList();
             }
         }

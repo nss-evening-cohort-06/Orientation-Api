@@ -21,10 +21,10 @@ namespace OrientationAPI.Controllers
         }
 
         [Route, HttpGet]
-        public HttpResponseMessage GetAll()
+        public HttpResponseMessage GetAllUpcoming()
         {
             var repo = new TrainingRepository();
-            var dbResults = repo.GetAll();
+            var dbResults = repo.GetAllUpcoming();
             return Request.CreateListRecordsResponse(dbResults);
         }
     }
