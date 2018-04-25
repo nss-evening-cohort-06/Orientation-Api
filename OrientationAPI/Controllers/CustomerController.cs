@@ -24,7 +24,7 @@ namespace OrientationAPI.Controllers
         public HttpResponseMessage ListCustomers()
         {
             var repo = new CustomerRepository();
-            var dbResults = repo.GetAll();
+            var dbResults = repo.GetAllActive();
             return Request.CreateListRecordsResponse(dbResults);
         }
 
