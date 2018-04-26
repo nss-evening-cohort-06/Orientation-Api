@@ -59,12 +59,27 @@ namespace BangazonOrientation.Services
                                                                           ,[DepartmentID]
                                                                           ,[StartDate]
                                                                       FROM [dbo].[Employee]
-                                                                      WHERE EmployeeID = @id", id);
+                                                                      WHERE EmployeeID = @id", new {id});
 
                 return result;
             }
         }
 
+        public bool Edit(EmployeesDto employee, int id)
+        {
+            using (var db = GetConnection())
+            {
+                db.Open();
+                var result = db.Execute(@"UPDATE [dbo].[Employee]
+                                             SET [FirstName] = @firstName
+                                                ,[LastName] = @lastName
+                                                ,[DepartmentID] = @departmentID
+                                                ,[StartDate] = @startDate
+                                          WHERE employeeID = @employeeID", new {employee, id});
+
+                return result == 1;
+            }
+        }
 
     }
 }

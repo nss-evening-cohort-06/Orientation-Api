@@ -40,5 +40,14 @@ namespace BangazonOrientation.Controllers
 
             return Request.CreateResponse(HttpStatusCode.OK, result);
         }
+
+        [Route("{Id}"), HttpPut]
+        public HttpResponseMessage Edit(EmployeesDto employee, int id)
+        {
+            var repository = new EmployeesRepository();
+            var result = repository.Edit(employee, id);
+
+            return Request.CreateResponse(HttpStatusCode.OK, result);
+        }
     }
 }
