@@ -6,6 +6,10 @@ app.config(["$routeProvider", function ($routeProvider) {
             templateUrl: "/app/partials/home.html",
             controller: "HomeController"
         })
+        .when("/employees", {
+            templateUrl: "/app/partials/Employees.html",
+            controller: "EmployeesController"
+        })
         .when("/Training",
         {
             templateUrl: "/app/partials/trainingprograms.html",
