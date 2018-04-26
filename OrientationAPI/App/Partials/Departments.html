@@ -1,10 +1,14 @@
-﻿<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="utf-8" />
-    <title></title>
-</head>
-<body>
+﻿<h2>{{header}}</h2>
 
-</body>
-</html>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th scope="col">Department</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr ng-repeat="department in departments">
+            <td>{{department.Name}}</td>
+        </tr>
+    </tbody>
+</table>
