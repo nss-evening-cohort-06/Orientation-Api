@@ -19,6 +19,10 @@ app.config(["$routeProvider", function ($routeProvider) {
         {
             templateUrl: "/app/partials/TrainingProgramsAdd.html"
         })
+        .when("/Departments",
+        {
+            templateUrl: "/app/partials/Departments.html"
+        })
 
         .otherwise('/');
 }]);
