@@ -21,7 +21,8 @@ app.config(["$routeProvider", function ($routeProvider) {
         })
         .when("/Departments",
         {
-            templateUrl: "/app/partials/Departments.html"
+            templateUrl: "/app/partials/Departments.html",
+            controller: "DepartmentController"
         })
 
         .otherwise('/');
