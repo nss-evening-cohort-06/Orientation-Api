@@ -31,5 +31,14 @@ namespace BangazonOrientation.Controllers
                 return Request.CreateResponse(HttpStatusCode.Created);
             return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, "no!");
         }
+
+        [Route("{Id}"), HttpGet]
+        public HttpResponseMessage GetEmployee(int id)
+        {
+            var repository = new EmployeesRepository();
+            var result = repository.GetEmployeeById(id);
+
+            return Request.CreateResponse(HttpStatusCode.OK, result);
+        }
     }
 }

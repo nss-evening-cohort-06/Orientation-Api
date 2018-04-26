@@ -48,6 +48,23 @@ namespace BangazonOrientation.Services
             }
         }
 
+        public EmployeesDto GetEmployeeById(int id)
+        {
+            using (var db = GetConnection())
+            {
+                db.Open();
+                var result = db.QueryFirstOrDefault<EmployeesDto>(@"SELECT [EmployeeID]
+                                                                          ,[FirstName]
+                                                                          ,[LastName]
+                                                                          ,[DepartmentID]
+                                                                          ,[StartDate]
+                                                                      FROM [dbo].[Employee]
+                                                                      WHERE EmployeeID = @id", id);
+
+                return result;
+            }
+        }
+
 
     }
 }
