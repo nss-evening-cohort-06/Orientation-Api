@@ -176,7 +176,7 @@ GO
 SET QUOTED_IDENTIFIER ON
 GO
 CREATE TABLE [dbo].[EmployeeComputer](
-	[EmployeeComputerID] [int] IDENTITY(1,1) NOT NULL,
+	[EmployeeComputerID] [int] NOT NULL,
 	[AssignedDate] [datetime] NULL,
 	[ReturnedDate] [datetime] NULL,
 	[EmployeeID] [int] NULL,
