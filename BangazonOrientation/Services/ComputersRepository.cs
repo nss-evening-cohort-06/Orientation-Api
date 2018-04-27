@@ -38,7 +38,7 @@ namespace BangazonOrientation.Services
             }
         }
 
-        public bool Post(ComputersDto computer)
+        public bool Post(object input)
         {
             using (var db = GetConnection())
             {
@@ -50,7 +50,7 @@ namespace BangazonOrientation.Services
                                                  VALUES
                                                        (@manufacturer
                                                        ,@make
-                                                       ,@purchaseDate)", computer);
+                                                       ,@purchaseDate)", input);
                 return result == 1;
             }
         }

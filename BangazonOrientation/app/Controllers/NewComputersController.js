@@ -2,7 +2,11 @@
     function ($location, $scope, $http) {
 
         $scope.new = (Computer) => {
-            Computer.PurchaseDate = new Date(Computer.PurchaseDate);
-            console.log(Computer);
+
+            $http.post("/api/computers/", Computer).then(function () {
+                $location.path(`/computers`);
+            }).catch((err) => {
+                console.log("error posting new computer", err);
+            });
         };
     }]);

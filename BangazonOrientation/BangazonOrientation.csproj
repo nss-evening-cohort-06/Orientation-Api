@@ -215,9 +215,11 @@
     <Content Include="app\Controllers\ComputersController.js" />
     <Content Include="app\Controllers\ComputersDetailController.js" />
     <Content Include="app\Controllers\HomeController.js" />
+    <Content Include="app\Controllers\NewComputersController.js" />
     <Content Include="app\partials\computers.html" />
     <Content Include="app\partials\computers_detail.html" />
     <Content Include="app\partials\index.html" />
+    <Content Include="app\partials\new_computer.html" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
