@@ -194,6 +194,7 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\ComputersController.cs" />
     <Compile Include="Controllers\CustomersController.cs" />
+    <Compile Include="Controllers\EmployeeComputerController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\OrdersController.cs" />
     <Compile Include="Controllers\ProductsController.cs" />
@@ -207,16 +208,20 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\ComputersRepository.cs" />
     <Compile Include="Services\CustomersRepository.cs" />
+    <Compile Include="Models\EmployeeComputersDto.cs" />
+    <Compile Include="Services\EmployeeComputersRepository.cs" />
     <Compile Include="Services\OrdersRepository.cs" />
     <Compile Include="Services\ProductsRepository.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="app\app.js" />
     <Content Include="app\Controllers\ComputersController.js" />
+    <Content Include="app\Controllers\ComputersDeleteController.js" />
     <Content Include="app\Controllers\ComputersDetailController.js" />
     <Content Include="app\Controllers\HomeController.js" />
     <Content Include="app\Controllers\NewComputersController.js" />
     <Content Include="app\partials\computers.html" />
+    <Content Include="app\partials\computers_delete.html" />
     <Content Include="app\partials\computers_detail.html" />
     <Content Include="app\partials\index.html" />
     <Content Include="app\partials\new_computer.html" />

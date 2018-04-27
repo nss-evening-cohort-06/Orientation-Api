@@ -22,6 +22,11 @@ app.config([
             {
                 templateUrl: '/app/partials/computers_detail.html',
                 controller: 'ComputersDetailController'
+            })
+            .when("/computers/:id/delete",
+            {
+                templateUrl: '/app/partials/computers_delete.html',
+                controller: 'ComputersDeleteController'
             });
     }
 ]);
