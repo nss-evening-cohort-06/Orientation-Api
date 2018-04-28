@@ -16,7 +16,7 @@
         });
     };
 
-    const addDepartment = function (departments) {
+    const addDepartment = function (department) {
         return $q((resolve, reject) => {
             $http.post(`http://localhost:50482/api/departments`, JSON.stringify(department)).then(function (results) {
                 resolve(results);
