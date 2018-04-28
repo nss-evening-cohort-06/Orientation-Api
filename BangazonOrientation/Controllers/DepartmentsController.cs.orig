@@ -26,17 +26,17 @@ namespace BangazonOrientation.Controllers
 
             if (result)
                 return Request.CreateResponse(HttpStatusCode.Created);
-            return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, "Could not add new department");
+                return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, "Could not add new department");
 
         }
+<<<<<<< HEAD
 
-        [Route("{DepartmentID}"), HttpGet]
-        public HttpResponseMessage ViewDepartmentEmployees(int DepartmentID)
+        [Route, HttpPost]
+        public HttpResponseMessage ViewAssignedEmployees(DepartmentsDto department)
         {
             var repository = new DepartmentsRepository();
-            var result = repository.ListDepartmentEmployees(DepartmentID);
-
-            return Request.CreateResponse(HttpStatusCode.OK, result);
         }
+=======
+>>>>>>> master
     }
 }
