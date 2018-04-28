@@ -119,12 +119,15 @@
     <Content Include="App\Controllers\EmployeesController.js" />
     <Content Include="App\Controllers\HomeController.js" />
     <Content Include="App\Controllers\TrainingProgramsController.js" />
+    <Content Include="App\Controllers\TrainingProgramsDetailController.js" />
     <Content Include="App\Partials\Computers.html" />
     <Content Include="App\Partials\Departments.html" />
     <Content Include="App\Partials\Employees.html" />
     <Content Include="App\Partials\Home.html" />
     <Content Include="App\Partials\Nav.html" />
     <Content Include="App\Partials\TrainingPrograms.html" />
+    <Content Include="App\Partials\TrainingProgramsDetail.html" />
+    <Content Include="App\Services\ModelTransferService.js" />
     <Content Include="Content\bootstrap-grid.css" />
     <Content Include="Content\bootstrap-grid.min.css" />
     <Content Include="Content\bootstrap-reboot.css" />
@@ -216,7 +219,7 @@
     <Compile Include="Services\DbResponseEnum.cs" />
     <Compile Include="Models\EmployeeDto.cs" />
     <Compile Include="Services\EmployeeRepository.cs" />
-    <Compile Include="Models\Employees.cs" />
+    <Compile Include="Models\Employee.cs" />
     <Compile Include="Services\HttpResponseService.cs" />
     <Compile Include="Services\OrderPayment.cs" />
     <Compile Include="Services\OrderPlacement.cs" />

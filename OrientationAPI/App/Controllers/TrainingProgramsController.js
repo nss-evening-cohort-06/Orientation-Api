@@ -1,5 +1,5 @@
-﻿app.controller("TrainingProgramsController", ["$scope", "$http", "$location", "TrainingProgramService",
-    function ($scope, $http, $location, TrainingProgramService) {
+﻿app.controller("TrainingProgramsController", ["$scope", "$http", "$location", "TrainingProgramService", "ModelTransferService",
+    function ($scope, $http, $location, TrainingProgramService, ModelTransferService) {
 
         //get upcoming project
         var getUpcomingTraining = function() {
@@ -18,6 +18,14 @@
             })
         }
 
+        const updateTraining = function () {
+            TrainingProgramService.updateTraining($scope.program).then(function (results) {
+                console.log(results);
+            }).catch(function (err) {
+                console.log("error in updateTraining in controller", err); 
+            })
+        }
+
         $scope.navigateToAdd = function () {
             var currentLocation = $location.path();
             $location.path(`/TrainingAdd`);
@@ -27,12 +35,14 @@
             $location.path(`/Training`);
         }
 
+
         $scope.submitNewProgram = function () {
-            addTraining($scope.program);
-            $location.path(`/Training`);
+            addTraining();
+            $scope.navigateToList(); 
         }
 
-
-
+        $scope.programDetail = function (programId) {
+            $location.path(`/training/${programId}`);
+        }
     }
 ]);

@@ -37,5 +37,27 @@ namespace OrientationAPI.Services
                 return db.Query<TrainingProgram>(sql).ToList();
             }
         }
+
+        public List<TrainingProgram> GetTrainingProgramById(int programId)
+        {
+            using (var db = getDb())
+            {
+                db.Open();
+                var sql = "Select * From dbo.TrainingPrograms WHERE programId = @programId";
+                return db.Query<TrainingProgram>(sql, new { programId }).ToList();
+            }
+        }
+
+        public List<Employee> GetEmployeesByTrainingId(int employeeTrainingId)
+        {
+            using (var db = getDb())
+            {
+                db.Open();
+                var sql = @"Select * from dbo.Employees e
+                          JOIN dbo.Employee_Training et on e.EmployeeId = et.EmployeeId
+                          WHERE et.TrainingProgramId = @employeeTrainingId";
+                return db.Query<Employee>(sql, new { employeeTrainingId }).ToList(); 
+            }
+        }
     }
 }

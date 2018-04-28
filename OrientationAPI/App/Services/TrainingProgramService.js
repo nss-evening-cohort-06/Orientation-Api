@@ -25,5 +25,16 @@
             });
         });
     }
+
+    var getTrainingById = function (programId) {
+        return $q((resolve, reject) => {
+            $http.get(`http://localhost:50482/api/training/${programId}`).then(function (results) {
+                resolve(results);
+            }).catch(function (err) {
+                reject("error in getTrainingById in Service", err);
+            });
+        });
+    }
+
     return { getAllUpcomingPrograms, addTraining };
 });
