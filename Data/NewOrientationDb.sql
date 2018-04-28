@@ -144,7 +144,7 @@ GO
 SET QUOTED_IDENTIFIER ON
 GO
 CREATE TABLE [dbo].[Department](
-	[DepartmentID] [int] NOT NULL,
+	[DepartmentID] [int] IDENTITY(1,1) NOT NULL,
 	[Name] [varchar](50) NULL,
 	[Budget] [decimal](18, 0) NULL,
  CONSTRAINT [PK_Department] PRIMARY KEY CLUSTERED 
@@ -159,7 +159,7 @@ GO
 SET QUOTED_IDENTIFIER ON
 GO
 CREATE TABLE [dbo].[Employee](
-	[EmployeeID] [int] NOT NULL,
+	[EmployeeID] [int] IDENTITY(1,1) NOT NULL,
 	[FirstName] [varchar](50) NULL,
 	[LastName] [varchar](50) NULL,
 	[DepartmentID] [int] NULL,
@@ -176,7 +176,7 @@ GO
 SET QUOTED_IDENTIFIER ON
 GO
 CREATE TABLE [dbo].[EmployeeComputer](
-	[EmployeeComputerID] [int] NOT NULL,
+	[EmployeeComputerID] [int] IDENTITY(1,1) NOT NULL,
 	[AssignedDate] [datetime] NULL,
 	[ReturnedDate] [datetime] NULL,
 	[EmployeeID] [int] NULL,
@@ -193,7 +193,7 @@ GO
 SET QUOTED_IDENTIFIER ON
 GO
 CREATE TABLE [dbo].[EmployeeTraining](
-	[EmployeeTrainingID] [int] NOT NULL,
+	[EmployeeTrainingID] [int] IDENTITY(1,1) NOT NULL,
 	[EmployeeID] [int] NULL,
 	[TrainingProgramID] [int] NULL,
  CONSTRAINT [PK_EmployeeTraining] PRIMARY KEY CLUSTERED 
@@ -275,7 +275,7 @@ GO
 SET QUOTED_IDENTIFIER ON
 GO
 CREATE TABLE [dbo].[TrainingProgram](
-	[TrainingProgramID] [int] NOT NULL,
+	[TrainingProgramID] [int] IDENTITY(1,1) NOT NULL,
 	[MaxAttendees] [int] NULL,
 	[TrainingTitle] [varchar](50) NULL,
 	[Description] [varchar](50) NULL,
