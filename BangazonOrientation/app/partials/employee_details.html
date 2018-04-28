@@ -1,0 +1,12 @@
+﻿<div>
+    <div class="col-xs-12">
+        <h3>Current Employee</h3>
+        <h4>Name: {{employee.FirstName}} {{employee.LastName}}</h4>
+        <h4>Employee ID: {{employee.EmployeeID}}</h4>
+        <h4>Assigned Computer: {{employee.computer}}</h4>
+        <h4>Training Programs:</h4>
+        <ul ng-repeat="program in programs">
+            <li>{{program.name}}</li>
+        </ul>
+    </div>
+</div>
