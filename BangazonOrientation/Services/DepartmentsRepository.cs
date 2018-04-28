@@ -42,5 +42,19 @@ namespace BangazonOrientation.Services
             }
         }
 
+        public IEnumerable<EmployeesDto> ListDepartmentEmployees(int DepartmentID)
+        {
+            using (var db = GetConnection())
+            {
+                db.Open();
+                var getDepartmentEmployees = db.Query<EmployeesDto>(@"SELECT FirstName, LastName, EmployeeID 
+                                                                          FROM Employee 
+                                                                          join Department
+                                                                            on Department.DepartmentID = Employee.DepartmentID
+                                                                         WHERE Department.DepartmentID = @DepartmentID", new { DepartmentID });
+                return getDepartmentEmployees;
+            }
+        } 
+
     }
 }
