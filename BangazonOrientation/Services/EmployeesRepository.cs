@@ -48,6 +48,38 @@ namespace BangazonOrientation.Services
             }
         }
 
+        public EmployeesDto GetEmployeeById(int id)
+        {
+            using (var db = GetConnection())
+            {
+                db.Open();
+                var result = db.QueryFirstOrDefault<EmployeesDto>(@"SELECT [EmployeeID]
+                                                                          ,[FirstName]
+                                                                          ,[LastName]
+                                                                          ,[DepartmentID]
+                                                                          ,[StartDate]
+                                                                      FROM [dbo].[Employee]
+                                                                      WHERE EmployeeID = @id", new {id});
+
+                return result;
+            }
+        }
+
+        public bool Edit(EmployeesDto employee, int id)
+        {
+            using (var db = GetConnection())
+            {
+                db.Open();
+                var result = db.Execute(@"UPDATE [dbo].[Employee]
+                                             SET [FirstName] = @firstName
+                                                ,[LastName] = @lastName
+                                                ,[DepartmentID] = @departmentID
+                                                ,[StartDate] = @startDate
+                                          WHERE employeeID = @employeeID", new {employee, id});
+
+                return result == 1;
+            }
+        }
 
     }
 }
