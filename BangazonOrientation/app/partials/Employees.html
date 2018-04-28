@@ -1,0 +1,10 @@
+﻿<h2>All Employees</h2>
+<ul ng-repeat="employee in employees">
+    <li>
+        <a ng-click="employeeDetail(employee.EmployeeID)">
+            Computer ID: {{employee.EmployeeID}}, {{employee.FirstName}} {{employee.LastName}}
+            {{employee.StartDate}} {{employee.DepartmentID}}
+        </a>
+    </li>
+</ul>
+<button type="button" class="btn btn-default" ng-click="CreateNewEmployee()">Create New</button>
