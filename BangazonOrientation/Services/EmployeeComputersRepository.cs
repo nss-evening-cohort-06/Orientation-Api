@@ -21,5 +21,15 @@ namespace BangazonOrientation.Services
                 return result;
             }
         }
+        public EmployeeComputersDto GetByEmployeeId(int id)
+        {
+            using (var db = GetConnection())
+            {
+                db.Open();
+                var result = db.QueryFirstOrDefault<EmployeeComputersDto>(@"select * from EmployeeComputer where employeeID = @id", new { id });
+
+                return result;
+            }
+        }
     }
 }
