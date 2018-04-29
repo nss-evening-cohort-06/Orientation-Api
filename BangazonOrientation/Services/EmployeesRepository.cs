@@ -69,13 +69,14 @@ namespace BangazonOrientation.Services
         {
             using (var db = GetConnection())
             {
+                employee.EmployeeID = id;
                 db.Open();
                 var result = db.Execute(@"UPDATE [dbo].[Employee]
                                              SET [FirstName] = @firstName
                                                 ,[LastName] = @lastName
                                                 ,[DepartmentID] = @departmentID
                                                 ,[StartDate] = @startDate
-                                          WHERE employeeID = @employeeID", new {employee, id});
+                                          WHERE employeeID = @employeeID", employee);
 
                 return result == 1;
             }
