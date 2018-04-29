@@ -1,9 +1,8 @@
 ﻿<h2>All Employees</h2>
 <ul ng-repeat="employee in employees">
     <li>
-        <a ng-click="employeeDetail(employee.EmployeeID)">
-            Computer ID: {{employee.EmployeeID}}, {{employee.FirstName}} {{employee.LastName}}
-            {{employee.StartDate}} {{employee.DepartmentID}}
+        <a ng-click="employeesDetail(employee.EmployeeID)">
+            {{employee.FirstName}} {{employee.LastName}}, {{employee.Department}}
         </a>
     </li>
 </ul>

@@ -20,7 +20,7 @@ namespace BangazonOrientation.Services
             using (var db = GetConnection())
             {
                 db.Open();
-                var getEmployeeList = db.Query<EmployeesDto>(@"SELECT EmployeeID, FirstName, LastName, StartDate FROM Employee");
+                var getEmployeeList = db.Query<EmployeesDto>(@"SELECT EmployeeID, FirstName, LastName, StartDate, DepartmentID FROM Employee");
 
                 return getEmployeeList;
             }

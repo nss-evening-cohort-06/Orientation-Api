@@ -2,9 +2,8 @@
     function ($location, $routeParams, $scope, $http) {
 
         $http.get(`/api/employees/${$routeParams.id}`).then((result) => {
-            console.log(result);
             $scope.employee = result.data;
         });
-
+        //$http.get(`/api/`)
     }
 ]);
