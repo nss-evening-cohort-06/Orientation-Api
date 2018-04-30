@@ -35,6 +35,14 @@ namespace OrientationAPI.Controllers
             var dbResults = repo.GetTrainingProgramById(trainingId);
             return Request.CreateListRecordsResponse(dbResults);
         }
+
+        [Route, HttpPut]
+        public HttpResponseMessage Update(TrainingProgram dto)
+        {
+            var repo = new TrainingRepository();
+            var dbResult = repo.Update(dto);
+            return Request.CreateUpdateRecordResponse(dbResult);
+        }
     }
 
 }

@@ -12,7 +12,7 @@
             </tr>
         </thead>
         <tbody>
-            <tr ng-click="navigateToDetail(program)" ng-repeat="program in programs">
+            <tr ng-click="navigateToDetail(program.ProgramId)" ng-repeat="program in programs">
                 <td>{{program.Name}}</td>
                 <td>{{program.Description}}</td>
                 <td>{{program.StartDate | amDateFormat:'MMMM DD YYYY'}}</td>

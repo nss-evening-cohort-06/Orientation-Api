@@ -8,7 +8,6 @@
                 Object.keys(programs).forEach(function (key) {
                     programsList.push(programs[key]);
                     });
-                console.log(programsList);
                 resolve(programsList);
             }).catch(function (err) {
                 reject("error in getAllUpcomingProgram in Service", err);
@@ -29,12 +28,22 @@
     var getTrainingById = function (programId) {
         return $q((resolve, reject) => {
             $http.get(`http://localhost:50482/api/training/${programId}`).then(function (results) {
-                resolve(results);
+                resolve(results.data[0]);
             }).catch(function (err) {
                 reject("error in getTrainingById in Service", err);
             });
         });
     }
 
-    return { getAllUpcomingPrograms, addTraining };
+
+    var updateTraining = function (program) {
+        return $q((resolve, reject) => {
+            $http.put(`http://localhost:50482/api/training`, JSON.stringify(program)).then(function (results) {
+                resolve(results);
+            }).catch(function (err) {
+                reject("error in getTrainingById in Service", err);
+            });
+        });
+    }
+    return { getAllUpcomingPrograms, addTraining, getTrainingById, updateTraining };
 });

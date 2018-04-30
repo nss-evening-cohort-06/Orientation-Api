@@ -48,6 +48,22 @@ namespace OrientationAPI.Services
             }
         }
 
+        internal int Update(TrainingProgram dto)
+        {
+            using (var db = getDb())
+            {
+                db.Open();
+                var sql = @"UPDATE [dbo].[TrainingPrograms]
+                               SET [Name] = @name
+                                  ,[StartDate] = @startDate
+                                  ,[EndDate] = @endDate
+                                  ,[MaxAttendees] = @maxAttendees
+                                  ,[Description] = @Description
+                             WHERE ProgramId = @programId";
+                return db.Execute(sql, dto);
+            }
+        }
+
         public List<Employee> GetEmployeesByTrainingId(int employeeTrainingId)
         {
             using (var db = getDb())
