@@ -1,5 +1,5 @@
-﻿app.controller("EmployeesController", ["$scope", "$http", "$location", "EmployeeService",
-    function ($scope, $http, $location, EmployeeService) {
+﻿app.controller("EmployeesController", ["$scope", "$http", "$location",
+    function ($scope, $http, $location) {
         $scope.header = "Employees";
 
         $http.get("/api/employees").then(function (result) {
@@ -14,17 +14,20 @@
             console.log(err);
         });
 
+        $hhtp.get("/api/employees/employee-details")
+
         $scope.navigateToCreateEmployee = function () {
             $location.path(`/CreateEmployee`);
-        }
+        };
 
         $scope.navigateToEmployees = function () {
             $location.path('/employees');
-        }
+        };
 
-        //$scope.submitNewEmployee = function () {
-        //    addEmployee($scope.employee);
-        //    $location.path('/employees');
-        //}
+        $scope.employeeDetails = function () {
+            $location.path('/employee-details');
+        };
+
+        
     }
 ]);

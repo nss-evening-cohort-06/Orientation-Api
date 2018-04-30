@@ -122,6 +122,7 @@
     <Content Include="App\Partials\Computers.html" />
     <Content Include="App\Partials\CreateEmployee.html" />
     <Content Include="App\Partials\Departments.html" />
+    <Content Include="App\Partials\EmployeeDetails.html" />
     <Content Include="App\Partials\Employees.html" />
     <Content Include="App\Partials\Home.html" />
     <Content Include="App\Partials\Nav.html" />

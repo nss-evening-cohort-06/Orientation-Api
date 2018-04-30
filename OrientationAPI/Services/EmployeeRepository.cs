@@ -84,5 +84,21 @@ namespace OrientationAPI.Services
 
 			}
 		}
+
+		public EmployeeDto GetEmployee(int employeeId)
+		{ 
+
+			using (var db = new SqlConnection(ConfigurationManager.ConnectionStrings["BRBangazon"].ConnectionString))
+			{
+				db.Open();
+
+				
+				return db.QueryFirst<EmployeeDto>( @"select *
+							from Employees
+						    WHERE EmployeeId = @employeeId", new { employeeId });
+
+
+			}
+		}
 	}
 }

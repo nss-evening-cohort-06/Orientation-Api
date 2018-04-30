@@ -16,6 +16,12 @@ app.config(["$routeProvider", function ($routeProvider) {
             templateUrl: "/app/partials/CreateEmployee.html",
             controller: "EmployeesController"
         })
+        .when("/employee-details",
+        {
+            templateUrl: "/app/partials/EmployeeDetails.html",
+            controller: "EmployeesController"
+
+        })
         .when("/Training",
         {
             templateUrl: "/app/partials/trainingprograms.html",
