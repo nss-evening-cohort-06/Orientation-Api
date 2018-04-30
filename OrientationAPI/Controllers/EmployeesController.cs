@@ -31,6 +31,7 @@ namespace OrientationAPI.Controllers
 		[Route("employee-details/{employeeId}"), HttpGet]
 		public HttpResponseMessage GetEmployeeDetails(int employeeId)
 		{
+		
 			var repo = new EmployeeRepository();
 			var result = repo.GetEmployee(employeeId);
 			return Request.CreateResponse(result);

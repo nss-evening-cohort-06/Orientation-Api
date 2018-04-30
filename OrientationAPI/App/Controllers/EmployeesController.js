@@ -14,7 +14,12 @@
             console.log(err);
         });
 
-        $hhtp.get("/api/employees/employee-details")
+        $http.get("/api/employees/employee-details").then(function (result) {
+            console.log($scope);
+            $scope.employee = results.data;
+        }).catch(function (err) {
+            console.log(err);
+        });
 
         $scope.navigateToCreateEmployee = function () {
             $location.path(`/CreateEmployee`);
@@ -24,8 +29,8 @@
             $location.path('/employees');
         };
 
-        $scope.employeeDetails = function () {
-            $location.path('/employee-details');
+        $scope.employeeDetails = function (employeeId) {
+            $location.path(`/employee-details/${employeeId}`);
         };
 
         
