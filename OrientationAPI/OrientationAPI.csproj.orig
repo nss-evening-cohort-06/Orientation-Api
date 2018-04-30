@@ -127,11 +127,15 @@
     <Content Include="App\Partials\Employees.html" />
     <Content Include="App\Partials\Home.html" />
     <Content Include="App\Partials\Nav.html" />
+<<<<<<< HEAD
     <Content Include="App\Partials\TrainingPrograms\Form.html" />
     <Content Include="App\Partials\TrainingPrograms\Index.html" />
-    <Content Include="App\Services\DepartmentService.js" />
     <Content Include="App\Partials\TrainingPrograms\Edit.html" />
     <Content Include="App\Services\ModelTransferService.js" />
+=======
+    <Content Include="App\Partials\TrainingPrograms.html" />
+    <Content Include="App\Services\DepartmentService.js" />
+>>>>>>> master
     <Content Include="Content\bootstrap-grid.css" />
     <Content Include="Content\bootstrap-grid.min.css" />
     <Content Include="Content\bootstrap-reboot.css" />

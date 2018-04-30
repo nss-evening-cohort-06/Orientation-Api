@@ -30,13 +30,13 @@ namespace OrientationAPI.Services
 			}
 		}
 		 
-		public IEnumerable<Employees> GetAll()
+		public IEnumerable<Employee> GetAll()
 		{
 			using (var db = new SqlConnection(ConfigurationManager.ConnectionStrings["BRBangazon"].ConnectionString))
 			{
 				db.Open();
 
-				return db.Query<Employees>(@"select e.FirstName, e.LastName, d.Name
+				return db.Query<Employee>(@"select e.FirstName, e.LastName, d.Name
 											 from dbo.Employees e
 												join Departments d
 												on e.DepartmentId = d.DepartmentId");
@@ -44,7 +44,7 @@ namespace OrientationAPI.Services
 			}
 		}
 
-		public int UpdateEmployee(Employees employee)
+		public int UpdateEmployee(Employee employee)
 		{
 			using (var db = new SqlConnection(ConfigurationManager.ConnectionStrings["BRBangazon"].ConnectionString))
 			{
@@ -59,7 +59,7 @@ namespace OrientationAPI.Services
 			}
 		}
 
-		public int UpdateComputer(Employees employee)
+		public int UpdateComputer(Employee employee)
 		{
 			using (var db = new SqlConnection(ConfigurationManager.ConnectionStrings["BRBangazon"].ConnectionString))
 			{
@@ -72,7 +72,7 @@ namespace OrientationAPI.Services
 			}
 		}
 
-		public int UpdateTrainingProgram(Employees employee)
+		public int UpdateTrainingProgram(Employee employee)
 		{
 			using (var db = new SqlConnection(ConfigurationManager.ConnectionStrings["BRBangazon"].ConnectionString))
 			{
