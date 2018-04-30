@@ -1,7 +1,7 @@
 ﻿app.controller("EmployeeDetailController", ["$location", "$routeParams", "$scope", "$http",
     function ($location, $routeParams, $scope, $http) {
 
-        var hasComputer = true;
+        $scope.hasComputer = true;
 
         $http.get(`/api/employees/${$routeParams.id}`).then((result) => {
             $scope.employee = result.data;
@@ -11,7 +11,7 @@
         $http.get(`/api/EmployeeComputers/${$routeParams.id}/employee`).then((result) => {
             // if the result comes back empty give the user a message that they don't have a computer assigned right now
             if (result === null) {
-                return hasComputer = false;
+                return $scope.hasComputer = false;
             }
 
             var employeeComputer = result.data;
@@ -31,7 +31,6 @@
                 $scope.employee.computerID = result.data.ComputerID;
                 $scope.employee.computerManufacturer = result.data.Manufacturer;
                 $scope.employee.computerMake = result.data.Make;
-        console.log($scope.employee);
             });
         }
 
