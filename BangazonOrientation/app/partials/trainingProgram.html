@@ -1,0 +1,10 @@
+﻿<h2>All Computers</h2>
+<ul ng-repeat="course in trainingPrograms">
+    <li>
+        <a ng-click="trainingProgramDetails(course.TrainingProgramID)">
+            Computer ID: {{course.TrainingTitle}}
+        </a>
+        <p>Start: {{course.StartDate}}, End: {{course.EndDate}}, Max Enrollment: {{course.MaxAttendees}}</p>
+    </li>
+</ul>
+<!-- <button type="button" class="btn btn-default" ng-click="CreateNewComputer()">Create New</button> -->

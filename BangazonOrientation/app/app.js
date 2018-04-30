@@ -27,6 +27,16 @@ app.config([
             {
                 templateUrl: '/app/partials/computers_delete.html',
                 controller: 'ComputersDeleteController'
+            })
+            .when("/employees",
+            {
+                templateUrl: '/app/partials/employees.html',
+                controller: 'EmployeeController'
+            })
+            .when("/training"
+            {
+                templateUrl: '/app/partials/trainingProgram.html',
+                controller: 'TrainingProgramController'
             });
     }
 ]);
