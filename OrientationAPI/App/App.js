@@ -24,16 +24,24 @@ app.config(["$routeProvider", function ($routeProvider) {
         })
         .when("/Training",
         {
-            templateUrl: "/app/partials/trainingprograms.html",
-            controller: "TrainingProgramsController"
+            templateUrl: "/app/partials/trainingPrograms/index.html",
+            controller: "TrainingPrograms/IndexController"
         })
-        .when("/TrainingAdd",
+        .when("/Training/Add",
         {
-            templateUrl: "/app/partials/TrainingProgramsAdd.html"
+            templateUrl: "/app/partials/trainingPrograms/add.html"
+        })
+        .when("/training/:id", {
+            templateUrl: "/app/partials/trainingPrograms/edit.html"
         })
         .when("/Departments",
         {
             templateUrl: "/app/partials/Departments.html",
+            controller: "DepartmentController"
+        })
+        .when("/DepartmentsAdd",
+        {
+            templateUrl: "/app/partials/DepartmentsAdd.html",
             controller: "DepartmentController"
         })
 
