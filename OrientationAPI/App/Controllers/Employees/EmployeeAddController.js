@@ -5,7 +5,7 @@
             $scope.departments = result.data;
         }).catch(function (err) {
             console.log(err);
-            });
+        });
 
         $scope.addNewEmployee = function () {
 
