@@ -13,13 +13,21 @@
 
         const getTrainingById = function () {
             TrainingProgramService.getTrainingById($routeParams.id).then(function (results) {
-                console.log(results);
                 results.StartDate = new Date(results.StartDate);
                 results.EndDate = new Date(results.EndDate);
                 $scope.program = results;
                 $scope.programName = angular.copy($scope.program.Name)
             }).catch(function (err) {
                 console.log("error in updateTraining in controller", err);
+            })
+        };
+
+        $scope.deleteTraining = function () {
+            TrainingProgramService.deleteTraining($routeParams.id).then(function (results) {
+                console.log(results);
+                $scope.navigateToList(); 
+            }).catch(function (err) {
+                console.log("error in deleteTraining in controller", err);
             })
         };
 
@@ -36,10 +44,10 @@
         $scope.toggleEditMode = function () {
             $scope.formDisabled = !$scope.formDisabled;
             getTrainingById();
-        }       
+        }
 
-
-
-
+        $scope.isFutureTraining = function () {
+            return ($scope.program.StartDate > new Date(Date.now())) ? true : false;
+        };
     }
 ]);
