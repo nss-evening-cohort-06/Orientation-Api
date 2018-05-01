@@ -42,6 +42,5 @@ namespace OrientationAPI.Controllers
 			var result = repo.GetTraining(employeeId);
 			return Request.CreateListRecordsResponse(result);
 		}
-
 	}
 }
