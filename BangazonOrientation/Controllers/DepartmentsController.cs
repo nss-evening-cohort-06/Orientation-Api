@@ -31,7 +31,7 @@ namespace BangazonOrientation.Controllers
         }
 
         [Route("{DepartmentID}"), HttpGet]
-        public HttpResponseMessage ViewDepartmentEmployees(int DepartmentID)
+        public HttpResponseMessage ViewDepartmentEmployees(string DepartmentID)
         {
             var repository = new DepartmentsRepository();
             var result = repository.ListDepartmentEmployees(DepartmentID);
