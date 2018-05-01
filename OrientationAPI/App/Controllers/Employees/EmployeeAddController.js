@@ -10,7 +10,6 @@
         $scope.addNewEmployee = function () {
 
             $scope.employee.DepartmentId = $scope.department.DepartmentId.DepartmentId;
-            console.log($scope.employee);
             EmployeeService.addEmployee($scope.employee).then(function () {
                 $scope.navigateToEmployees();
             }).catch(function (err) {
