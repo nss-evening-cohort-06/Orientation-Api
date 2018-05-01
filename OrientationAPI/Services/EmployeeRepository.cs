@@ -37,7 +37,7 @@ namespace OrientationAPI.Services
 			{
 				db.Open();
 
-				return db.Query<Employee>(@"select e.FirstName, e.LastName, d.Name DepartmentName
+				return db.Query<Employee>(@"select e.FirstName, e.LastName, d.Name DepartmentName, e.EmployeeId
 											 from dbo.Employees e
 												join Departments d
 												on e.DepartmentId = d.DepartmentId");
