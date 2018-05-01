@@ -298,6 +298,8 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Views\Computer\" />
+    <Folder Include="Views\Departments\" />
+    <Folder Include="Views\Employees\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.eot" />

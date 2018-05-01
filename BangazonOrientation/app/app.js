@@ -32,6 +32,11 @@ app.config([
             {
                 templateUrl: '/app/partials/employees.html',
                 controller: 'EmployeeController'
+            })
+            .when("/employees/new",
+            {
+                templateUrl: '/app/partials/new_employee.html',
+                controller: 'NewEmployeeController'
             });
     }
 ]);
