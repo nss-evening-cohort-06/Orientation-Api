@@ -1,28 +1,15 @@
-﻿app.service("EmployeeService", function ($http, $q, $rootScope, EmployeeRepository) {
+﻿app.service("EmployeeService", function ($http, $q, $rootScope) {
 
-    //const employee = function (employee) {
-    //    return {
-    //        "FirstName": employee.FirstName,
-    //        "LastName": employee.LastName,
-    //        "EmployeeStartDate": employee.EmployeeStartDate,
-    //        "DepartmentId": employee.DepartmentId
-    //    };
-    //};
+    const addEmployee = function (employee) {
+        return $q((resolve, reject) => {
+            $http.post(`http://localhost:50482/api/employees/create`, JSON.stringify(employee)).then(function (results) {
+                resolve(results);
+            }).catch(function (err) {
+                reject("error in addEmployee in Service", err);
+            });
+        });
+    }
 
-    //const createNewEmployee = (employee){
-    //    EmployeeRepository.Create(employee);
-    //}
+    return { addEmployee };
 
-    //const addNewEmployee = function (employee) {
-    //    return $q((resolve, reject) => {
-    //        $http.post(`http://localhost:50482/api/employees`, JSON.stringify(employee)).then(function (results) {
-    //            resolve(results);
-    //        }).catch(function (err) {
-    //            reject("error in addEmployee in Service", err);
-    //        });
-    //    });
-    //}
-
-
-    //return { addEmployee }
 });
