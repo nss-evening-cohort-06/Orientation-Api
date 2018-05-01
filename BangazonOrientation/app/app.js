@@ -27,6 +27,21 @@ app.config([
             {
                 templateUrl: '/app/partials/computers_delete.html',
                 controller: 'ComputersDeleteController'
+            })
+            .when("/departments",
+            {
+                templateUrl: '/app/partials/departments.html',
+                controller: 'DepartmentsController'
+            })
+            .when("/departments/new",
+            {
+                templateUrl: '/app/partials/new_department.html',
+                controller: 'NewDepartmentsController'
+            })
+            .when("/departments/:id",
+            {
+                templateUrl: '/app/partials/departments_detail.html',
+                controller: 'DepartmentsDetailController'
             });
     }
 ]);

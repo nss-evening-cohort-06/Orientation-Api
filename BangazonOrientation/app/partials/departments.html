@@ -1,0 +1,9 @@
+﻿<h2>All Departments</h2>
+<ul ng-repeat="department in departments">
+    <li>
+        <a ng-click="departmentDetail(department.DepartmentID)">
+            Department ID: {{department.DepartmentID}}, {{department.Name}}
+        </a>
+    </li>
+</ul>
+<button type="button" class="btn btn-default" ng-click="CreateNewDepartment()">Create New Department</button>
