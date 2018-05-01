@@ -65,12 +65,12 @@ namespace BangazonOrientation.Services
             }
         }
 
-        public EmployeeComputersDto GetEmployeeComputer(int id)
+        public EmployeeDetailsDto GetEmployeeComputer(int id)
         {
             using (var db = GetConnection())
             {
                 db.Open();
-                var result = db.QueryFirstOrDefault<EmployeeComputersDto>(@"SELECT Employee.FirstName
+                var result = db.QueryFirstOrDefault<EmployeeDetailsDto>(@"SELECT Employee.FirstName
                                                                                     ,Employee.LastName 
                                                                                     ,Employee.EmployeeID
                                                                                     ,Employee.StartDate 
@@ -78,9 +78,13 @@ namespace BangazonOrientation.Services
                                                                                     ,Computer.Manufacturer
                                                                                     ,Computer.Make
                                                                                     ,Computer.ComputerID
+                                                                                    ,TrainingProgram.TrainingTitle
+                                                                                    ,TrainingProgram.StartDate as TrainingStartDate
 	                                                                        FROM dbo.EmployeeComputer
 	                                                                        JOIN dbo.Computer on EmployeeComputer.ComputerID = Computer.ComputerID
 	                                                                        JOIN dbo.Employee on EmployeeComputer.EmployeeID = Employee.EmployeeID
+                                                                            JOIN dbo.EmployeeTraining on Employee.EmployeeID = EmployeeTraining.EmployeeID
+                                                                            JOIN dbo.TrainingProgram on EmployeeTraining.TrainingProgramID = TrainingProgram.TrainingProgramID
                                                                             WHERE Employee.EmployeeID = @id", new { id });
                 return result;
             }

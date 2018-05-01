@@ -1,8 +1,9 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace BangazonOrientation.Services
 {
-    public class EmployeeComputersDto
+    public class EmployeeDetailsDto
     {
         public string FirstName { get; set; }
         public string LastName { get; set; }
@@ -12,5 +13,7 @@ namespace BangazonOrientation.Services
         public int ComputerID { get; set; }
         public string Manufacturer { get; set; }
         public string Make { get; set; }
+        public string TrainingTitle { get; set; }
+        public DateTime TrainingStartDate { get; set; }
     }
 }
