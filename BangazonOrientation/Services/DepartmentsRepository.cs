@@ -31,12 +31,10 @@ namespace BangazonOrientation.Services
             {
                 db.Open();
                 var records = db.Execute(@"INSERT INTO [dbo].[Department]
-                                                     ([DepartmentID]
-                                                     ,[Name]
+                                                     ([Name]
                                                      ,[Budget])
                                                 VALUES
-                                                     (@DepartmentID
-                                                     ,@Name
+                                                     (@Name
                                                      ,@Budget)", department);
                 return records == 1;
             }
