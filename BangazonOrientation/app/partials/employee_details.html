@@ -3,7 +3,7 @@
         <h3>Current Employee</h3>
         <h4>Name: {{employee.FirstName}} {{employee.LastName}}</h4>
         <h4>Employee ID: {{employee.EmployeeID}}</h4>
-        <h4 ng-if="hasComputer">Assigned Computer: ID #{{employee.computerID}}, {{employee.computerManufacturer}} {{employee.computerMake}}</h4>
+        <h4 ng-if="hasComputer">Assigned Computer: ID #{{employee.ComputerID}}, {{employee.Manufacturer}} {{employee.Make}}</h4>
         <h4 ng-if="!hasComputer">No computer currently assigned</h4>
         <h4>Training Programs:</h4>
         <ul ng-repeat="program in programs">

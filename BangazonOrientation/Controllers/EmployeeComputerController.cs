@@ -28,7 +28,7 @@ namespace BangazonOrientation.Controllers
 
             return (result != null)
                 ? Request.CreateResponse(HttpStatusCode.OK, result)
-                : Request.CreateErrorResponse(HttpStatusCode.InternalServerError, "Could not get computer by employee ID");
-        }
+                : Request.CreateResponse(HttpStatusCode.NoContent, result = null);
+                }
     }
 }

@@ -14,7 +14,7 @@ namespace BangazonOrientation.Services
             return new SqlConnection(ConfigurationManager.ConnectionStrings["BangazonOrientation"].ConnectionString);
         }
 
-        
+
         public IEnumerable<EmployeesDto> ListAllEmployees()
         {
             using (var db = GetConnection())
@@ -25,7 +25,7 @@ namespace BangazonOrientation.Services
                 return getEmployeeList;
             }
         }
-        
+
         public bool Create(EmployeesDto employee)
         {
             using (var db = GetConnection())
@@ -59,8 +59,29 @@ namespace BangazonOrientation.Services
                                                                           ,[DepartmentID]
                                                                           ,[StartDate]
                                                                       FROM [dbo].[Employee]
-                                                                      WHERE EmployeeID = @id", new {id});
+                                                                      WHERE EmployeeID = @id", new { id });
 
+                return result;
+            }
+        }
+
+        public EmployeeComputersDto GetEmployeeComputer(int id)
+        {
+            using (var db = GetConnection())
+            {
+                db.Open();
+                var result = db.QueryFirstOrDefault<EmployeeComputersDto>(@"SELECT Employee.FirstName
+                                                                                    ,Employee.LastName 
+                                                                                    ,Employee.EmployeeID
+                                                                                    ,Employee.StartDate 
+                                                                                    ,Employee.DepartmentID 
+                                                                                    ,Computer.Manufacturer
+                                                                                    ,Computer.Make
+                                                                                    ,Computer.ComputerID
+	                                                                        FROM dbo.EmployeeComputer
+	                                                                        JOIN dbo.Computer on EmployeeComputer.ComputerID = Computer.ComputerID
+	                                                                        JOIN dbo.Employee on EmployeeComputer.EmployeeID = Employee.EmployeeID
+                                                                            WHERE Employee.EmployeeID = @id", new { id });
                 return result;
             }
         }

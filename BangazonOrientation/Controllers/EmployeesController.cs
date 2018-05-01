@@ -49,5 +49,16 @@ namespace BangazonOrientation.Controllers
 
             return Request.CreateResponse(HttpStatusCode.OK, result);
         }
+
+        [Route("{id}/computer"), HttpGet]
+        public HttpResponseMessage GetEmployeeComputer(int id)
+        {
+            var repo = new EmployeesRepository();
+            var result = repo.GetEmployeeComputer(id);
+
+            if (result != null)
+                return Request.CreateResponse(HttpStatusCode.OK, result);
+            return GetEmployee(id);
+        }
     }
 }
