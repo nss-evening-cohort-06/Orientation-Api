@@ -6,8 +6,8 @@
         <h4 ng-if="hasComputer">Assigned Computer: ID #{{employee.ComputerID}}, {{employee.Manufacturer}} {{employee.Make}}</h4>
         <h4 ng-if="!hasComputer">No computer currently assigned</h4>
         <h4>Training Programs:</h4>
-        <!--ng-repeat="program in programs"-->
-        <ul >
+        <!--ng-repeat="program in employee"-->
+        <ul>
             <li>{{employee.TrainingTitle}} - {{employee.TrainingStartDate}}</li>
         </ul>
     </div>
