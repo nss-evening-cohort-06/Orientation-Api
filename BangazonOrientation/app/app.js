@@ -29,9 +29,12 @@ app.config([
                 controller: 'ComputersDeleteController'
             })
             .when("/departments",
+            .when("/employees",
             {
                 templateUrl: '/app/partials/departments.html',
                 controller: 'DepartmentsController'
+                templateUrl: '/app/partials/employees.html',
+                controller: 'EmployeeController'
             })
             .when("/departments/new",
             {
