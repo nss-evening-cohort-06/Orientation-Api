@@ -227,6 +227,7 @@
     <Content Include="app\Controllers\EmployeeController.js" />
     <Content Include="app\Controllers\HomeController.js" />
     <Content Include="app\Controllers\NewComputersController.js" />
+    <Content Include="app\Controllers\NewEmployeeController.js" />
     <Content Include="app\partials\computers.html" />
     <Content Include="app\partials\computers_delete.html" />
     <Content Include="app\partials\computers_detail.html" />
