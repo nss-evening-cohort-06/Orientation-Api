@@ -42,7 +42,7 @@ namespace BangazonOrientation.Services
             }
         }
 
-        public IEnumerable<EmployeesDto> ListDepartmentEmployees(int DepartmentID)
+        public IEnumerable<EmployeesDto> ListDepartmentEmployees(string DepartmentID)
         {
             using (var db = GetConnection())
             {
@@ -51,7 +51,7 @@ namespace BangazonOrientation.Services
                                                                           FROM Employee 
                                                                           join Department
                                                                             on Department.DepartmentID = Employee.DepartmentID
-                                                                         WHERE Department.DepartmentID = @DepartmentID", new { DepartmentID });
+                                                                         WHERE Department.Name = @DepartmentID", new { DepartmentID });
                 return getDepartmentEmployees;
             }
         } 
