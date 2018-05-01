@@ -3,8 +3,6 @@
 
         $http.get("/api/employees/").then(function (result) {
             $scope.employees = result.data;
-
-            getDepartments();
         });
 
         $scope.employeesDetail = (employeeId) => {
@@ -14,29 +12,6 @@
         $scope.AddNewEmployee = () => {
             $location.path(`/employees/new`);
         };
-
-        getDepartments = () => {
-
-            $http.get(`/api/departments/`).then(function (result) {
-                var departmentsData = result.data;
-
-                return addDepartmentToEmployee(departmentsData);
-            })
-        }
-
-        addDepartmentToEmployee = (departmentsData) => {
-            var employees = $scope.employees;
-
-            for (var employee in employees) {
-                for (department in departmentsData) {
-
-                    if (employees[employee].DepartmentID === departmentsData[department].DepartmentID) {
-                        $scope.employees[employee].Department = departmentsData[department].Name;
-                    }
-
-                };
-            }
-        };
-
+    
     }
 ]);
