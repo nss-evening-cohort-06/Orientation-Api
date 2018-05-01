@@ -116,17 +116,18 @@
   <ItemGroup>
     <Content Include="App\App.js" />
     <Content Include="App\Controllers\DepartmentController.js" />
-    <Content Include="App\Controllers\EmployeesController.js" />
+    <Content Include="App\Controllers\Employees\EmployeeDetailsController.js" />
+    <Content Include="App\Controllers\Employees\EmployeesController.js" />
     <Content Include="App\Controllers\HomeController.js" />
     <Content Include="App\Controllers\TrainingPrograms\EditController.js" />
     <Content Include="App\Controllers\TrainingPrograms\IndexController.js" />
     <Content Include="App\Controllers\TrainingPrograms\AddController.js" />
     <Content Include="App\Partials\Computers.html" />
-    <Content Include="App\Partials\CreateEmployee.html" />
+    <Content Include="App\Partials\Employees\CreateEmployee.html" />
     <Content Include="App\Partials\Departments.html" />
-    <Content Include="App\Partials\EmployeeDetails.html" />
+    <Content Include="App\Partials\Employees\EmployeeDetails.html" />
     <Content Include="App\Partials\DepartmentsAdd.html" />
-    <Content Include="App\Partials\Employees.html" />
+    <Content Include="App\Partials\Employees\Employees.html" />
     <Content Include="App\Partials\Home.html" />
     <Content Include="App\Partials\Nav.html" />
     <Content Include="App\Partials\TrainingPrograms\Form.html" />

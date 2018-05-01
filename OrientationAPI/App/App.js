@@ -8,18 +8,18 @@ app.config(["$routeProvider", function ($routeProvider) {
         })
         .when("/employees",
         {
-            templateUrl: "/app/partials/Employees.html",
+            templateUrl: "/app/partials/Employees/Employees.html",
             controller: "EmployeesController"
         })
         .when("/CreateEmployee",
         {
-            templateUrl: "/app/partials/CreateEmployee.html",
+            templateUrl: "/app/partials/Employees/CreateEmployee.html",
             controller: "EmployeesController"
         })
         .when("/employee-details/:id",
         {
-            templateUrl: "/app/partials/EmployeeDetails.html",
-            controller: "EmployeesController"
+            templateUrl: "/app/partials/Employees/EmployeeDetails.html",
+            controller: "Employees/EmployeeDetailsController"
 
         })
         .when("/Training",
