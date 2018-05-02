@@ -98,13 +98,13 @@ namespace OrientationAPI.Services
 							from Employees e
 								join Departments d
 								on d.DepartmentId = e.DepartmentId
-								join Employee_Training x
+								left join Employee_Training x
 								on e.EmployeeId = x.EmployeeId
-								join TrainingPrograms t
+								left join TrainingPrograms t
 								on x.TrainingProgramId = t.ProgramId
-								join Employee_Computers c
-								on c.EmployeeId = e.EmployeeId
-								join Computers y
+								left join Employee_Computers c
+								on e.EmployeeId = c.EmployeeId
+								left join Computers y
 								on y.ComputerId = c.ComputerId
 						    WHERE e.EmployeeId = @employeeId", new { employeeId });
 
