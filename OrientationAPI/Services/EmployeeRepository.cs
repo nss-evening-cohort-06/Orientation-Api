@@ -31,7 +31,7 @@ namespace OrientationAPI.Services
 			}
 		}
 		 
-		public IEnumerable<Employee> GetAll()
+		public List<Employee> GetAll()
 		{
 			using (var db = new SqlConnection(ConfigurationManager.ConnectionStrings["BRBangazon"].ConnectionString))
 			{
@@ -40,7 +40,7 @@ namespace OrientationAPI.Services
 				return db.Query<Employee>(@"select e.FirstName, e.LastName, d.Name DepartmentName, e.EmployeeId
 											 from dbo.Employees e
 												join Departments d
-												on e.DepartmentId = d.DepartmentId");
+												on e.DepartmentId = d.DepartmentId").ToList();
 
 			}
 		}
@@ -112,7 +112,7 @@ namespace OrientationAPI.Services
 			}
 		}
 
-		public IEnumerable<TrainingProgram>GetTraining(int employeeId)
+		public List<TrainingProgram>GetTraining(int employeeId)
 		{
 			using (var db = new SqlConnection(ConfigurationManager.ConnectionStrings["BRBangazon"].ConnectionString))
 			{
@@ -125,7 +125,7 @@ namespace OrientationAPI.Services
 											on e.EmployeeId = t.EmployeeId
 											join TrainingPrograms p
 											on t.TrainingProgramId = p.ProgramId
-											where e.EmployeeId = @employeeId", new { employeeId });
+											where e.EmployeeId = @employeeId", new { employeeId }).ToList();
 
 			}
 		}
