@@ -206,13 +206,13 @@
     <Compile Include="Models\ComputersDto.cs" />
     <Compile Include="Models\CustomersDto.cs" />
     <Compile Include="Models\DepartmentsDto.cs" />
+    <Compile Include="Models\EmployeeDetailsDto.cs" />
     <Compile Include="Models\EmployeesDto.cs" />
     <Compile Include="Models\OrdersDto.cs" />
     <Compile Include="Models\ProductsDto.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\ComputersRepository.cs" />
     <Compile Include="Services\CustomersRepository.cs" />
-    <Compile Include="Models\EmployeeComputersDto.cs" />
     <Compile Include="Services\DepartmentsRepository.cs" />
     <Compile Include="Services\EmployeeComputersRepository.cs" />
     <Compile Include="Services\EmployeesRepository.cs" />
@@ -225,11 +225,12 @@
     <Content Include="app\Controllers\ComputersDeleteController.js" />
     <Content Include="app\Controllers\ComputersDetailController.js" />
 <<<<<<< HEAD
-    <Content Include="app\Controllers\DepartmentsController.js" />
-    <Content Include="app\Controllers\DepartmentsDetailController.js" />
+    <Content Include="app\Controllers\EmployeeDetailController.js" />
 =======
-    <Content Include="app\Controllers\EmployeeController.js" />
+    <Content Include="app\Controllers\DepartmentsController.js" />
 >>>>>>> master
+    <Content Include="app\Controllers\EmployeeController.js" />
+    <Content Include="app\Controllers\DepartmentsDetailController.js" />
     <Content Include="app\Controllers\HomeController.js" />
     <Content Include="app\Controllers\NewComputersController.js" />
     <Content Include="app\Controllers\NewDepartmentsController.js" />
@@ -237,17 +238,16 @@
     <Content Include="app\partials\computers_delete.html" />
     <Content Include="app\partials\computers_detail.html" />
 <<<<<<< HEAD
+    <Content Include="app\partials\employee_details.html" />
+=======
     <Content Include="app\partials\departments.html" />
+>>>>>>> master
+    <Content Include="app\partials\employees.html" />
     <Content Include="app\partials\departments_detail.html" />
     <Content Include="app\partials\index.html" />
     <Content Include="app\partials\new_computer.html" />
     <Content Include="app\partials\new_department.html" />
-=======
-    <Content Include="app\partials\employees.html" />
-    <Content Include="app\partials\index.html" />
-    <Content Include="app\partials\new_computer.html" />
     <Content Include="app\partials\new_employee.html" />
->>>>>>> master
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />

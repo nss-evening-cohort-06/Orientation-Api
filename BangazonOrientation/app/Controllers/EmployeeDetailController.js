@@ -2,13 +2,25 @@
     function ($location, $routeParams, $scope, $http) {
 
         $scope.hasComputer = true;
+        $scope.edit = false;
 
         $http.get(`/api/employees/${$routeParams.id}/computer`).then((result) => {
             if (result.data.ComputerID === undefined)
                 return $scope.hasComputer = false;
-            console.log(result.data);
             $scope.employee = result.data;
-
         });
+
+        $http.get('/api/computers/available').then((results) => {
+            $scope.availableComputers = results.data;
+            console.log(results.data);
+        });
+
+        $scope.back = () => {
+            $location.path(`/employees`);
+        };
+
+        $scope.edits = () => {
+            $scope.edit = true;
+        }
     }
 ]);

@@ -35,17 +35,15 @@ app.config([
             })
             .when("/departments",
             {
-                templateUrl: '/app/partials/employee_details.html',
-                controller: 'EmployeeDetailController'
+                templateUrl: '/app/partials/departments.html',
+                controller: 'DepartmentsController'
+
             })
             .when("/employees",
             {
-                templateUrl: '/app/partials/departments.html',
-                controller: 'DepartmentsController'
-            })
-            {
                 templateUrl: '/app/partials/employees.html',
                 controller: 'EmployeeController'
+
             })
             .when("/departments/new",
             {
