@@ -224,30 +224,26 @@
     <Content Include="app\Controllers\ComputersController.js" />
     <Content Include="app\Controllers\ComputersDeleteController.js" />
     <Content Include="app\Controllers\ComputersDetailController.js" />
-<<<<<<< HEAD
     <Content Include="app\Controllers\DepartmentsController.js" />
-    <Content Include="app\Controllers\DepartmentsDetailController.js" />
-=======
     <Content Include="app\Controllers\EmployeeController.js" />
->>>>>>> master
+    <Content Include="app\Controllers\DepartmentsDetailController.js" />
     <Content Include="app\Controllers\HomeController.js" />
     <Content Include="app\Controllers\NewComputersController.js" />
+<<<<<<< HEAD
+    <Content Include="app\Controllers\NewEmployeeController.js" />
+=======
     <Content Include="app\Controllers\NewDepartmentsController.js" />
+>>>>>>> master
     <Content Include="app\partials\computers.html" />
     <Content Include="app\partials\computers_delete.html" />
     <Content Include="app\partials\computers_detail.html" />
-<<<<<<< HEAD
     <Content Include="app\partials\departments.html" />
+    <Content Include="app\partials\employees.html" />
     <Content Include="app\partials\departments_detail.html" />
     <Content Include="app\partials\index.html" />
     <Content Include="app\partials\new_computer.html" />
     <Content Include="app\partials\new_department.html" />
-=======
-    <Content Include="app\partials\employees.html" />
-    <Content Include="app\partials\index.html" />
-    <Content Include="app\partials\new_computer.html" />
     <Content Include="app\partials\new_employee.html" />
->>>>>>> master
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
@@ -311,6 +307,8 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Views\Computer\" />
+    <Folder Include="Views\Departments\" />
+    <Folder Include="Views\Employees\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.eot" />

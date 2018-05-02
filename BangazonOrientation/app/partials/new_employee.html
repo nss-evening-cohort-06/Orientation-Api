@@ -22,7 +22,15 @@
     <div class="form-group">
         <label for="Employee.DepartmentID" class="control-label col-xs-4">Department</label>
         <div class="col-xs-8">
-            <input ng-model="Employee.DepartmentID" id="Employee.DepartmentID" name="Employee.DepartmentID" type="text" class="form-control" required="required">
+            <select ng-model="Employee.DepartmentID">
+                <option value="1">HR</option>
+                <option value="2">Operations</option>
+                <option value="3">IT</option>
+                <option value="4">Sales</option>
+                <option value="5">Purchasing</option>
+                <option value="6">Markenting</option>
+                <option value="7">Accounting</option>
+            </select>
         </div>
     </div>
     <div class="form-group row">

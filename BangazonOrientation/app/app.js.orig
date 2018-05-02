@@ -28,12 +28,22 @@ app.config([
                 templateUrl: '/app/partials/computers_delete.html',
                 controller: 'ComputersDeleteController'
             })
-<<<<<<< HEAD
             .when("/departments",
             {
                 templateUrl: '/app/partials/departments.html',
                 controller: 'DepartmentsController'
             })
+            .when("/employees",
+            {
+                templateUrl: '/app/partials/employees.html',
+                controller: 'EmployeeController'
+            })
+<<<<<<< HEAD
+            .when("/employees/new",
+            {
+                templateUrl: '/app/partials/new_employee.html',
+                controller: 'NewEmployeeController'
+=======
             .when("/departments/new",
             {
                 templateUrl: '/app/partials/new_department.html',
@@ -43,11 +53,6 @@ app.config([
             {
                 templateUrl: '/app/partials/departments_detail.html',
                 controller: 'DepartmentsDetailController'
-=======
-            .when("/employees",
-            {
-                templateUrl: '/app/partials/employees.html',
-                controller: 'EmployeeController'
 >>>>>>> master
             });
     }
