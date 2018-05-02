@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Configuration;
 using System.Data.SqlClient;
+using System.Linq;
 using Dapper;
 using BangazonOrientation.Models;
 
@@ -65,7 +66,7 @@ namespace BangazonOrientation.Services
                                                                           ,[DepartmentID]
                                                                           ,[StartDate]
                                                                       FROM [dbo].[Employee]
-                                                                      WHERE EmployeeID = @id", new { id });
+                                                                      WHERE EmployeeID = @id", new {id});
 
                 return result;
             }
@@ -91,7 +92,8 @@ namespace BangazonOrientation.Services
 	                                                                        JOIN dbo.Employee on EmployeeComputer.EmployeeID = Employee.EmployeeID
                                                                             JOIN dbo.EmployeeTraining on Employee.EmployeeID = EmployeeTraining.EmployeeID
                                                                             JOIN dbo.TrainingProgram on EmployeeTraining.TrainingProgramID = TrainingProgram.TrainingProgramID
-                                                                            WHERE Employee.EmployeeID = @id", new { id });
+                                                                            WHERE Employee.EmployeeID = @id",
+                    new {id});
                 return result;
             }
         }
@@ -113,5 +115,14 @@ namespace BangazonOrientation.Services
             }
         }
 
+        public List<TrainingDto> GetAllTraining()
+        {
+            using (var db = GetConnection())
+            {
+                db.Open();
+                var result = db.Query<TrainingDto>(@"SELECT* FROM[SNQHM_bangazoncli_db].[dbo].[TrainingProgram]");
+                return result.ToList();
+            }
+        }
     }
 }

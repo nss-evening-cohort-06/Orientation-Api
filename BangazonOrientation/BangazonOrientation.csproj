@@ -210,6 +210,7 @@
     <Compile Include="Models\EmployeesDto.cs" />
     <Compile Include="Models\OrdersDto.cs" />
     <Compile Include="Models\ProductsDto.cs" />
+    <Compile Include="Models\TrainingDto.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\ComputersRepository.cs" />
     <Compile Include="Services\CustomersRepository.cs" />

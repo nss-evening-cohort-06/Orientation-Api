@@ -12,7 +12,10 @@
 
         $http.get('/api/computers/available').then((results) => {
             $scope.availableComputers = results.data;
-            console.log(results.data);
+        });
+
+        $http.get('/api/employees/training').then((results) => {
+            $scope.trainings = results.data;
         });
 
         $scope.back = () => {
