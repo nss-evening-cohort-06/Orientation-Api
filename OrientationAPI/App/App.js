@@ -1,4 +1,4 @@
-﻿var app = angular.module("OrientationAPI", ["ngRoute", "angularMoment"]);
+﻿var app = angular.module("OrientationAPI", ["ngRoute", "angularMoment", "ui.bootstrap"]);
 
 app.config(["$routeProvider", function ($routeProvider) {
     $routeProvider.when("/",
