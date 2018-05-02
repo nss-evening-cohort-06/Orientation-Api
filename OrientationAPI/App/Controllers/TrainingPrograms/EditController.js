@@ -4,11 +4,11 @@
         var updateTraining = function () {
             TrainingProgramService.updateTraining($scope.program).then(function (results) {
                 if (results.status === 200) {
-                    $location.path(`/Training`)
+                    $location.path(`/Training`);
                 }
             }).catch(function (err) {
                 console.log("error in updateTraining in controller", err);
-            })
+            });
         }; 
 
         var getTrainingById = function () {
@@ -16,21 +16,21 @@
                 results.StartDate = new Date(results.StartDate);
                 results.EndDate = new Date(results.EndDate);
                 $scope.program = results;
-                $scope.programName = angular.copy($scope.program.Name)
+                $scope.programName = angular.copy($scope.program.Name);
                 $scope.isFutureTraining();
             }).catch(function (err) {
                 console.log("error in updateTraining in controller", err);
-            })
+            });
         };
 
 
         $scope.deleteTraining = function () {
             TrainingProgramService.deleteTraining($routeParams.id).then(function (results) {
                 console.log(results);
-                $scope.navigateToList(); 
+                $scope.navigateToList();
             }).catch(function (err) {
                 console.log("error in deleteTraining in controller", err);
-            })
+            });
         };
 
 
@@ -48,7 +48,7 @@
         };
 
         $scope.isFutureTraining = function () {
-            return ($scope.program.StartDate > new Date(Date.now())) ? true : false;
+            return $scope.program.StartDate > new Date(Date.now()) ? true : false;
         };
     }
 ]);
