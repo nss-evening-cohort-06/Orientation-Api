@@ -118,10 +118,12 @@
     <Content Include="App\Controllers\DepartmentController.js" />
     <Content Include="App\Controllers\EmployeesController.js" />
     <Content Include="App\Controllers\HomeController.js" />
+    <Content Include="App\Controllers\ModalController.js" />
     <Content Include="App\Controllers\TrainingPrograms\EditController.js" />
     <Content Include="App\Controllers\TrainingPrograms\IndexController.js" />
     <Content Include="App\Controllers\TrainingPrograms\AddController.js" />
     <Content Include="App\Partials\Computers.html" />
+    <Content Include="App\Partials\TrainingPrograms\Delete.html" />
     <Content Include="App\Partials\Departments.html" />
     <Content Include="App\Partials\DepartmentsAdd.html" />
     <Content Include="App\Partials\Employees.html" />
@@ -141,6 +143,8 @@
     <Content Include="Content\bootstrap-reboot.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\Site.css" />
+    <Content Include="Content\ui-bootstrap-csp.css" />
     <Content Include="Global.asax" />
     <Content Include="Scripts\angular-datatables.js" />
     <Content Include="Scripts\angular-mocks.js" />
@@ -148,6 +152,10 @@
     <Content Include="Scripts\angular-moment.min.js" />
     <Content Include="Scripts\angular-route.js" />
     <Content Include="Scripts\angular-route.min.js" />
+    <Content Include="Scripts\angular-ui\ui-bootstrap-tpls.js" />
+    <Content Include="Scripts\angular-ui\ui-bootstrap-tpls.min.js" />
+    <Content Include="Scripts\angular-ui\ui-bootstrap.js" />
+    <Content Include="Scripts\angular-ui\ui-bootstrap.min.js" />
     <Content Include="Scripts\angular.js" />
     <Content Include="Scripts\angular.min.js" />
     <Content Include="Scripts\bootstrap.bundle.js" />
