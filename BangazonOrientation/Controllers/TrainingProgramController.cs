@@ -41,6 +41,18 @@ namespace BangazonOrientation.Controllers
             return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, "Could not create training program, try again later...");
         }
 
+        [Route("{id}/delete"), HttpDelete]
+        public HttpResponseMessage DeleteTrainingProgram(int id)
+        {
+            var repo = new TrainingProgramRepository();
+            var result = repo.Delete(id);
+
+            return result
+                ? Request.CreateResponse(HttpStatusCode.OK)
+                : Request.CreateErrorResponse(HttpStatusCode.BadRequest, "No training program exists with that id");
+        }
+
+
         [Route("{id}/employeelist"), HttpGet]
         public HttpResponseMessage GetEmployeeTrainingList(int id)
         {

@@ -1,4 +1,4 @@
-﻿var app = angular.module("StillNotQuiteHuman", ["ngRoute"]);
+﻿var app = angular.module("StillNotQuiteHuman", ['ngRoute']);
 
 app.config([
     '$routeProvider', function ($routeProvider) {
@@ -33,7 +33,7 @@ app.config([
                 templateUrl: '/app/partials/employees.html',
                 controller: 'EmployeeController'
             })
-            .when("/training"
+            .when("/training",
             {
                 templateUrl: '/app/partials/trainingProgram.html',
                 controller: 'TrainingProgramController'

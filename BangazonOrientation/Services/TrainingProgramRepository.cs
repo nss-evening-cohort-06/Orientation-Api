@@ -55,7 +55,7 @@ namespace BangazonOrientation.Services
             using (var db = GetConnection())
             {
                 db.Open();
-                var getTrainingProgramList = db.Query<TrainingProgramDto>(@"SELECT * FROM TrainingProgram");
+                var getTrainingProgramList = db.Query<TrainingProgramDto>(@"SELECT * FROM TrainingProgram ORDER BY StartDate");
 
                 return getTrainingProgramList;
             }
@@ -69,13 +69,26 @@ namespace BangazonOrientation.Services
                 db.Open();
                 var getEmployeeTrainingProgramList = db.Query<EmployeesDto>(
                                         @"SELECT
-                                        ET.EmployeeTrainingID, E.FirstName, E.LastName 
+                                        E.FirstName, E.LastName 
 	                                    FROM EmployeeTraining ET
 	                                    JOIN Employee E ON ET.EmployeeID=E.EmployeeID
 	                                    WHERE ET.TrainingProgramID = @trainingProgramId
 	                                    ORDER BY E.LastName",new {trainingProgramId });
 
                 return getEmployeeTrainingProgramList;
+            }
+        }
+
+        // DELETE support function to delete a Training Program
+        public bool Delete(int id)
+        {
+            using (var db = GetConnection())
+            {
+                db.Open();
+                var result1 = db.Execute(@"DELETE FROM EmployeeTraining WHERE TrainingProgramID = @id", new { id });
+                var result2 = db.Execute(@"DELETE FROM TrainingProgram WHERE TrainingProgramID = @id", new { id });
+
+                return (result1 + result2) >=1;
             }
         }
 

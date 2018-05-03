@@ -236,7 +236,7 @@
     <Content Include="app\partials\index.html" />
     <Content Include="app\partials\new_computer.html" />
     <Content Include="app\partials\trainingProgram.html" />
-    <Content Include="app\partials\trainingProgramDetails.html" />
+    <Content Include="app\styles\main.css" />
     <Content Include="bin\Antlr3.Runtime.dll" />
     <Content Include="bin\Antlr3.Runtime.pdb" />
     <Content Include="bin\BangazonOrientation.dll" />
