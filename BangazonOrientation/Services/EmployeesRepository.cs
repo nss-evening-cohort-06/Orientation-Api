@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Configuration;
 using System.Data.SqlClient;
 using System.Linq;
@@ -133,7 +134,7 @@ namespace BangazonOrientation.Services
                 var result = db.Query<TrainingDto>(@"SELECT *
                                                       FROM [dbo].[EmployeeTraining]
                                                       JOIN TrainingProgram on TrainingProgram.TrainingProgramID = EmployeeTraining.TrainingProgramID
-                                                      WHERE EmployeeID = @id", new {id});
+                                                      WHERE EmployeeID = @id" , new {id});
                 return result.ToList();
             }
         }

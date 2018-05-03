@@ -45,5 +45,16 @@
             });
             return returnValue;
         };
+
+        $scope.trainingDate = (trainingdate) => {
+            var returnValue = true;
+            var training = new Date(trainingdate);
+            var today = new Date();
+
+            if (training <= today) {
+                returnValue = false;
+            }
+            return returnValue;
+        }
     }
 ]);

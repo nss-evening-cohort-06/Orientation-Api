@@ -32,9 +32,9 @@
             </h4>
         <h4>Training Programs:</h4>
         <div ng-repeat="training in trainings">
-            <label>
+            <label ng-show="trainingDate(training.StartDate)">
                 <input type="checkbox" ng-checked="checkTraining(training.TrainingTitle)">
-                {{training.TrainingTitle}}
+                {{training.TrainingTitle}} - Starts:{{training.StartDate}}
             </label>
             <br/>
         </div>
