@@ -33,7 +33,7 @@
                 startdate = $scope.results[i].StartDate;
                 $scope.results[i].StartDate = moment(startdate).format('MMMM Do YYYY, h:mm:ss a');
                 $scope.results[i].EndDate = moment($scope.results[i].EndDate).format('MMMM Do YYYY, h:mm:ss a');
-                $scope.results[i].isDisabled = moment($scope.startdate).isAfter(new Date()) ? false : true;
+                $scope.results[i].isDisabled = moment(startdate).isAfter(new Date()) ? false : true;
                 grabEmployees(i, $scope.results[i].TrainingProgramID);
             }
             $scope.trainingPrograms = $scope.results; 
