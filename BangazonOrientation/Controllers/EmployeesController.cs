@@ -67,5 +67,15 @@ namespace BangazonOrientation.Controllers
             return Request.CreateResponse(HttpStatusCode.OK, result);
             
         }
+
+        [Route("training/{id}"), HttpGet]
+        public HttpResponseMessage GetAllTrainingByEmployeedId(int id)
+        {
+            var repo = new EmployeesRepository();
+            var result = repo.GetAllTrainingByEmployeeId(id);
+
+            return Request.CreateResponse(HttpStatusCode.OK, result);
+
+        }
     }
 }

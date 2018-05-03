@@ -7,7 +7,7 @@
         <h4 ng-if="!hasComputer">No computer currently assigned</h4>
         <h4>Training Programs:</h4>
         <ul>
-            <li>{{employee.TrainingTitle}} - {{employee.TrainingStartDate}}</li>
+            <li ng-repeat="employeeTraining in employeeTrainings">{{employeeTraining.TrainingTitle}} - {{employeeTraining.StartDate}}</li>
         </ul>
 
         <div class="col-xs-12">
@@ -22,24 +22,25 @@
     
     <div ng-show="edit" class="col-xs-12">
         <h3>Current Employee</h3>
-        <h4>Name: {{employee.FirstName}}</h4><input ng-model="employee.LastName"></input>
+        <h4>Name: {{employee.FirstName}} <input ng-model="employee.LastName"></input></h4>
         <h4>Employee ID: {{employee.EmployeeID}}</h4>
         <h4>Currently Assigned Computer: ID # {{employee.ComputerID}}, {{employee.Manufacturer}} {{employee.Make}}</h4>
-        <h4>Select a new computer id: </h4>
-        <select>
-            <option ng-repeat="computer in availableComputers" value="computer.ComputerID">{{computer.ComputerID}}</option>
-        </select>
+            <h4>Select a new computer id:
+            <select>
+                <option ng-repeat="computer in availableComputers" value="computer.ComputerID">{{computer.ComputerID}}</option>
+            </select>
+            </h4>
         <h4>Training Programs:</h4>
         <div ng-repeat="training in trainings">
             <label>
-                <input type="checkbox" ng-checked="training.TrainingTitle == employee.TrainingTitle">
+                <input type="checkbox" ng-checked="checkTraining(training.TrainingTitle)">
                 {{training.TrainingTitle}}
             </label>
             <br/>
         </div>
         <div class="col-xs-12">
             <div class="col-xs-offset-2 col-xs-4">
-                <button name="back" class="btn btn-primary" ng-click="cancelEdits()">Cancel</button>
+                <button name="back" class="btn btn-primary" ng-click="cancelEdit(employee.EmployeeID)">Cancel</button>
             </div>
             <div class="container">
                 <button name="edit" class="btn btn-danger" ng-click="saveEdits()">Save</button>

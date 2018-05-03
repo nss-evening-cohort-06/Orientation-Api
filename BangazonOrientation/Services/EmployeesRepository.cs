@@ -124,5 +124,18 @@ namespace BangazonOrientation.Services
                 return result.ToList();
             }
         }
+
+        public List<TrainingDto> GetAllTrainingByEmployeeId(int id)
+        {
+            using (var db = GetConnection())
+            {
+                db.Open();
+                var result = db.Query<TrainingDto>(@"SELECT *
+                                                      FROM [dbo].[EmployeeTraining]
+                                                      JOIN TrainingProgram on TrainingProgram.TrainingProgramID = EmployeeTraining.TrainingProgramID
+                                                      WHERE EmployeeID = @id", new {id});
+                return result.ToList();
+            }
+        }
     }
 }

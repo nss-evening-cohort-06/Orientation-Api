@@ -9,5 +9,6 @@ namespace BangazonOrientation.Models
     {
         public int TrainingProgramID { get; set; }
         public string TrainingTitle { get; set; }
+        public DateTime StartDate { get; set; }
     }
 }
