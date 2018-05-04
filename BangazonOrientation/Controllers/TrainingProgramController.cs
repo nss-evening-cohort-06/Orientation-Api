@@ -3,6 +3,7 @@ using BangazonOrientation.Services;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using System;
 
 namespace BangazonOrientation.Controllers
 {
@@ -22,7 +23,7 @@ namespace BangazonOrientation.Controllers
         [Route("{id}/edit"), HttpPut]
         public HttpResponseMessage EditTrainingProgram(int id, TrainingProgramDto training)
         {
-            var repo = new TrainingProgramRepository();
+            var repo = new TrainingProgramRepository(); Console.WriteLine(id); Console.WriteLine(training);
             var StatusResult = repo.Edit(id, training);
 
             if (StatusResult)

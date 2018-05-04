@@ -12,9 +12,10 @@ namespace BangazonOrientation.Services
         // PUT support function
         public bool Edit(int id, TrainingProgramDto training)
         {
-            training.TrainingProgramID = id;
+         //   training.TrainingProgramID = id;
             using (var db = GetConnection())
             {
+                db.Open();
                 var numberEdited = db.Execute(@"UPDATE [dbo].[TrainingProgram]
                                    SET [MaxAttendees] = @MaxAttendees
                                       ,[TrainingTitle] = @TrainingTitle
