@@ -1,0 +1,15 @@
+﻿<h1>ARE YOU SURE YOU WANT TO DELETE:</h1>
+
+<h3>Current Computer</h3>
+<h4>Computer ID: {{computer.ComputerID}}</h4>
+<h4>Computer Manufacturer: {{computer.Manufacturer}}</h4>
+<h4>Computer Make: {{computer.Make}}</h4>
+
+<div class="col-xs-12">
+    <div class="col-xs-offset-2 col-xs-4">
+        <button name="back" class="btn btn-primary" ng-click="back()">Back</button>
+    </div>
+    <div class="col-xs-offset-2 col-xs-4">
+        <button name="delete" class="btn btn-danger" ng-click="theyReallyWantToDeleteThis()">DELETE</button>
+    </div>
+</div>
