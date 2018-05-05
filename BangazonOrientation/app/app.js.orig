@@ -1,4 +1,4 @@
-﻿var app = angular.module("StillNotQuiteHuman", ['ngRoute']);
+﻿var app = angular.module("StillNotQuiteHuman", ["ngRoute"]);
 
 app.config([
     '$routeProvider', function ($routeProvider) {
@@ -28,15 +28,11 @@ app.config([
                 templateUrl: '/app/partials/computers_delete.html',
                 controller: 'ComputersDeleteController'
             })
+<<<<<<< HEAD
             .when("/departments",
             {
                 templateUrl: '/app/partials/departments.html',
                 controller: 'DepartmentsController'
-            })
-            .when("/employees",
-            {
-                templateUrl: '/app/partials/employees.html',
-                controller: 'EmployeeController'
             })
             .when("/departments/new",
             {
@@ -47,11 +43,12 @@ app.config([
             {
                 templateUrl: '/app/partials/departments_detail.html',
                 controller: 'DepartmentsDetailController'
-            })
-            .when("/training",
+=======
+            .when("/employees",
             {
-                templateUrl: '/app/partials/trainingProgram.html',
-                controller: 'TrainingProgramController'
+                templateUrl: '/app/partials/employees.html',
+                controller: 'EmployeeController'
+>>>>>>> master
             });
     }
 ]);
