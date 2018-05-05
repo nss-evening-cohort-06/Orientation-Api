@@ -1,5 +1,5 @@
-﻿app.controller("TrainingProgramController", ["$location", "$scope", "$http", "$window", "$q",
-    function ($location, $scope, $http, $window, $q) {
+﻿app.controller("TrainingProgramController", ["$routeParams", "$location", "$scope", "$http", "$window", "$q",
+    function ($routeParams, $location, $scope, $http, $window, $q) {
 
         $scope.temp = {};
 
@@ -26,8 +26,8 @@
         $scope.results = [];
 
         $http.get("/api/trainingprogram/").then(function (result) {
-            
-            $scope.results = result.data;  
+
+            $scope.results = result.data;
 
             for (var i = 0, len = $scope.results.length; i < len; i++) {
                 startdate = $scope.results[i].StartDate;
@@ -36,8 +36,7 @@
                 $scope.results[i].isDisabled = moment(startdate).isAfter(new Date()) ? false : true;
                 grabEmployees(i, $scope.results[i].TrainingProgramID);
             }
-            $scope.trainingPrograms = $scope.results; 
-            console.log($scope.results);
+            $scope.trainingPrograms = $scope.results;
         });
 
         $scope.DeleteTraining = (course) => {
@@ -54,8 +53,6 @@
 
             newTraining.StartDate = convertDateTime(newTraining.StartDate);
             newTraining.EndDate = convertDateTime(newTraining.EndDate);
-
-            console.log(newTraining);
 
             $http.post(`/api/trainingprogram/create`, JSON.stringify(newTraining)).then(function (result) {
                 console.log(result);
@@ -85,9 +82,7 @@
 
             console.log(editedCourse);
 
-            $http.put(`/api/trainingprogram/${id}/edit`, JSON.stringify(editedCourse)).then(function (result) {
-                console.log(result);
-            });
+            $http.put(`/api/trainingprogram/${id}/edit`, JSON.stringify(editedCourse)).then(function (result) { });
 
             editedCourse.StartDate = moment(editedCourse.StartDate).format('MMMM D YYYY, h:mm:ss a');
             editedCourse.EndDate = moment(editedCourse.EndDate).format('MMMM D YYYY, h:mm:ss a');
@@ -120,5 +115,9 @@
             $scope.showThis = true;
             $scope.showThat = false;
         };
+
+        if ($routeParams.new) {
+            document.getElementById('create').click();
+        }
     }
 ]);

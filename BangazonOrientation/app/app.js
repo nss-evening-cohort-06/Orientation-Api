@@ -48,7 +48,7 @@ app.config([
                 templateUrl: '/app/partials/departments_detail.html',
                 controller: 'DepartmentsDetailController'
             })
-            .when("/training",
+            .when("/training" || "/training?new=true",
             {
                 templateUrl: '/app/partials/trainingProgram.html',
                 controller: 'TrainingProgramController'
