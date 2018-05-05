@@ -26,14 +26,14 @@
         <h4>Employee ID: {{employee.EmployeeID}}</h4>
         <h4>Currently Assigned Computer: ID # {{employee.ComputerID}}, {{employee.Manufacturer}} {{employee.Make}}</h4>
             <h4>Select a new computer id:
-            <select>
+            <select ng-value="employee.ComputerID">
                 <option ng-repeat="computer in availableComputers" value="computer.ComputerID">{{computer.ComputerID}}</option>
             </select>
             </h4>
         <h4>Training Programs:</h4>
         <div ng-repeat="training in trainings">
             <label ng-show="trainingDate(training.StartDate)">
-                <input type="checkbox" ng-checked="checkTraining(training.TrainingTitle)">
+                <input type="checkbox" value="{{training.TrainingTitle}}" ng-checked="checkTraining(training.TrainingTitle)" ng-model="trainings.TrainingTitle.value">
                 {{training.TrainingTitle}} - Starts:{{training.StartDate}}
             </label>
             <br/>
@@ -43,7 +43,7 @@
                 <button name="back" class="btn btn-primary" ng-click="cancelEdit(employee.EmployeeID)">Cancel</button>
             </div>
             <div class="container">
-                <button name="edit" class="btn btn-danger" ng-click="saveEdits()">Save</button>
+                <button name="edit" class="btn btn-danger" ng-click="saveEdits(employee, selectedtraining)">Save</button>
             </div>
         </div>
     </div>

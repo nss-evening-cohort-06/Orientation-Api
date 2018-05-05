@@ -56,5 +56,10 @@
             }
             return returnValue;
         }
+
+        $scope.saveEdits = (employee, selectedtraining) => {
+            console.log(employee);
+            console.log(selectedtraining);
+        }
     }
 ]);
