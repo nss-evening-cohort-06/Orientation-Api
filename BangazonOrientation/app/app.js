@@ -28,6 +28,7 @@ app.config([
                 templateUrl: '/app/partials/computers_delete.html',
                 controller: 'ComputersDeleteController'
             })
+            
             .when("/departments",
             {
                 templateUrl: '/app/partials/departments.html',
@@ -37,6 +38,11 @@ app.config([
             {
                 templateUrl: '/app/partials/employees.html',
                 controller: 'EmployeeController'
+            })
+            .when("/employees/new",
+            { 
+                templateUrl: '/app/partials/new_employee.html',
+                controller: 'NewEmployeeController'
             })
             .when("/departments/new",
             {
