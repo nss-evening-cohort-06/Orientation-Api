@@ -27,8 +27,8 @@ namespace BangazonOrientation.Services
                                                                     , Employee.StartDate
                                                                     , Department.DepartmentID
                                                                     , Department.Name AS DepartmentName
-	                                                        FROM Employee
-	                                                        JOIN Department on Employee.DepartmentID = Department.DepartmentID");
+                                                            FROM Employee
+                                                            JOIN Department on Employee.DepartmentID = Department.DepartmentID");
 
                 return getEmployeeList;
             }

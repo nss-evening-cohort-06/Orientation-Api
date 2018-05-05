@@ -28,7 +28,6 @@ app.config([
                 templateUrl: '/app/partials/computers_delete.html',
                 controller: 'ComputersDeleteController'
             })
-<<<<<<< HEAD
             .when("/employees/:id",
             {
                 templateUrl: '/app/partials/employee_details.html',
@@ -46,6 +45,11 @@ app.config([
                 templateUrl: '/app/partials/employees.html',
                 controller: 'EmployeeController'
             })
+            .when("/employees/new",
+            {
+                templateUrl: '/app/partials/new_employee.html',
+                controller: 'NewEmployeeController'
+=======
             .when("/departments/new",
             {
                 templateUrl: '/app/partials/new_department.html',
