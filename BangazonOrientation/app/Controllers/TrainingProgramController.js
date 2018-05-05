@@ -94,10 +94,6 @@
 
         };
 
-        $scope.undisable = () => {
-            $scope.edited = false;
-        };
-
         $scope.showThis = true;
         $scope.showThat = true;
 
