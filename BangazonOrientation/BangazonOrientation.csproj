@@ -495,8 +495,8 @@
     <Folder Include="App_Data\" />
     <Folder Include="Views\Computer\" />
     <Folder Include="Views\Departments\" />
-    <Folder Include="Views\TrainingProgram\" />
     <Folder Include="Views\Employees\" />
+    <Folder Include="Views\TrainingProgram\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
@@ -553,7 +553,7 @@
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>58649</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:58649/</IISUrl>
+          <IISUrl>http://localhost:58649/#!/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>

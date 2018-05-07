@@ -40,14 +40,14 @@ app.config([
                 controller: 'EmployeeController'
             })
             .when("/employees/new",
-            { 
+            {
                 templateUrl: '/app/partials/new_employee.html',
                 controller: 'NewEmployeeController'
             })
             .when("/employees/:id",
             {
-                    templateUrl: '/app/partials/employee_details.html',
-                    controller: 'EmployeeDetailController'
+                templateUrl: '/app/partials/employee_details.html',
+                controller: 'EmployeeDetailController'
             })
             .when("/departments/new",
             {
@@ -63,6 +63,10 @@ app.config([
             {
                 templateUrl: '/app/partials/trainingProgram.html',
                 controller: 'TrainingProgramController'
+            })
+            .otherwise({
+                templateUrl: '/app/partials/index.html',
+                controller: 'HomeController'
             });
     }
 ]);
