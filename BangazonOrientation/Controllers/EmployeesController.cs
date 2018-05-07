@@ -1,8 +1,5 @@
 ﻿using BangazonOrientation.Models;
 using BangazonOrientation.Services;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
@@ -48,6 +45,37 @@ namespace BangazonOrientation.Controllers
             var result = repository.Edit(employee, id);
 
             return Request.CreateResponse(HttpStatusCode.OK, result);
+        }
+
+        [Route("{id}/computer"), HttpGet]
+        public HttpResponseMessage GetEmployeeComputer(int id)
+        {
+            var repo = new EmployeesRepository();
+            var result = repo.GetEmployeeComputer(id);
+
+            if (result != null)
+                return Request.CreateResponse(HttpStatusCode.OK, result);
+            return GetEmployee(id);
+        }
+
+        [Route("training"), HttpGet]
+        public HttpResponseMessage GetAllTraining()
+        {
+            var repo = new EmployeesRepository();
+            var result = repo.GetAllTraining();
+
+            return Request.CreateResponse(HttpStatusCode.OK, result);
+            
+        }
+
+        [Route("training/{id}"), HttpGet]
+        public HttpResponseMessage GetAllTrainingByEmployeedId(int id)
+        {
+            var repo = new EmployeesRepository();
+            var result = repo.GetAllTrainingByEmployeeId(id);
+
+            return Request.CreateResponse(HttpStatusCode.OK, result);
+
         }
     }
 }

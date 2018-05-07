@@ -12,5 +12,6 @@
         $scope.AddNewEmployee = () => {
             $location.path(`/employees/new`);
         };
+    
     }
 ]);

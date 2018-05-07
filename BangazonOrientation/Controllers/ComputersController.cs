@@ -23,6 +23,17 @@ namespace BangazonOrientation.Controllers
                 : Request.CreateResponse(HttpStatusCode.OK, results);
         }
 
+        [Route("available"), HttpGet]
+        public HttpResponseMessage GetAvailableComputers()
+        {
+            var repo = new ComputersRepository();
+            var results = repo.GetAvailableComputers();
+
+            return results == null
+                ? Request.CreateErrorResponse(HttpStatusCode.NoContent, "No available computers")
+                : Request.CreateResponse(HttpStatusCode.OK, results);
+        }
+
         [Route("{id}"), HttpGet]
         public HttpResponseMessage Get(int id)
         {

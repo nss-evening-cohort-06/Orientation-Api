@@ -27,6 +27,20 @@ namespace BangazonOrientation.Services
             }
         }
 
+        public List<ComputersDto> GetAvailableComputers()
+        {
+            using (var db = GetConnection())
+            {
+                db.Open();
+                var results = db.Query<ComputersDto>(@"SELECT *
+                                                       FROM [SNQHM_bangazoncli_db].[dbo].[Computer]
+                                                       LEFT JOIN EmployeeComputer on EmployeeComputer.ComputerID = computer.ComputerID
+                                                       WHERE AssignedDate is Null");
+
+                return results.ToList();
+            }
+        }
+
         public ComputersDto GetById(int id)
         {
             using (var db = GetConnection())

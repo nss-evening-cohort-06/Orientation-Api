@@ -11,12 +11,22 @@ namespace BangazonOrientation.Services
             return new SqlConnection(ConfigurationManager.ConnectionStrings["BangazonOrientation"].ConnectionString);
         }
 
-        public EmployeeComputersDto GetByComputerId(int id)
+        public EmployeeDetailsDto GetByComputerId(int id)
         {
             using (var db = GetConnection())
             {
                 db.Open();
-                var result = db.QueryFirstOrDefault<EmployeeComputersDto>(@"select * from EmployeeComputer where computerID = @id", new { id });
+                var result = db.QueryFirstOrDefault<EmployeeDetailsDto>(@"select * from EmployeeComputer where computerID = @id", new { id });
+
+                return result;
+            }
+        }
+        public EmployeeDetailsDto GetByEmployeeId(int id)
+        {
+            using (var db = GetConnection())
+            {
+                db.Open();
+                var result = db.QueryFirstOrDefault<EmployeeDetailsDto>(@"select * from EmployeeComputer where employeeID = @id", new { id });
 
                 return result;
             }

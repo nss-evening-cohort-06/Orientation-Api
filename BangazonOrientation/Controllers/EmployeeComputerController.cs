@@ -9,12 +9,26 @@ namespace BangazonOrientation.Controllers
     public class EmployeeComputerController : ApiController
     {
         [Route("{id}"), HttpGet]
-        public HttpResponseMessage Get(int id)
+        public HttpResponseMessage GetByComputerId(int id)
         {
             var repo = new EmployeeComputersRepository();
             var result = repo.GetByComputerId(id);
 
-            return Request.CreateResponse(HttpStatusCode.OK, result);
+
+            return (result != null)
+                ? Request.CreateResponse(HttpStatusCode.OK, result)
+                : Request.CreateErrorResponse(HttpStatusCode.InternalServerError, "Could not get computer by computer ID");
         }
+
+        [Route("{id}/employee"), HttpGet]
+        public HttpResponseMessage GetByEmployeeId(int id)
+        {
+            var repo = new EmployeeComputersRepository();
+            var result = repo.GetByEmployeeId(id);
+
+            return (result != null)
+                ? Request.CreateResponse(HttpStatusCode.OK, result)
+                : Request.CreateResponse(HttpStatusCode.NoContent, result = null);
+                }
     }
 }
