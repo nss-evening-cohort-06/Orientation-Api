@@ -1,0 +1,7 @@
+INSERT [dbo].[Department] ([Name], [Budget]) VALUES (N'HR', CAST(207000 AS Decimal(18, 0)))
+INSERT [dbo].[Department] ([Name], [Budget]) VALUES (N'Operations', CAST(400000 AS Decimal(18, 0)))
+INSERT [dbo].[Department] ([Name], [Budget]) VALUES (N'IT', CAST(512000 AS Decimal(18, 0)))
+INSERT [dbo].[Department] ([Name], [Budget]) VALUES (N'Sales', CAST(350000 AS Decimal(18, 0)))
+INSERT [dbo].[Department] ([Name], [Budget]) VALUES (N'Purchasing', CAST(600000 AS Decimal(18, 0)))
+INSERT [dbo].[Department] ([Name], [Budget]) VALUES (N'Marketing', CAST(250000 AS Decimal(18, 0)))
+INSERT [dbo].[Department] ([Name], [Budget]) VALUES (N'Accounting', CAST(350000 AS Decimal(18, 0)))
