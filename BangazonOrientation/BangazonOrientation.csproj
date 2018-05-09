@@ -214,6 +214,10 @@
     <Compile Include="Migrations\201805090121089_buildDatabase.Designer.cs">
       <DependentUpon>201805090121089_buildDatabase.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201805090131323_addNullableFields.cs" />
+    <Compile Include="Migrations\201805090131323_addNullableFields.Designer.cs">
+      <DependentUpon>201805090131323_addNullableFields.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AppDbContext.cs" />
     <Compile Include="Models\ComputersDto.cs" />
@@ -558,6 +562,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201805090121089_buildDatabase.resx">
       <DependentUpon>201805090121089_buildDatabase.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201805090131323_addNullableFields.resx">
+      <DependentUpon>201805090131323_addNullableFields.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -7,6 +7,6 @@ namespace BangazonOrientation.Models.EntityModels
         public virtual int Id { get; set; }
         public virtual string Manufacturer { get; set; }
         public virtual string Make { get; set; }
-        public virtual DateTime PurchaseDate { get; set; }
+        public virtual DateTime? PurchaseDate { get; set; }
     }
 }
